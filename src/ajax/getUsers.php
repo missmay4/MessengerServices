@@ -4,14 +4,12 @@
 
     SessionService::manageSession();
     if($_SERVER['REQUEST_METHOD'] == 'GET'){
-        $message = MessagerController::getMessages($_SESSION['user']);
+        $message = MessagerController::getUsers();
         
         echo json_encode($message);
     }
     else{
-
         echo json_encode(array( 'code' => '400' , 'error' => "Bad Request"));
-
     }
 
 ?>

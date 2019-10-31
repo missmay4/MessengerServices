@@ -4,7 +4,7 @@ class BBDD{
     private static $servername = "localhost";
     private static $username = "root";
     private static $password = "root";
-    private static $squema = "messagerservice";
+    private static $squema = "messengerservice";
 
     public static function getConnetion(){
         try {

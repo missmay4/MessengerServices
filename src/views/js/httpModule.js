@@ -27,21 +27,23 @@ function ajaxMessages(){
         ajax.send();
     })
 }
-function ajaxModifyMessage( $message ){
+function ajaxModifyMessage( message ){
     let ajax = new XMLHttpRequest();
     return new Promise((resolve , reject )=>{
         ajax.onerror = function(){
             reject( JSON.parse(ajax.responseText));
         }
         ajax.onload = function(){
+            console.log(ajax.responseText);
             resolve(JSON.parse(ajax.responseText));
         }
-
-        ajax.send('GET' , '../ajax/modifyMessages.php');
-        ajax.send();
+        
+        ajax.open('POST' , '../ajax/modifyMessages.php');
+        ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        ajax.send(message);
     })
 }
-function ajaxSendMessage( $message ){
+function ajaxSendMessage( message ){
     let ajax = new XMLHttpRequest();
     return new Promise((resolve , reject )=>{
         ajax.onerror = function(){
@@ -51,12 +53,12 @@ function ajaxSendMessage( $message ){
             resolve(JSON.parse(ajax.responseText));
         }
 
-        ajax.send('POST' , '../ajax/sendMessage.php');
+        ajax.open('POST' , '../ajax/sendMessage.php'+message);
         ajax.send();
     })
 }
 function objectToGetQuery( object ){
-    let queryString = "?";
+    let queryString = "";
 
     for (const key in object) {
         queryString += key+"="+object[key]+"&";    

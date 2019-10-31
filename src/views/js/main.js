@@ -1,9 +1,4 @@
-/**
- * 
- * @param { Array with datas to be printed } datas 
- * @param { Keys of data that will be printed} keys 
- * @param { Container in which the table will be printed } container 
- */
+
 function renderTable(datas,container) {
     let keys = ['seen', 'sender', 'title', 'sendingTime'];
     let table = document.createElement('table');
@@ -28,7 +23,12 @@ function renderTable(datas,container) {
             if(key == 'seen'){
                 let checkBox = document.createElement('input');
                 checkBox.type ="checkbox";
-                row[key] == 1 ? checkBox.checked : "" ;
+                (row[key] == 1) ? checkBox.checked = true : checkBox.checked = false ;
+                checkBox.onclick = function(){
+                    let msm = row;
+                    (msm.seen == 1)? msm.seen = 0 : msm.seen = 1;
+                    ajaxModifyMessage(objectToGetQuery(msm));
+                }
                 th.appendChild(checkBox);
             }
             else{

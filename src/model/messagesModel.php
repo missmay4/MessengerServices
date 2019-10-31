@@ -30,7 +30,20 @@
                 return 0;
             }
         }
-
+        public static function ModifyMessages($message){
+            $seen = $message->getSeen();
+            $ID = $message->getID();
+            try {
+                $conn = BBDD::getConnetion();
+                $query = $conn->prepare('UPDATE messages SET seen = :seen WHERE ID = :ID');
+                $query->bindParam(':seen' , $seen );
+                $query->bindParam(':ID', $ID);
+                return $query->execute();
+            } catch (PDOException $e) {
+                $e->getMessage();
+                return 0;
+            }
+        }
         public static function sendMessages($message){
             $sender = $message->getSender();
             $receiver = $message->getReceiver();

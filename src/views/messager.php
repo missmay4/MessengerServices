@@ -60,24 +60,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="ui bottom attached tab segment" data-tab="first">
         <div class="ui two column very relaxed grid">
             <div class="column">
-                <div id="jsTableMessage"></div>
+                <div class="centered" id="jsTableMessage"></div>
             </div>
             <div class="column">
-                <div id="jsMessageDetails"></div>
+                <form class="ui form">
+                    <div class="field">
+                        <label for="sender">Sender:</label>
+                        <input id="jsSenderMessage" type="text" name="title" id="title">
+                    </div>
+                    <div class="field">
+                        <label for="title">Title :</label>
+                        <input id="jsTitleMessage" type="text" name="title" id="title">
+                    </div>
+                    <div class="field">
+                        <label for="body">Body :</label>
+                        <textarea id="jsBodyMessage" name="body" id="body" cols="30" rows="10"></textarea>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
     <div class="ui bottom attached tab segment" data-tab="second">
-        <form>
-            <br>
-            Select Destination : <span id="jsUsersSelect"></span>
-            <br><br>
-            Title :<input type="text" name="title" id="title">
-            <br><br>
-            <textarea name="body" id="body" cols="30" rows="10"></textarea>
-            <br><br>
-            <button id="jsSendMessageButton">Send</button>
-            <button type="reset">Reset</button>
+        <form class="ui form" method="POST">
+            <div class="field">
+                <label for="destination">Select Destination :</label>
+                <span id="jsUsersSelect"></span>
+            </div>
+            <div class="field">
+                <label for="title">Title :</label>
+                <input type="text" name="title" id="title">
+            </div>
+            <div class="field">
+                <label for="body">Body :</label>
+                <textarea name="body" id="body" cols="30" rows="10"></textarea>
+            </div>
+            <div class="two ui buttons">
+                <button class="ui button" id="jsSendMessageButton">Send</button>
+                <button class="ui button" type="reset">Reset</button>
+            </div>
         </form>
     </div>
     <script type="application/javascript">

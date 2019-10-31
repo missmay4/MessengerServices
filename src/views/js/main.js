@@ -1,74 +1,80 @@
 
-function renderTable(datas,container) {
+function renderTable(datas, container) {
     let keys = ['seen', 'sender', 'title', 'sendingTime'];
     let table = document.createElement('table');
+    table.classList.add("ui");
+    table.classList.add("selectable");
+    table.classList.add("table");
+
     let tr = document.createElement('tr');
+    tr.classList.add("ui");
+    tr.classList.add("center");
+    tr.classList.add("aligned");
     for (const key of keys) {
         let th = document.createElement('th');
         th.innerHTML = key;
         tr.appendChild(th);
     }
-    table.appendChild(tr);
+    let thead = document.createElement('thead');
+    thead.appendChild(tr);
+    table.appendChild(thead);
     for (const row of datas) {
         let tr = document.createElement('tr');
-        if( datas.length == 0 ){
+        tr.classList.add("ui");
+        tr.classList.add("center");
+        tr.classList.add("aligned");
+        if (datas.length == 0) {
             let th = document.createElement('th');
             th.innerHTML = "Not Messages";
-            th.colSpan = 4 ;
+            th.colSpan = 4;
             tr.appendChild(th);
             break
         }
         for (const key of keys) {
             let th = document.createElement('th');
-            if(key == 'seen'){
+            if (key == 'seen') {
                 let checkBox = document.createElement('input');
-                checkBox.type ="checkbox";
-                (row[key] == 1) ? checkBox.checked = true : checkBox.checked = false ;
-                checkBox.onclick = function(){
+                checkBox.type = "checkbox";
+                (row[key] == 1) ? checkBox.checked = true : checkBox.checked = false;
+                checkBox.onclick = function () {
                     let msm = row;
-                    (msm.seen == 1)? msm.seen = 0 : msm.seen = 1;
+                    (msm.seen == 1) ? msm.seen = 0 : msm.seen = 1;
                     ajaxModifyMessage(objectToGetQuery(msm));
                 }
                 th.appendChild(checkBox);
             }
-            else{
+            else {
                 th.innerHTML = row[key];
             }
             tr.appendChild(th);
         }
-        tr.onclick = function(){
+        tr.onclick = function () {
             renderMessageDetails(row);
         };
-        table.appendChild(tr);
+        let tbody = document.createElement('tbody');
+        tbody.appendChild(tr);
+        table.appendChild(tbody);
     }
 
     document.getElementById(container).appendChild(table);
 }
 
-function renderMessageDetails( msm ){
-    
-    let padre = document.getElementById('jsMessageDetails');
-    padre.innerHTML ="";
+function renderMessageDetails(msm) {
 
-    let sender = document.createElement('input')
-    sender.type ="text";
+    let sender = document.getElementById('jsSenderMessage');
     sender.value = msm['sender'];
-    padre.appendChild(sender);
 
-    let title = document.createElement('input')
-    title.type ="text";
+    let title = document.getElementById('jsTitleMessage')
     title.value = msm['title'];
-    padre.appendChild(title);
 
-    let body = document.createElement('textarea');
+    let body = document.getElementById('jsBodyMessage');
     body.innerHTML = msm['body'];
-    padre.appendChild(body);
 }
 
-function renderUsers( users , container ){
+function renderUsers(users, container) {
     let padre = document.getElementById(container);
-    padre.innerHTML  ="";
-    
+    padre.innerHTML = "";
+
     let select = document.createElement('select');
     select.name = 'destination';
     for (const usu of users) {
@@ -81,9 +87,9 @@ function renderUsers( users , container ){
 }
 
 window.onload = function () {
-    this.ajaxMessages().then(messeges => { this.renderTable(messeges,'jsTableMessage') });
-    this.ajaxUsers().then( user => { renderUsers( user , "jsUsersSelect" ) });
-    document.getElementById('jsLogoutButton').onclick = function(){
+    this.ajaxMessages().then(messeges => { this.renderTable(messeges, 'jsTableMessage') });
+    this.ajaxUsers().then(user => { renderUsers(user, "jsUsersSelect") });
+    document.getElementById('jsLogoutButton').onclick = function () {
         console.log("Chau")
         logout();
     };

@@ -36,13 +36,39 @@ function renderTable(datas,container) {
             }
             tr.appendChild(th);
         }
+        tr.onclick = function(){
+            renderMessageDetails(row);
+        };
         table.appendChild(tr);
     }
 
     document.getElementById(container).appendChild(table);
 }
 
+function renderMessageDetails( msm ){
+    
+    let padre = document.getElementById('jsMessageDetails');
+    padre.innerHTML ="";
+
+    let sender = document.createElement('input')
+    sender.type ="text";
+    sender.value = msm['sender'];
+    padre.appendChild(sender);
+
+    let title = document.createElement('input')
+    title.type ="text";
+    title.value = msm['title'];
+    padre.appendChild(title);
+
+    let body = document.createElement('textarea');
+    body.innerHTML = msm['body'];
+    padre.appendChild(body);
+}
+
 function renderUsers( users , container ){
+    let padre = document.getElementById(container);
+    padre.innerHTML  ="";
+    
     let select = document.createElement('select');
     select.name = 'destination';
     for (const usu of users) {
@@ -51,7 +77,7 @@ function renderUsers( users , container ){
         option.innerHTML = usu['username'];
         select.appendChild(option);
     }
-    document.getElementById(container).appendChild(select);
+    padre.appendChild(select);
 }
 
 window.onload = function () {

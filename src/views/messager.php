@@ -48,5 +48,7 @@
         <button type="reset">Reset</button>
     </form>
     <hr>
+    <div id="jsMessageDetails"></div>
+    <hr>
 </body>
 </html>

@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <a class="item">Profile</a>
                 <a class="active item ">Messages</a>
                 <div class="right menu">
-                    <a id="jsLogoutButton" class="ui item">Logout</a>
+                    <a href="closeSession.php" class="ui item">Logout</a>
                 </div>
             </div>
         </div>

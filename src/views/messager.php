@@ -26,23 +26,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MessagerService</title>
+    <script src="./js/httpModule.js" type="application/javascript"></script>
+    <script src="./js/main.js" type="application/javascript"></script>
 </head>
 <body>
     <hr>
     HOLA <?php echo $_SESSION['user']->getUserName();?>
     <hr>
-    <?php echo renderMsgTable()?>
+    <div id="jsTableMessage"></div>
     <hr>
     Send MSG TO :
-    <form action="./messager.php" method="post">
+    <form>
         <br>
-        Select Destination : <?php echo getUserOptions()?>
+        Select Destination : <span id="jsUsersSelect"></span>
         <br><br>
         Title :<input type="text" name="title" id="title">
         <br><br>
         <textarea name="body" id="body" cols="30" rows="10"></textarea>
         <br><br>
-        <button type="submit">Send</button>
+        <button id="jsSendMessageButton">Send</button>
         <button type="reset">Reset</button>
     </form>
     <hr>

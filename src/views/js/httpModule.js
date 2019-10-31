@@ -27,7 +27,7 @@ function ajaxMessages(){
         ajax.send();
     })
 }
-function ajaxPostMessage( $message ){
+function ajaxModifyMessage( $message ){
     let ajax = new XMLHttpRequest();
     return new Promise((resolve , reject )=>{
         ajax.onerror = function(){
@@ -37,11 +37,24 @@ function ajaxPostMessage( $message ){
             resolve(JSON.parse(ajax.responseText));
         }
 
-        ajax.send('GET' , '../ajax/postMessages.php');
+        ajax.send('GET' , '../ajax/modifyMessages.php');
         ajax.send();
     })
 }
+function ajaxSendMessage( $message ){
+    let ajax = new XMLHttpRequest();
+    return new Promise((resolve , reject )=>{
+        ajax.onerror = function(){
+            reject( JSON.parse(ajax.responseText));
+        }
+        ajax.onload = function(){
+            resolve(JSON.parse(ajax.responseText));
+        }
 
+        ajax.send('POST' , '../ajax/sendMessage.php');
+        ajax.send();
+    })
+}
 function objectToGetQuery( object ){
     let queryString = "?";
 

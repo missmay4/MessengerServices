@@ -12,7 +12,6 @@ function ajaxUsers(){
         ajax.send();
     })
 }
-
 function ajaxMessages(){
     let ajax = new XMLHttpRequest();
     return new Promise((resolve , reject )=>{

@@ -83,4 +83,8 @@ function renderUsers( users , container ){
 window.onload = function () {
     this.ajaxMessages().then(messeges => { this.renderTable(messeges,'jsTableMessage') });
     this.ajaxUsers().then( user => { renderUsers( user , "jsUsersSelect" ) });
+    document.getElementById('jsLogoutButton').onclick = function(){
+        console.log("Chau")
+        logout();
+    };
 }

@@ -15,27 +15,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MessagerService</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/semantic.css">
+    <script src="./js/semantic.js"></script>
 </head>
 
 <body>
     <hr>
-    <form action="./login.php" method="post">
-        <label for="username">
-            <span>User:</span>
-            <input type="text" name="username" id="username">
-        </label>
-        <label for="password">
-            <span>Password:</span>
-            <input type="password" name="password" id="password">
-        </label>
-        <button type="submit">Send</button>
-        <button type="reset">Reset</button>
-    </form>
+    <div class="ui grid">
+        <div class="sixteen wide column">
+            <div class="ui secondary pointing menu">
+                <a class="item">Home</a>
+                <a class="item">Profile</a>
+                <a class="item">Messages</a>
+                <div class="right menu">
+                    <a class="ui item">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="ui grid">
+        <div class="centered eight wide column">
+            <form class="ui form" action="./login.php" method="post">
+                <div class="field required">
+                    <label for="username">User :</label>
+                    <input type="text" name="username" placeholder="Username">
+                </div>
+                <div class="field required">
+                    <label for="password">Password :</label>
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+                <div class="two ui buttons">
+                    <button class="ui button" type="submit">Submit</button>
+                    <button class="ui button" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <hr>
 </body>
 

@@ -1,5 +1,5 @@
 <?php 
-    class Messages{
+    class Messages implements JsonSerializable{
         private $ID;
         private $sender;
         private $receiver;
@@ -16,6 +16,18 @@
             $this->body = $body;
             $this->sendingTime = $sendingTime;
             $this->seen = $seen;
+        }
+
+        public function jsonSerialize(){
+            return array(
+                'ID' => $this->getID(),
+                'sender'=>$this->getSender(),
+                'receiver'=>$this->getReceiver(),
+                'title' => $this->getTitle(),
+                'body' => $this->getBody(),
+                'sendingTime'=>$this->getSendingTime(),
+                'seen' =>$this->getSeen()
+            );
         }
 
         public function getID(){

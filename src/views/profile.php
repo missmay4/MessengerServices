@@ -38,43 +38,45 @@ SessionService::manageSession();
 </div>
 <hr>
 
-<div class="ui card">
-    <div class="ui fluid image">
-        <img src="img/profile_photo/<?php echo $_SESSION['user']->getUserPhoto(); ?>">
+<div class="ui two column very relaxed grid">
+    <div class="column">
+        <div class="ui card">
+            <div class="ui fluid image">
+                <img src="img/profile_photo/<?php echo $_SESSION['user']->getUserPhoto(); ?>">
+            </div>
+            <div class="content">
+                <a class="header"><?php echo $_SESSION['user']->getUserName(); ?></a>
+                <div class="meta">
+                    <span class="description"><?php echo $_SESSION['user']->getEmail(); ?></span>
+                    <br>
+                    <span class="date"><b>Last time visit: </b><?php echo $_SESSION['user']->getLastVisit(); ?></span>
+                </div>
+            </div>
     </div>
-    <div class="content">
-        <a class="header"><?php echo $_SESSION['user']->getUserName(); ?></a>
-        <div class="meta">
-            <span class="date"><b>Last time visit: </b><?php echo $_SESSION['user']->getLastVisit(); ?></span>
-            <span class="description"><b><?php echo $_SESSION['user']->getEmail(); ?></b></span>
-        </div>
-        <!-- <div class="description">
-            Kristy is an art director living in New York.
-        </div>
+    <div class="column">
+        <form class="ui form">
+            <div class="field">
+                <label for="title">Change profile picture</label>
+                <form action="" method="post" enctype="multipart/form-data">
+                    Select image to upload:
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                    <label for="title"><b>About you</b></label>
+                    <label for="username">Age</label>
+                    <input id="jsSenderMessage" type="text" name="username" id="username">
+                    <label for="title">Home address</label>
+                    <input id="jsTitleMessage" type="text" name="title" id="title">
+                    <label for="title">Hobbies</label>
+                    <input id="jsTitleMessage" type="text" name="title" id="title">
+
+                    <input type="submit" value="Upload info" name="submit">
+                </form>
+            </div>
+        </form>
     </div>
-    <div class="extra content">
-        <a>
-            <i class="user icon"></i>
-            22 Friends
-        </a>
-    </div> -->
 </div>
 
-<!-- <div>
-    <label for="name"><b>Name</b></label>
-    <br>
-    <p name="name"><?php echo $_SESSION['user']->getUserName(); ?></p>
-    <label for="email"><b>Email</b></label>
-    <br>
-    <p name="email"><?php echo $_SESSION['user']->getEmail(); ?></p>
-    <label for="lastTime"><b>Last time visit</b></label>
-    <br>
-    <p name="lastTime"><?php echo $_SESSION['user']->getLastVisit(); ?></p>
-    <label for="photo"><b>Photo</b></label>
-    <br>
-    <p name="photo"><?php echo $_SESSION['user']->getUserPhoto(); ?></p>
 
-</div> -->
+
 
 </body>
 

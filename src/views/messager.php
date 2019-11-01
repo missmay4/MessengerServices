@@ -42,7 +42,7 @@ SessionService::manageSession();
     <div class="ui grid">
         <div class="sixteen wide column">
             <div class="ui secondary pointing menu">
-                <div class="item">HOLA <?php echo strtoupper($_SESSION['user']->getUserName()); ?></div>
+                <div class="item">Welcome <?php echo strtoupper($_SESSION['user']->getUserName()); ?></div>
                 <a class="item">Home</a>
                 <a class="item">Profile</a>
                 <a class="active item ">Messages</a>

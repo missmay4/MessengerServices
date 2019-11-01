@@ -1,6 +1,7 @@
 <?php
 require_once '../controller/loginController.php';
 require_once '../entities/users.php';
+require_once '../utils/sessionService.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $user = new Users(
             null,

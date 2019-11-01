@@ -10,7 +10,7 @@ CREATE TABLE Users (
     password VARCHAR(255) NOT NULL,
     lastvisit DATETIME,
     userPhoto TEXT DEFAULT "def_userphoto.png",
-    email  VARCHAR(10) NOT NULL
+    email  VARCHAR(30) NOT NULL
 );
 CREATE TABLE Groups (
     ID INT AUTO_INCREMENT PRIMARY KEY,

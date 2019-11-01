@@ -1,7 +1,6 @@
 <?php
 require_once '../entities/users.php';
 require_once '../utils/sessionService.php';
-
 SessionService::manageSession();
 ?>
 
@@ -19,7 +18,6 @@ SessionService::manageSession();
 
     <script src="./js/httpModule.js" type="application/javascript"></script>
     <script src="./js/main.js" type="application/javascript"></script>
-
 
 </head>
 
@@ -42,7 +40,7 @@ SessionService::manageSession();
 
 <div class="ui card">
     <div class="ui fluid image">
-        <img src="img/profile_photo/" +<?php echo $_SESSION['user']->getUserPhoto(); ?>>
+        <img src="img/profile_photo/<?php echo $_SESSION['user']->getUserPhoto(); ?>">
     </div>
     <div class="content">
         <a class="header"><?php echo $_SESSION['user']->getUserName(); ?></a>

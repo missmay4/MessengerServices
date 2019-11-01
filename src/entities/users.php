@@ -43,10 +43,10 @@
             return $this->email;
         }
         public function setUserPhoto( $userPhoto ){
-            $this->userphoto = $userPhoto;
+            $this->userphoto = $userphoto;
         }
         public function getUserPhoto( ){
-            return $this->userPhoto;
+            return $this->userphoto;
         }
         public function setUserName( $name ){
             $this->username = $name;

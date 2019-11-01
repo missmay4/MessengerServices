@@ -91,7 +91,6 @@ window.onload = function () {
     this.ajaxMessages().then(messeges => { this.renderTable(messeges, 'jsTableMessage') });
     this.ajaxUsers().then(user => { renderUsers(user, "jsSendUsersSelect") });
     document.getElementById('jsSendMessageButton').onclick = function(){
-        console.log("sending msm");
         let msm = {
             ID : null,
             sender : null ,
@@ -102,5 +101,9 @@ window.onload = function () {
             seen : null,
         }
         ajaxSendMessage(msm);
+
+        jsSendTitleMessage.value ="";
+        jsSendBodyMessage.value="";
+
     }
 }

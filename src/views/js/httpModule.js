@@ -46,11 +46,8 @@ function ajaxSendMessage( message ){
     let ajax = new XMLHttpRequest();
     return new Promise((resolve , reject )=>{
         ajax.onerror = function(){
-            reject( JSON.parse(ajax.responseText));
         }
         ajax.onload = function(){
-            console.log(ajax.responseText)
-            resolve(JSON.parse(ajax.responseText));
         }
 
         ajax.open('POST' , '../ajax/sendMessage.php');

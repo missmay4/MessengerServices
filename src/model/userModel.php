@@ -8,7 +8,7 @@ require_once '../utils/bbdd.php';
         public static function loginUser( $user , $password ){
             try {
                 $conn = BBDD::getConnetion();
-                $query = $conn->prepare('SELECT * FROM users WHERE username = :user');
+                $query = $conn->prepare('SELECT * FROM Users WHERE username = :user');
                 $query->bindParam(':user',$user);
                 $query->setFetchMode( PDO::FETCH_ASSOC);
                 $query->execute();
@@ -25,7 +25,7 @@ require_once '../utils/bbdd.php';
         public static function getUserID($ID){
             try {
                 $conn = BBDD::getConnetion();
-                $query = $conn->query('SELECT username FROM users WHERE ID = '.$ID);
+                $query = $conn->query('SELECT username FROM Users WHERE ID = '.$ID);
                 $query->setFetchMode( PDO::FETCH_ASSOC);
                 $query->execute();
                 $movida =  $query->fetch();
@@ -38,7 +38,7 @@ require_once '../utils/bbdd.php';
         public static function getListUsers(){
             try {
                 $conn = BBDD::getConnetion();
-                $query = $conn->query('SELECT ID , username FROM users');
+                $query = $conn->query('SELECT ID , username FROM Users');
                 $query->setFetchMode( PDO::FETCH_ASSOC);
                 $query->execute();
                 return $query->fetchAll();
@@ -57,7 +57,7 @@ require_once '../utils/bbdd.php';
 
             try {
                 $conn = BBDD::getConnetion();
-                $query = $conn->prepare('INSERT INTO users (ID, username, password, lastvisit , email ) VALUES (NULL,:user,:pass,:curTime , :mail)');
+                $query = $conn->prepare('INSERT INTO Users (ID, username, password, lastvisit , email ) VALUES (NULL,:user,:pass,:curTime , :mail)');
                 $query->bindParam(':user',$user);
                 $query->bindParam(':pass', $hashPass);
                 $query->bindParam(':curTime', $currTime);

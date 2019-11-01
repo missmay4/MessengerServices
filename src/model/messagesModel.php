@@ -8,7 +8,7 @@
             try {
                 $userID = $user->getID();
                 $conn = BBDD::getConnetion();
-                $query = $conn->prepare("SELECT * FROM messages WHERE receiver = :userID ORDER BY sendingTime ASC");
+                $query = $conn->prepare("SELECT * FROM Messages WHERE receiver = :userID ORDER BY sendingTime ASC");
                 $query->bindParam(':userID' , $userID );
 
                 $query->execute();
@@ -35,7 +35,7 @@
             $ID = $message->getID();
             try {
                 $conn = BBDD::getConnetion();
-                $query = $conn->prepare('UPDATE messages SET seen = :seen WHERE ID = :ID');
+                $query = $conn->prepare('UPDATE Messages SET seen = :seen WHERE ID = :ID');
                 $query->bindParam(':seen' , $seen );
                 $query->bindParam(':ID', $ID);
                 return $query->execute();
@@ -52,7 +52,7 @@
             $curTime = date('Y-m-d h:m:s');
             try {
                 $conn = BBDD::getConnetion();
-                $query = $conn->prepare("INSERT INTO messages (sender, receiver, title, body, sendingTime, seen) VALUES ( :sender , :receiver , :title , :body , :sendingTime , false )");
+                $query = $conn->prepare("INSERT INTO Messages (sender, receiver, title, body, sendingTime, seen) VALUES ( :sender , :receiver , :title , :body , :sendingTime , false )");
                 $query->bindParam(':sender', $sender);
                 $query->bindParam(':receiver', $receiver);
                 $query->bindParam(':title', $title);

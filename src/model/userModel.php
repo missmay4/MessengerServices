@@ -1,7 +1,5 @@
 <?php
 
-use PHPMailer\PHPMailer\Exception;
-
 require_once '../utils/bbdd.php';
     require_once '../entities/users.php';
 

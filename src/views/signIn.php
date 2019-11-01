@@ -55,9 +55,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <label for="email">Email:</label>
                     <input type="email" name="email" id="email">
                 </div>
-                <div class="two ui buttons">
+                <div class="three ui buttons">
                     <button class="ui button" type="submit">Submit</button>
                     <button class="ui button" type="reset">Reset</button>
+                    <a class="ui button" href="login.php">LogIn</a>
                 </div>
             </form>
         </div>

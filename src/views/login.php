@@ -46,8 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="password" name="password" placeholder="Password">
                 </div>
                 <div class="two ui buttons">
-                    <button class="ui button" type="submit">Submit</button>
-                    <button class="ui button" type="reset">Reset</button>
+                    <button class="ui button" type="submit">LogIn</button>
+                    <a class="ui button" href="signIn.php">SignIn</a>
                 </div>
             </form>
         </div>

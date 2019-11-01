@@ -77,6 +77,7 @@ function renderUsers(users, container) {
 
     let select = document.createElement('select');
     select.name = 'destination';
+    select.id ="jsSendDestMess"
     for (const usu of users) {
         let option = document.createElement('option');
         option.value = usu['ID'];
@@ -88,6 +89,18 @@ function renderUsers(users, container) {
 
 window.onload = function () {
     this.ajaxMessages().then(messeges => { this.renderTable(messeges, 'jsTableMessage') });
-    this.ajaxUsers().then(user => { renderUsers(user, "jsUsersSelect") });
-    
+    this.ajaxUsers().then(user => { renderUsers(user, "jsSendUsersSelect") });
+    document.getElementById('jsSendMessageButton').onclick = function(){
+        console.log("sending msm");
+        let msm = {
+            ID : null,
+            sender : null ,
+            receiver : jsSendDestMess.value,
+            title : jsSendTitleMessage.value,
+            body : jsSendBodyMessage.value,
+            sendingTime :null ,
+            seen : null,
+        }
+        ajaxSendMessage(msm);
+    }
 }

@@ -6,7 +6,7 @@ require_once './utils.php';
 
 SessionService::manageSession();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+/* if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $message = new Messages(
         null,
         $_SESSION['user']->getID(),
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         null
     );
     MessagerController::sendMail($message);
-}
+} */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,21 +81,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
     <div class="ui bottom attached tab segment" data-tab="second">
-        <form class="ui form" method="POST">
+        <form class="ui form">
             <div class="field">
                 <label for="destination">Select Destination :</label>
-                <span id="jsUsersSelect"></span>
+                <span id="jsSendUsersSelect"></span>
             </div>
             <div class="field">
                 <label for="title">Title :</label>
-                <input type="text" name="title" id="title">
+                <input id="jsSendTitleMessage" type="text" name="title" id="title">
             </div>
             <div class="field">
                 <label for="body">Body :</label>
-                <textarea name="body" id="body" cols="30" rows="10"></textarea>
+                <textarea id="jsSendBodyMessage" name="body" id="body" cols="30" rows="10"></textarea>
             </div>
             <div class="two ui buttons">
-                <button class="ui button" id="jsSendMessageButton">Send</button>
+                <button class="ui button" type="button" id="jsSendMessageButton">Send</button>
                 <button class="ui button" type="reset">Reset</button>
             </div>
         </form>

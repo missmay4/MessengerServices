@@ -5,13 +5,13 @@
     SessionService::manageSession();
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $msm = new Messages(
-            $_POST['ID'],
-            $_POST['sender'],
+            null,
+            $_SESSION['user']->getID(),
             $_POST['receiver'],
             $_POST['title'],
             $_POST['body'],
-            $_POST['sendingTime'],
-            $_POST['seen']
+            null,
+            null
         );
         echo MessagerController::sendMail($msm);
     }

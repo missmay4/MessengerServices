@@ -66,15 +66,15 @@ SessionService::manageSession();
                 <form class="ui form">
                     <div class="field">
                         <label for="sender">Sender:</label>
-                        <input id="jsSenderMessage" type="text" name="title" id="title">
+                        <input id="jsSenderMessage" type="text" name="title" id="title" disabled>
                     </div>
                     <div class="field">
                         <label for="title">Title :</label>
-                        <input id="jsTitleMessage" type="text" name="title" id="title">
+                        <input id="jsTitleMessage" type="text" name="title" id="title" disabled>
                     </div>
                     <div class="field">
                         <label for="body">Body :</label>
-                        <textarea id="jsBodyMessage" name="body" id="body" cols="30" rows="10"></textarea>
+                        <textarea id="jsBodyMessage" name="body" id="body" cols="30" rows="10" disabled></textarea>
                     </div>
                 </form>
             </div>

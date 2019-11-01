@@ -47,7 +47,7 @@ SessionService::manageSession();
                 <a class="item">Profile</a>
                 <a class="active item ">Messages</a>
                 <div class="right menu">
-                    <a href="closeSession.php" class="ui item">Logout</a>
+                    <a href="login.php" class="ui item">Logout</a>
                 </div>
             </div>
         </div>

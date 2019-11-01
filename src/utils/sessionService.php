@@ -15,7 +15,9 @@
             }
         }
         public static function exterminateSession(){
-            session_destroy();
-            header('Location: login.php');
+            if(isset($_SESSION['user'])){
+                session_destroy();
+            }
+            setcookie("PHPSESSID","",time()-3600,"/");
         }
     }

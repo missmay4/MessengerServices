@@ -1,6 +1,9 @@
 <?php
 require_once '../controller/loginController.php';
 require_once '../entities/users.php';
+require_once '../utils/sessionService.php';
+
+SessionService::exterminateSession();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['username']) &&  isset($_POST['password'])) {
         LoginController::checkLogin($_POST['username'], $_POST['password']);

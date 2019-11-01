@@ -18,7 +18,7 @@ require_once '../utils/bbdd.php';
                 if(!$result || !password_verify($password , $result["password"])){
                     return false;
                 }
-                return new Users($result["ID"],$result["username"],$result["password"],$result["lastvisit"]);                
+                return new Users($result["ID"],$result["username"],$result["password"],$result["lastvisit"],$result["userPhoto"],$result["email"]);                
             } catch (PDOException $e) {
                 echo $e;
                 die();
@@ -49,17 +49,21 @@ require_once '../utils/bbdd.php';
                 return 0;
             }
         }
-        public static function insertUser($user , $password){
+        public static function insertUser( $usuario ){
 
+            $user = $usuario->getUserName();
+            $mail = $usuario->getEmail();
+            $password = $usuario->getPassword();
             $hashPass = password_hash($password ,PASSWORD_DEFAULT);
             $currTime =  date('Y-m-d h:m:s');
 
             try {
                 $conn = BBDD::getConnetion();
-                $query = $conn->prepare('INSERT INTO `users` (`ID`, `username`, `password`, `lastvisit`) VALUES (NULL,:user,:pass,:curTime)');
+                $query = $conn->prepare('INSERT INTO users (ID, username, password, lastvisit , email ) VALUES (NULL,:user,:pass,:curTime , :mail)');
                 $query->bindParam(':user',$user);
                 $query->bindParam(':pass', $hashPass);
                 $query->bindParam(':curTime', $currTime);
+                $query->bindParam(':mail', $mail);
                 $query->execute();
                 return self::loginUser($user , $password);
             } catch (PDOException $e) {

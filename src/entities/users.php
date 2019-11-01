@@ -5,12 +5,16 @@
         private $username;
         private $password;
         private $lastvisit;
+        private $userphoto;
+        private $email;
         
-        public function __construct($ID , $username , $password , $lastvisit) {
+        public function __construct($ID , $username , $password , $lastvisit , $userphoto , $email) {
             $this->ID = $ID;
             $this->username = $username;
             $this->password = $password;
             $this->lastvisit = $lastvisit;
+            $this->userphoto = $userphoto;
+            $this->email = $email;
         }
 
         public function getID(){
@@ -32,7 +36,18 @@
         public function setID( $newID ){
             $this->ID = $newID;
         }
-
+        public function setEmail( $newEmail ){
+            $this->email = $newEmail;
+        }
+        public function getEmail( ){
+            return $this->email;
+        }
+        public function setUserPhoto( $userPhoto ){
+            $this->userphoto = $userPhoto;
+        }
+        public function getUserPhoto( ){
+            return $this->userPhoto;
+        }
         public function setUserName( $name ){
             $this->username = $name;
         }

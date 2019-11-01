@@ -19,9 +19,9 @@ class LoginController
         header('Location: ../views/messager.php');
     }
 
-    public static function makeLogin($username, $password)
+    public static function makeLogin( $user )
     {
-        $res = UserModel::insertUser($username, $password);
+        $res = UserModel::insertUser($user);
         if (!$res) { 
             header('Location: login.php');
             return 0;

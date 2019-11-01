@@ -2,9 +2,15 @@
 require_once '../controller/loginController.php';
 require_once '../entities/users.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['username']) &&  isset($_POST['password'])) {
-        LoginController::makeLogin($_POST['username'], $_POST['password']);
-    }
+        $user = new Users(
+            null,
+            $_POST['username'],
+            $_POST['password'],
+            null,
+            null,
+            $_POST['email']
+        );
+        LoginController::makeLogin($user);
 }
 ?>
 <!DOCTYPE html>
@@ -44,6 +50,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="field required">
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password">
+                </div>
+                <div class="field required">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email">
                 </div>
                 <div class="two ui buttons">
                     <button class="ui button" type="submit">Submit</button>

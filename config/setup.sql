@@ -1,12 +1,16 @@
-CREATE DATABASE MessagerService;
+DROP DATABASE IF EXISTS MessengerService ;
 
-USE MessagerService;
+CREATE DATABASE MessengerService;
+
+USE MessengerService;
 
 CREATE TABLE Users (
 	ID INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(20) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    lastvisit DATETIME 
+    lastvisit DATETIME,
+    userPhoto TEXT DEFAULT "def_userphoto.png",
+    email  VARCHAR(10) NOT NULL
 );
 CREATE TABLE Groups (
     ID INT AUTO_INCREMENT PRIMARY KEY,

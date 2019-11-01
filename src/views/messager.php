@@ -44,8 +44,8 @@ SessionService::manageSession();
             <div class="ui secondary pointing menu">
                 <div class="item">Welcome <?php echo strtoupper($_SESSION['user']->getUserName()); ?></div>
                 <a class="item">Home</a>
-                <a class="item">Profile</a>
-                <a class="active item ">Messages</a>
+                <a class="item" href="profile.php">Profile</a>
+                <a class="active item " href="messager.php">Messages</a>
                 <div class="right menu">
                     <a href="login.php" class="ui item">Logout</a>
                 </div>

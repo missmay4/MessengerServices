@@ -49,7 +49,8 @@
             $receiver = $message->getReceiver();
             $title = $message->getTitle();
             $body = $message->getBody();
-            $curTime = date('Y-m-d h:m:s');
+            date_default_timezone_set("Europe/Madrid");
+            $curTime = date('Y-m-d G:m:s');
             try {
                 $conn = BBDD::getConnetion();
                 $query = $conn->prepare("INSERT INTO Messages (sender, receiver, title, body, sendingTime, seen) VALUES ( :sender , :receiver , :title , :body , :sendingTime , false )");

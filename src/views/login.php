@@ -48,6 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <label for="password">Password :</label>
                     <input type="password" name="password" placeholder="Password">
                 </div>
+                <a href="forgotpassword.php">Forgot password?</a>
+                <hr>
                 <div class="two ui buttons">
                     <button class="ui button" type="submit">LogIn</button>
                     <a class="ui button" href="signIn.php">SignIn</a>
@@ -56,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
     <hr>
+
 </body>
 
 </html>

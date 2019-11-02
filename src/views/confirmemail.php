@@ -37,25 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 <hr>
 <div class="ui grid">
-    <div class="centered eight wide column">
-        <form class="ui form" action="" method="post">
-            <div class="field required">
-                <label for="username">User :</label>
-                <input type="text" name="username" placeholder="Username">
-            </div>
-            <div class="field required">
-                <label for="password">Email :</label>
-                <input type="email" name="email" placeholder="Email">
-            </div>
-            <hr>
-            <div class="two ui buttons">
-                <a href="confirmemail.php">
-                    <button class="ui primary button" type="submit">Email me</button>
-                </a>
+    <h4 class="ui header">Esto no funciona. Estamos trabajando en ello</h4>
 
-            </div>
-        </form>
-    </div>
 </div>
 <hr>
 

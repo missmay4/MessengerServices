@@ -69,4 +69,21 @@ require_once '../utils/bbdd.php';
                 return 0;
             }
         }
+
+        public static function getUsernameEmail($username, $email){
+            try {
+                $conn = BBDD::getConnetion();
+                $query = $conn->prepare('SELECT username, email FROM Users WHERE username = :username AND email = :email');
+                $query->bindParam(':username',$username);
+                $query->bindParam(':email', $email);
+                $query->setFetchMode( PDO::FETCH_ASSOC);
+                $query->execute();
+                $result =  $query->fetch();
+
+                return $result["username"] . $result["email"];
+            } catch (PDOException $e) {
+                echo $e;
+                die();
+            }
+        }
     }

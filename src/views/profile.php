@@ -15,9 +15,10 @@ SessionService::manageSession();
     <link rel="stylesheet" href="./css/semantic.css">
     <script src="./js/jquery.js"></script>
     <script src="./js/semantic.js"></script>
-
+    
     <script src="./js/httpModule.js" type="application/javascript"></script>
     <script src="./js/main.js" type="application/javascript"></script>
+    <script src="./js/profile.js" type="application/javascript"></script>
 
 </head>
 
@@ -52,12 +53,12 @@ SessionService::manageSession();
                         <div class="age">Age : </div>
                         <div class="age">Home Address : </div>
                         <div class="age">Hobbies : </div>
-                        <button class="ui fluid button">MODIFY</button>
+                        <button id="jsModifyButton" class="ui fluid button">MODIFY</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="column">
+        <div id="jsEditableData" class="column" style="visibility:hidden;">
             <hr>
             <h1 class="centered align row" for="title"><b>About you</b></h1>
             <form class="ui form">

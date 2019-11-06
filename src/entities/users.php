@@ -7,14 +7,20 @@
         private $lastvisit;
         private $userphoto;
         private $email;
+        private $age;
+        private $address;
+        private $hobbies;
         
-        public function __construct($ID , $username , $password , $lastvisit , $userphoto , $email) {
+        public function __construct($ID , $username , $password , $lastvisit , $userphoto , $email, $age, $address, $hobbies) {
             $this->ID = $ID;
             $this->username = $username;
             $this->password = $password;
             $this->lastvisit = $lastvisit;
             $this->userphoto = $userphoto;
             $this->email = $email;
+            $this->age = $age;
+            $this->address = $address;
+            $this->hobbies = $hobbies;
         }
 
         public function getID(){
@@ -58,6 +64,36 @@
 
         public function setLastVisit(){
             $this->lastvisit = date('Y-M-d h:m:s');
+        }
+
+        public function getAddress()
+        {
+            return $this->address;
+        }
+
+        public function setAddress($address)
+        {
+            $this->address = $address;
+        }
+
+        public function getAge()
+        {
+            return $this->age;
+        }
+
+        public function setAge($age)
+        {
+            $this->age = $age;
+        }
+
+        public function getHobbies()
+        {
+            return $this->hobbies;
+        }
+
+        public function setHobbies($hobbies)
+        {
+            $this->hobbies = $hobbies;
         }
 
         public function toString(){

@@ -2,6 +2,25 @@
 require_once '../entities/users.php';
 require_once '../utils/sessionService.php';
 SessionService::manageSession();
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if(isset($_FILES['PhotoProfile'])){
+            $_FILES['PhotoProfile']['name'] = $_SESSION['user']->getID() . ".png";
+            //YAMAL CONTROLAOR FISHEOS
+        }
+        $user = new Users(
+            $_SESSION['user']->getID(),
+            $_SESSION['user']->getUserName(),
+            null ,
+            null,
+            $_SESSION['user']->getID() . ".png",
+            $_SESSION['user']-getEmail(),
+            $_POST['age'],
+            $_POST['address'],
+            $_POST['Hobbies'],
+        );
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -48,11 +67,11 @@ SessionService::manageSession();
                 <div class="content">
                     <a class="header"><?php echo $_SESSION['user']->getUserName(); ?></a>
                     <div class="meta">
-                        <div class="description"><?php echo $_SESSION['user']->getEmail(); ?></div>
-                        <div class="date"><b>Last time visit: </b><?php echo $_SESSION['user']->getLastVisit(); ?></div>
-                        <div class="age">Age : </div>
-                        <div class="age">Home Address : </div>
-                        <div class="age">Hobbies : </div>
+                        <div><?php echo $_SESSION['user']->getEmail(); ?></div>
+                        <div><b>Last time visit: </b><?php echo $_SESSION['user']->getLastVisit(); ?></div>
+                        <div>Age : </div>
+                        <div>Home Address : </div>
+                        <div>Hobbies : </div>
                         <button id="jsModifyButton" class="ui fluid button">MODIFY</button>
                     </div>
                 </div>
@@ -61,7 +80,7 @@ SessionService::manageSession();
         <div id="jsEditableData" class="column" style="visibility:hidden;">
             <hr>
             <h1 class="centered align row" for="title"><b>About you</b></h1>
-            <form class="ui form">
+            <form class="ui form" method="POST">
                 <div class="field">
                     <label>Photo Profile Picture</label>
                     <input type="file" name="PhotoProfile" placeholder="Upload your photo here">

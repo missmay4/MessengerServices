@@ -11,7 +11,7 @@
         private $address;
         private $hobbies;
         
-        public function __construct($ID , $username , $password , $lastvisit , $userphoto , $email, $age, $address, $hobbies) {
+        public function __construct($ID , $username , $password , $lastvisit = null , $userphoto = null , $email = null, $age = null, $address = null , $hobbies = null) {
             $this->ID = $ID;
             $this->username = $username;
             $this->password = $password;

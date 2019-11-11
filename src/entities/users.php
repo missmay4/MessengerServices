@@ -49,7 +49,7 @@
             return $this->email;
         }
         public function setUserPhoto( $userPhoto ){
-            $this->userphoto = $userphoto;
+            $this->userphoto = $userPhoto;
         }
         public function getUserPhoto( ){
             return $this->userphoto;

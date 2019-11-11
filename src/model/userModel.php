@@ -5,6 +5,36 @@ require_once '../utils/bbdd.php';
 
     class UserModel{
 
+        public static function modifyUsers( $user ){
+            $query  = "UPDATE users SET username = :username , password = ':password', userPhoto = ':userPhoto', email = ':mail', age = ':age', address = ':address', hobbies = ':hobbies' WHERE users.ID = :userID";
+            $id = $user->getID();
+            $username = $user->getUserName();
+            $password = $user->getPassword();
+            $userPhoto = $user->getUserPhoto();
+            $mail = $user->getEmail();
+            $age = $user->getAge();
+            $address = $user->getAddress();
+            $hobbies = $user->getHobbies();
+            
+            try {
+                $conn = BBDD::getConnetion();
+                $query = $conn->prepare($query);
+                $query->bindParam(":id" , $id );
+                $query->bindParam(":username",$username);
+                $query->bindParam(":password" , $password);
+                $query->bindParam(":userPhoto",$userPhoto);
+                $query->bindParam(":mail", $mail);
+                $query->bindParam(":age", $age);
+                $query->bindParam(":address" , $address);
+                $query->bindParam(":hobbies" , $hobbies);
+
+                return $query->execute();
+
+            } catch (PDOException $e) {
+                echo $e;
+            }
+        }
+
         public static function loginUser( $user , $password ){
             try {
                 $conn = BBDD::getConnetion();

@@ -5,6 +5,7 @@ SessionService::manageSession();
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if(isset($_FILES['PhotoProfile'])){
+            $hasFile = true;
             $_FILES['PhotoProfile']['name'] = $_SESSION['user']->getID() . ".png";
             //YAMAL CONTROLAOR FISHEOS
         }
@@ -13,12 +14,14 @@ SessionService::manageSession();
             $_SESSION['user']->getUserName(),
             null ,
             null,
-            $_SESSION['user']->getID() . ".png",
-            $_SESSION['user']-getEmail(),
+            ($hasFile)?$_SESSION['user']->getID() . ".png": 'def_userphoto.png',
+            $_SESSION['user']->getEmail(),
             $_POST['age'],
             $_POST['address'],
-            $_POST['Hobbies'],
+            $_POST['Hobbies']
         );
+        userController::modifyUsers($user);
+        var_dump($_FILES['PhotoProfile']);
     }
 
 ?>

@@ -16,7 +16,7 @@ require_once '../utils/bbdd.php';
                 if(!$result || !password_verify($password , $result["password"])){
                     return false;
                 }
-                return new Users($result["ID"],$result["username"],$result["password"],$result["lastvisit"],$result["userPhoto"],$result["email"]);                
+                return new Users($result["ID"],$result["username"],$result["password"],$result["lastvisit"],$result["userPhoto"],$result["email"], $result["age"], $result["address"], $result["hobbies"]);
             } catch (PDOException $e) {
                 echo $e;
                 die();

@@ -1,23 +1,30 @@
 <?php
 require_once '../entities/users.php';
+require_once '../controller/archiveController.php';
+require_once '../controller/userController.php';
 require_once '../utils/sessionService.php';
 SessionService::manageSession();
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if(isset($_FILES['PhotoProfile'])){
-            SessionService::archiveController($_FILES['PhotoProfile']);
+            $hasPhoto = true ;
+            archiveController::modifyArchive($_FILES['PhotoProfile']);
         }
+        
         $user = new Users(
             $_SESSION['user']->getID(),
             $_SESSION['user']->getUserName(),
             null ,
             null,
-            $_SESSION['user']->getID() . ".png",
+            $hasPhoto ? $_SESSION['user']->getID() . ".png" : 'def_userphoto.png',
             $_SESSION['user']->getEmail(),
             $_POST['age'],
             $_POST['address'],
             $_POST['Hobbies']
         );
+
+        userController::modifyUsers($user);
+
     }
 
 ?>

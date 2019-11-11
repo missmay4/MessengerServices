@@ -4,6 +4,6 @@
 
         public static function modifyUsers( $user ){
             UserModel::modifyUsers($user);
+            
         }
-
     }

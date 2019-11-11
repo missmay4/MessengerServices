@@ -6,10 +6,9 @@ require_once '../utils/bbdd.php';
     class UserModel{
 
         public static function modifyUsers( $user ){
-            $query  = "UPDATE users SET username = :username , password = ':password', userPhoto = ':userPhoto', email = ':mail', age = ':age', address = ':address', hobbies = ':hobbies' WHERE users.ID = :userID";
+            $query  = "UPDATE users SET username = :username , userPhoto = :userPhoto, email = :mail, age = :age, address = :address, hobbies = :hobbies WHERE users.ID = :userID";
             $id = $user->getID();
             $username = $user->getUserName();
-            $password = $user->getPassword();
             $userPhoto = $user->getUserPhoto();
             $mail = $user->getEmail();
             $age = $user->getAge();
@@ -18,17 +17,17 @@ require_once '../utils/bbdd.php';
             
             try {
                 $conn = BBDD::getConnetion();
+
                 $query = $conn->prepare($query);
-                $query->bindParam(":id" , $id );
-                $query->bindParam(":username",$username);
-                $query->bindParam(":password" , $password);
+                $query->bindParam(":userID" , $id );
+                $query->bindParam(":username",$username); 
                 $query->bindParam(":userPhoto",$userPhoto);
                 $query->bindParam(":mail", $mail);
                 $query->bindParam(":age", $age);
                 $query->bindParam(":address" , $address);
                 $query->bindParam(":hobbies" , $hobbies);
 
-                return $query->execute();
+               $query->execute();
 
             } catch (PDOException $e) {
                 echo $e;
@@ -55,11 +54,11 @@ require_once '../utils/bbdd.php';
         public static function getUserID($ID){
             try {
                 $conn = BBDD::getConnetion();
-                $query = $conn->query('SELECT username FROM Users WHERE ID = '.$ID);
+                $query = $conn->query('SELECT * FROM Users WHERE ID = '.$ID);
                 $query->setFetchMode( PDO::FETCH_ASSOC);
                 $query->execute();
-                $movida =  $query->fetch();
-                return $movida['username'];
+                $result =  $query->fetch();
+                return new Users($result["ID"],$result["username"],$result["password"],$result["lastvisit"],$result["userPhoto"],$result["email"], $result["age"], $result["address"], $result["hobbies"]);;
             } catch (PDOException $e) {
                 $e->getMessage();
                 return 0;

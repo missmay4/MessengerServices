@@ -5,23 +5,19 @@ SessionService::manageSession();
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if(isset($_FILES['PhotoProfile'])){
-            $hasFile = true;
-            $_FILES['PhotoProfile']['name'] = $_SESSION['user']->getID() . ".png";
-            //YAMAL CONTROLAOR FISHEOS
+            SessionService::archiveController($_FILES['PhotoProfile']);
         }
         $user = new Users(
             $_SESSION['user']->getID(),
             $_SESSION['user']->getUserName(),
             null ,
             null,
-            ($hasFile)?$_SESSION['user']->getID() . ".png": 'def_userphoto.png',
+            $_SESSION['user']->getID() . ".png",
             $_SESSION['user']->getEmail(),
             $_POST['age'],
             $_POST['address'],
             $_POST['Hobbies']
         );
-        userController::modifyUsers($user);
-        var_dump($_FILES['PhotoProfile']);
     }
 
 ?>
@@ -83,7 +79,7 @@ SessionService::manageSession();
         <div id="jsEditableData" class="column" style="visibility:hidden;">
             <hr>
             <h1 class="centered align row" for="title"><b>About you</b></h1>
-            <form class="ui form" method="POST">
+            <form class="ui form" method="POST" action="profile.php" enctype="multipart/form-data">
                 <div class="field">
                     <label>Photo Profile Picture</label>
                     <input type="file" name="PhotoProfile" placeholder="Upload your photo here">

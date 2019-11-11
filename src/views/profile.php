@@ -75,9 +75,9 @@ SessionService::manageSession();
                     <div class="meta">
                         <div><?php echo $_SESSION['user']->getEmail(); ?></div>
                         <div><b>Last time visit: </b><?php echo $_SESSION['user']->getLastVisit(); ?></div>
-                        <div>Age : </div>
-                        <div>Home Address : </div>
-                        <div>Hobbies : </div>
+                        <div>Age : <?php echo $_SESSION['user']->getAge(); ?></div>
+                        <div>Home Address : <?php echo $_SESSION['user']->getAddress(); ?></div>
+                        <div>Hobbies : <?php echo $_SESSION['user']->getHobbies(); ?></div>
                         <button id="jsModifyButton" class="ui fluid button">MODIFY</button>
                     </div>
                 </div>

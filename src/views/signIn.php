@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <hr>
+    <!-- <hr>
     <div class="ui grid">
         <div class="sixteen wide column">
             <div class="ui secondary pointing menu">
@@ -41,8 +41,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </div>
     </div>
-    <hr>
-    <div class="ui grid">
+    <hr> -->
+    <div class="ui purple secondary pointing menu">
+        <a class="active item">
+            Home
+        </a>
+    </div>
+    <!-- <div class="ui segment">
+        <p></p>
+    </div> -->
+    <!-- <div class="ui grid">
         <div class="centered eight wide column">
             <form class="ui form" action="./signIn.php" method="post">
                 <div class="field required">
@@ -65,7 +73,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
         </div>
     </div>
-    <hr>
+    <hr> -->
+    <div class="ui grid">
+        <div class="centered eight wide column">
+            <h1>Register</h1>
+            <form class="ui form" action="./signIn.php" method="post">
+                <div class="field required">
+                    <label for="username">User:</label>
+                    <input type="text" name="username" id="username">
+                </div>
+                <div class="field required">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <div class="field required">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="three ui buttons">
+                    <button class="purple ui button" type="submit">Submit</button>
+                    <button class="purple ui button" type="reset">Reset</button>
+                    <a class="purple ui button" href="login.php">Log In</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </body>
 
 </html>

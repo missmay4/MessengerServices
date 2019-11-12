@@ -48,7 +48,7 @@ SessionService::manageSession();
 </head>
 
 <body>
-    <hr>
+    <!-- <hr>
     <div class="ui grid">
         <div class="sixteen wide column">
             <div class="ui secondary pointing menu">
@@ -62,11 +62,20 @@ SessionService::manageSession();
             </div>
         </div>
     </div>
-    <hr>
+    <hr> -->
+    <div class="ui purple secondary pointing menu">
+        <a class="purple item">Welcome <?php echo strtoupper($_SESSION['user']->getUserName()); ?></a>
+        <!-- <a class="item">Home</a> -->
+        <a class="active item" href="profile.php">Profile</a>
+        <a class="item " href="messager.php">E-mail account</a>
+        <div class="right menu">
+            <a href="login.php" class="ui item">Logout</a>
+        </div>
+    </div>
 
     <div class="ui four column very relaxed grid centered">
         <div class="column">
-            <div class="ui card">
+            <div class="ui purple card">
                 <div class="ui fluid image">
                     <img src="img/profile_photo/<?php echo $_SESSION['user']->getUserPhoto(); ?>">
                 </div>
@@ -78,13 +87,13 @@ SessionService::manageSession();
                         <div>Age : <?php echo $_SESSION['user']->getAge(); ?></div>
                         <div>Home Address : <?php echo $_SESSION['user']->getAddress(); ?></div>
                         <div>Hobbies : <?php echo $_SESSION['user']->getHobbies(); ?></div>
-                        <button id="jsModifyButton" class="ui fluid button">MODIFY</button>
+                        <button id="jsModifyButton" class="purple ui fluid button">MODIFY</button>
                     </div>
                 </div>
             </div>
         </div>
         <div id="jsEditableData" class="column" style="visibility:hidden;">
-            <hr>
+            <!-- <hr> -->
             <h1 class="centered align row" for="title"><b>About you</b></h1>
             <form class="ui form" method="POST" action="profile.php" enctype="multipart/form-data">
                 <div class="field">
@@ -103,9 +112,9 @@ SessionService::manageSession();
                     <label>Hobbies</label>
                     <textarea rows="4" cols="50" name="Hobbies" placeholder="Soccer"></textarea>
                 </div>
-                <button class="ui button" type="submit">Submit</button>
+                <button class="purple ui fluid button" type="submit">Update profile</button>
             </form>
-            <hr>
+            <!-- <hr> -->
         </div>
     </div>
 

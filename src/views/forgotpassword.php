@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-<hr>
+<!-- <hr>
 <div class="ui grid">
     <div class="sixteen wide column">
         <div class="ui secondary pointing menu">
@@ -35,7 +35,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 </div>
-<hr>
+<hr> -->
+<div class="ui purple secondary pointing menu">
+    <a class="active item">
+        Home
+    </a>
+</div>
 <div class="ui grid">
     <div class="centered eight wide column">
         <form class="ui form" action="" method="post">
@@ -49,11 +54,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <hr>
             <div class="two ui buttons">
-                <a href="confirmemail.php">
-                    <button class="ui primary button" type="submit">Email me</button>
-                </a>
-
+                <a href="confirmemail.php" class="purple ui button" type="submit">Email me</a>
+                <button class="purple ui button" type="reset">Reset</button>
             </div>
+
         </form>
     </div>
 </div>

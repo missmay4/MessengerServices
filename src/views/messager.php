@@ -38,7 +38,7 @@ SessionService::manageSession();
 </head>
 
 <body>
-    <hr>
+    <!-- <hr>
     <div class="ui grid">
         <div class="sixteen wide column">
             <div class="ui secondary pointing menu">
@@ -52,10 +52,23 @@ SessionService::manageSession();
             </div>
         </div>
     </div>
-    <hr>
+    <hr> -->
+    <div class="ui purple secondary pointing menu">
+        <a class="purple item">Welcome <?php echo strtoupper($_SESSION['user']->getUserName()); ?></a>
+        <!-- <a class="item">Home</a> -->
+        <a class="item" href="profile.php">Profile</a>
+        <a class="active item " href="messager.php">E-mail account</a>
+        <div class="right menu">
+            <a href="login.php" class="ui item">Logout</a>
+        </div>
+    </div>
+
+
+
+
     <div class="ui top attached tabular menu">
-        <a class="item" data-tab="first">Messages</a>
-        <a class="item" data-tab="second">Send Messages</a>
+        <a class="purple item" data-tab="first">Inbox</a>
+        <a class="purple item" data-tab="second">Send Messages</a>
     </div>
     <div class="ui bottom attached tab segment" data-tab="first">
         <div class="ui two column very relaxed grid">
@@ -95,8 +108,8 @@ SessionService::manageSession();
                 <textarea id="jsSendBodyMessage" name="body" id="body" cols="30" rows="10"></textarea>
             </div>
             <div class="two ui buttons">
-                <button class="ui button" type="button" id="jsSendMessageButton">Send</button>
-                <button class="ui button" type="reset">Reset</button>
+                <button class="purple ui button" type="button" id="jsSendMessageButton">Send</button>
+                <button class="purple ui button" type="reset">Reset</button>
             </div>
         </form>
     </div>

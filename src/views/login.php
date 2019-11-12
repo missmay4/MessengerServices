@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <hr>
+    <!-- <hr>
     <div class="ui grid">
         <div class="sixteen wide column">
             <div class="ui secondary pointing menu">
@@ -36,9 +36,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </div>
     </div>
-    <hr>
+    <hr>-->
+    <div class="ui purple secondary pointing menu">
+        <a class="active item">
+            Home
+        </a>
+    </div>
     <div class="ui grid">
         <div class="centered eight wide column">
+            <h1>Log In</h1>
             <form class="ui form" action="./login.php" method="post">
                 <div class="field required">
                     <label for="username">User :</label>
@@ -51,13 +57,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <a href="forgotpassword.php">Forgot password?</a>
                 <hr>
                 <div class="two ui buttons">
-                    <button class="ui button" type="submit">LogIn</button>
-                    <a class="ui button" href="signIn.php">SignIn</a>
+                    <button class="purple ui button" type="submit">Log In</button>
+                    <a class="purple ui button" href="signIn.php">Register</a>
                 </div>
             </form>
         </div>
     </div>
-    <hr>
+    <!-- <hr> -->
 
 </body>
 

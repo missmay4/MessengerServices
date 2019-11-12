@@ -9,11 +9,13 @@ require_once '../utils/bbdd.php';
             $query  = "UPDATE users SET username = :username , userPhoto = :userPhoto, email = :mail, age = :age, address = :address, hobbies = :hobbies WHERE users.ID = :userID";
             $id = $user->getID();
             $username = $user->getUserName();
-            $userPhoto = $user->getUserPhoto();
+            $userPhoto = $user->getUserPhoto() ? $user->getUserPhoto() : $_SESSION['user']->getUserPhoto();
             $mail = $user->getEmail();
-            $age = $user->getAge();
-            $address = $user->getAddress();
-            $hobbies = $user->getHobbies();
+            $age = $user->getAge() ? $user->getAge() : $_SESSION['user']->getAge();
+            $address = $user->getAddress() ? $user->getAddress() : $_SESSION['user']->getAddress();
+            $hobbies = $user->getHobbies() ? $user->getHobbies() : $_SESSION['user']->getHobbies();
+
+            
             try {
                 $conn = BBDD::getConnetion();
 

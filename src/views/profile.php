@@ -63,8 +63,8 @@ SessionService::manageSession();
         </div>
     </div>
     <hr> -->
-    <div class="ui purple secondary pointing menu">
-        <a class="purple item">Welcome <?php echo strtoupper($_SESSION['user']->getUserName()); ?></a>
+    <div class="ui grey secondary pointing menu">
+        <a class="grey item">Welcome <?php echo strtoupper($_SESSION['user']->getUserName()); ?></a>
         <!-- <a class="item">Home</a> -->
         <a class="active item" href="profile.php">Profile</a>
         <a class="item " href="messager.php">E-mail account</a>
@@ -75,7 +75,7 @@ SessionService::manageSession();
 
     <div class="ui four column very relaxed grid centered">
         <div class="column">
-            <div class="ui purple card">
+            <div class="ui grey card">
                 <div class="ui fluid image">
                     <img src="img/profile_photo/<?php echo $_SESSION['user']->getUserPhoto(); ?>">
                 </div>
@@ -87,7 +87,7 @@ SessionService::manageSession();
                         <div>Age : <?php echo $_SESSION['user']->getAge(); ?></div>
                         <div>Home Address : <?php echo $_SESSION['user']->getAddress(); ?></div>
                         <div>Hobbies : <?php echo $_SESSION['user']->getHobbies(); ?></div>
-                        <button id="jsModifyButton" class="purple ui fluid button">MODIFY</button>
+                        <button id="jsModifyButton" class="grey ui fluid button">MODIFY</button>
                     </div>
                 </div>
             </div>
@@ -112,7 +112,7 @@ SessionService::manageSession();
                     <label>Hobbies</label>
                     <textarea rows="4" cols="50" name="Hobbies" placeholder="Soccer"></textarea>
                 </div>
-                <button class="purple ui fluid button" type="submit">Update profile</button>
+                <button class="grey ui fluid button" type="submit">Update profile</button>
             </form>
             <!-- <hr> -->
         </div>

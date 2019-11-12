@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
     <hr> -->
-    <div class="ui purple secondary pointing menu">
+    <div class="ui grey secondary pointing menu">
         <a class="active item">
             Home
         </a>
@@ -91,9 +91,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="email" name="email" id="email">
                 </div>
                 <div class="three ui buttons">
-                    <button class="purple ui button" type="submit">Submit</button>
-                    <button class="purple ui button" type="reset">Reset</button>
-                    <a class="purple ui button" href="login.php">Log In</a>
+                    <button class="grey ui button" type="submit">Submit</button>
+                    <button class="grey ui button" type="reset">Reset</button>
+                    <a class="grey ui button" href="login.php">Log In</a>
                 </div>
             </form>
         </div>

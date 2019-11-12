@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
     <hr>-->
-    <div class="ui purple secondary pointing menu">
+    <div class="ui grey secondary pointing menu">
         <a class="active item">
             Home
         </a>
@@ -57,8 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <a href="forgotpassword.php">Forgot password?</a>
                 <hr>
                 <div class="two ui buttons">
-                    <button class="purple ui button" type="submit">Log In</button>
-                    <a class="purple ui button" href="signIn.php">Register</a>
+                    <button class="grey ui button" type="submit">Log In</button>
+                    <a class="grey ui button" href="signIn.php">Register</a>
                 </div>
             </form>
         </div>

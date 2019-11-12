@@ -14,7 +14,6 @@ require_once '../utils/bbdd.php';
             $age = $user->getAge();
             $address = $user->getAddress();
             $hobbies = $user->getHobbies();
-            
             try {
                 $conn = BBDD::getConnetion();
 

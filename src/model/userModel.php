@@ -6,7 +6,7 @@ require_once '../utils/bbdd.php';
     class UserModel{
 
         public static function modifyUsers( $user ){
-            $query  = "UPDATE users SET username = :username , userPhoto = :userPhoto, email = :mail, age = :age, address = :address, hobbies = :hobbies WHERE users.ID = :userID";
+            $query  = "UPDATE Users SET username = :username , userPhoto = :userPhoto, email = :mail, age = :age, address = :address, hobbies = :hobbies WHERE Users.ID = :userID";
             $id = $user->getID();
             $username = $user->getUserName();
             $userPhoto = $user->getUserPhoto() ? $user->getUserPhoto() : $_SESSION['user']->getUserPhoto();

@@ -1,11 +1,16 @@
 <?php
     class SessionService{
+
+        public static function updateSession($usuario){
+            $_SESSION['user'] = $usuario;
+        } 
+
         public static function manageSession( $usuario = null){    
             session_start();
             if(isset($_SESSION['user'])){
                 return 1;
             }
-            elseif ($usuario) {
+            else if($usuario) {
                 $_SESSION['user'] = $usuario; 
                 return 1;
             }

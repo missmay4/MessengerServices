@@ -6,7 +6,7 @@
         public static function modifyUsers( $user ){
             UserModel::modifyUsers($user);
             $user = UserModel::getUserID($_SESSION['user']->getID());
-            SessionService::manageSession($user);
-            header('Location: 	messager.php');
+            SessionService::updateSession($user);
+            header('Location: profile.php');
         }
     }

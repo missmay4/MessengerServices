@@ -22,7 +22,7 @@ SessionService::manageSession();
             $_POST['address'],
             $_POST['Hobbies']
         );
-
+        
         userController::modifyUsers($user);
 
     }

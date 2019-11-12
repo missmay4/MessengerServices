@@ -39,3 +39,10 @@ CREATE TABLE GroupsBelongs (
     CONSTRAINT FK_groupId FOREIGN KEY (groupId)
     REFERENCES Groups(ID)
 );
+
+----------------------------------------------------
+---------------    U S E R S  ----------------------
+----------------------------------------------------
+
+CREATE USER IF NOT EXISTS 'MSM'@'localhost' IDENTIFIED BY 'ROOT';
+GRANT ALL ON `MessengerService`.* TO 'MSM'@'localhost' IDENTIFIED BY 'ROOT';

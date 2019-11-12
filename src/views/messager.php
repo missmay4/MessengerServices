@@ -53,8 +53,8 @@ SessionService::manageSession();
         </div>
     </div>
     <hr> -->
-    <div class="ui purple secondary pointing menu">
-        <a class="purple item">Welcome <?php echo strtoupper($_SESSION['user']->getUserName()); ?></a>
+    <div class="ui grey secondary pointing menu">
+        <a class="grey item">Welcome <?php echo strtoupper($_SESSION['user']->getUserName()); ?></a>
         <!-- <a class="item">Home</a> -->
         <a class="item" href="profile.php">Profile</a>
         <a class="active item " href="messager.php">E-mail account</a>
@@ -67,8 +67,8 @@ SessionService::manageSession();
 
 
     <div class="ui top attached tabular menu">
-        <a class="purple item" data-tab="first">Inbox</a>
-        <a class="purple item" data-tab="second">Send Messages</a>
+        <a class="grey item" data-tab="first">Inbox</a>
+        <a class="grey item" data-tab="second">Send Messages</a>
     </div>
     <div class="ui bottom attached tab segment" data-tab="first">
         <div class="ui two column very relaxed grid">
@@ -108,8 +108,8 @@ SessionService::manageSession();
                 <textarea id="jsSendBodyMessage" name="body" id="body" cols="30" rows="10"></textarea>
             </div>
             <div class="two ui buttons">
-                <button class="purple ui button" type="button" id="jsSendMessageButton">Send</button>
-                <button class="purple ui button" type="reset">Reset</button>
+                <button class="grey ui button" type="button" id="jsSendMessageButton">Send</button>
+                <button class="grey ui button" type="reset">Reset</button>
             </div>
         </form>
     </div>

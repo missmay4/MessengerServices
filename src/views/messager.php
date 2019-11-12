@@ -67,7 +67,7 @@ SessionService::manageSession();
 
 
     <div class="ui top attached tabular menu">
-        <a class="grey item" data-tab="first">Inbox</a>
+        <a class="grey item active" data-tab="first">Inbox</a>
         <a class="grey item" data-tab="second">Send Messages</a>
     </div>
     <div class="ui bottom attached tab segment" data-tab="first">

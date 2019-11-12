@@ -5,7 +5,6 @@
     SessionService::manageSession();
     if($_SERVER['REQUEST_METHOD'] == 'GET'){
         $message = MessagerController::getUsers();
-        
         echo json_encode($message);
     }
     else{

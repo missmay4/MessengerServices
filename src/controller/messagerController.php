@@ -11,7 +11,8 @@ class MessagerController{
         $messages = MessagesModel::getMessages($user);
         $msmReady = array();
         foreach ($messages as $msm) {
-            $msm->setSender( UserModel::getUserID($msm->getSender()));
+            $sender =  UserModel::getUserID($msm->getSender());
+            $msm->setSender($sender->getUserName());
             array_push($msmReady, $msm);
         }
         return $msmReady;

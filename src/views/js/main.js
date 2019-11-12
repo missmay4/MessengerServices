@@ -60,7 +60,7 @@ function renderTable(datas, container) {
 }
 
 function renderMessageDetails(msm) {
-
+    console.log(msm);
     let sender = document.getElementById('jsSenderMessage');
     sender.value = msm['sender'];
 
@@ -88,7 +88,7 @@ function renderUsers(users, container) {
 }
 
 window.onload = function () {
-    this.ajaxMessages().then(messeges => { this.renderTable(messeges, 'jsTableMessage') });
+    this.ajaxMessages().then(messeges => {console.log(messeges); this.renderTable(messeges, 'jsTableMessage') });
     this.ajaxUsers().then(user => { renderUsers(user, "jsSendUsersSelect") });
     document.getElementById('jsSendMessageButton').onclick = function(){
         let msm = {

@@ -20,11 +20,11 @@ class recoveryController
         $mail->SMTPDebug = 2;
         $mail->SMTPAuth = true;
         $mail->SMTPSecure = "tls";
-        $mail->Host = "smtp.live.com"; // GMAIL -> "smtp.gmail.com"
+        $mail->Host = "smtp.gmail.com";
         $mail->Port = 587;
-        $mail->Username = ""; // aqui poner el mail desde donde mandamos el recovery
-        $mail->Password = ""; // contraseña del mail del recovery
-        $mail->SetFrom('user@hotmail.com', 'Test');
+        $mail->Username = "phpserverphp@gmail.com"; // aqui poner el mail desde donde mandamos el recovery
+        $mail->Password = "php123php"; // contraseña del mail del recovery
+        $mail->SetFrom('Messenger');
         $mail->Subject = 'Password recovery';
         $mail->MsgHTML('This is a message for recovery password system');
         // $mail->AddAttachment('');

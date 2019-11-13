@@ -19,7 +19,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MessagerService</title>
     <link rel="stylesheet" href="./css/semantic.css">
-    <script src="./js/semantic.js"></script>
+    <script>
+
+        function checkData(){
+            var user = document.getElementById('usr').value;
+            var pass = document.getElementById('pswd').value;
+
+            var regexUsr = /\w+/;
+            var regexPass = /\w+\d+/;
+            if (regexUsr.test(user) && regexPass.test(pass)){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function setUpFormulario(){
+            console.log('set');
+            var user = document.getElementById('usr');
+            var pass = document.getElementById('pswd');
+
+            user.onkeypress = function () {
+                toggleSubmit(checkData());
+            }
+            pass.onkeypress = function () {
+                toggleSubmit(checkData());
+            }
+
+
+        }
+
+        function toggleSubmit(state){
+            console.log(state);
+            var boton = document.getElementById('but')
+            boton.disabled = state;
+        }
+
+        window.onload = function () {
+            setUpFormulario();
+        }
+
+
+
+
+    </script>
 </head>
 
 <body>
@@ -48,17 +91,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <form class="ui form" action="./login.php" method="post">
                 <div class="field required">
                     <label for="username">User :</label>
-                    <input type="text" name="username" placeholder="Username">
+                    <input type="text" id="usr" name="username" placeholder="Username">
                 </div>
                 <div class="field required">
                     <label for="password">Password :</label>
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" id="pswd" name="password" placeholder="Password">
                 </div>
                 <a href="forgotpassword.php">Forgot password?</a>
                 <hr>
                 <div class="two ui buttons">
-                    <button class="grey ui button" type="submit">Log In</button>
-                    <a class="grey ui button" href="signIn.php">Register</a>
+                    <button class="grey ui button" id="but" type="submit" disabled>Log In</button>
+                    <a class="grey ui button" href="signIn.php" name="regist">Register</a>
                 </div>
             </form>
         </div>

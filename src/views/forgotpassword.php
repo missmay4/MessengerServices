@@ -5,7 +5,7 @@ require_once '../entities/users.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['username']) &&  isset($_POST['email'])) {
-        recoveryController::checkUserEmail($_POST['username'], $_POST['email']);
+        recoveryController::sendRecoveryMail($_POST['email']);
     }
 }
 ?>
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 </div>
 <hr> -->
-<div class="ui purple secondary pointing menu">
+<div class="ui grey secondary pointing menu">
     <a class="active item">
         Home
     </a>
@@ -54,8 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <hr>
             <div class="two ui buttons">
-                <a href="confirmemail.php" class="purple ui button" type="submit">Email me</a>
-                <button class="purple ui button" type="reset">Reset</button>
+                <button class="grey ui button" type="submit">Email me</button>
+                <button class="grey ui button" type="reset">Reset</button>
             </div>
 
         </form>

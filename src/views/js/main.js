@@ -1,6 +1,6 @@
 
 function renderTable(datas, container) {
-    let keys = ['seen', 'sender', 'title', 'sendingTime'];
+    let keys = ['seen' , 'PhotoProfile' , 'sender', 'title', 'sendingTime'];
     let table = document.createElement('table');
     table.classList.add("ui");
     table.classList.add("selectable");
@@ -42,6 +42,14 @@ function renderTable(datas, container) {
                     ajaxModifyMessage(objectToGetQuery(msm));
                 }
                 th.appendChild(checkBox);
+            }
+            else if( key == 'PhotoProfile'){
+                let msm = row;
+                let img = document.createElement('img');
+                img.src = "img/profile_photo/" +msm['ID'] + ".png";
+                img.style.width = "40px";
+                img.style.height = "40px";
+                th.appendChild(img);
             }
             else {
                 th.innerHTML = row[key];

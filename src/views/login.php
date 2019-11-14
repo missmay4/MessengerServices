@@ -46,21 +46,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 toggleSubmit(checkData());
             }
 
-
         }
 
         function toggleSubmit(state){
             console.log(state);
-            var boton = document.getElementById('but')
+            var boton = document.getElementById('but');
             boton.disabled = state;
         }
 
         window.onload = function () {
             setUpFormulario();
         }
-
-
-
 
     </script>
 </head>
@@ -101,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <hr>
                 <div class="two ui buttons">
                     <button class="grey ui button" id="but" type="submit" disabled>Log In</button>
-                    <a class="grey ui button" href="signIn.php" name="regist">Register</a>
+                    <a class="grey ui button" href="register.php" name="regist">Register</a>
                 </div>
             </form>
         </div>

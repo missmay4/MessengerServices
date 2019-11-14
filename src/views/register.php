@@ -24,7 +24,57 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MessagerService</title>
     <link rel="stylesheet" href="./css/semantic.css">
-    <script src="./js/semantic.js"></script>
+    <script>
+
+        function checkData(){
+            var user = document.getElementById('usr').value;
+            var pass = document.getElementById('pswd').value;
+            var mail = document.getElementById('mail').value;
+
+            var regexUsr = /\w+/;
+            var regexPass = /\w+\d+/;
+            var regexMail = /[^@]+@[^\\.]+\..+/;
+
+            console.log(regexMail.test(mail));
+
+            if (regexUsr.test(user) && regexPass.test(pass) && regexMail.test(mail)){
+                return false;
+            } else {
+                return true;
+            }
+
+
+        }
+
+        function setUpFormulario(){
+            var user = document.getElementById('usr');
+            var pass = document.getElementById('pswd');
+            var mail = document.getElementById('mail');
+
+            user.onkeypress = function () {
+                toggleSubmit(checkData());
+            }
+            pass.onkeypress = function () {
+                toggleSubmit(checkData());
+            }
+
+            mail.onkeypress = function () {
+                toggleSubmit(checkData());
+            }
+
+        }
+
+        function toggleSubmit(state){
+            //console.log(state);
+            var boton = document.getElementById('but');
+            boton.disabled = state;
+        }
+
+        window.onload = function () {
+            setUpFormulario();
+        }
+
+    </script>
 </head>
 
 <body>
@@ -77,21 +127,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="ui grid">
         <div class="centered eight wide column">
             <h1>Register</h1>
-            <form class="ui form" action="./signIn.php" method="post">
+            <form class="ui form" action="register.php" method="post">
                 <div class="field required">
                     <label for="username">User:</label>
-                    <input type="text" name="username" id="username">
+                    <input type="text" name="username" id="usr" placeholder="Username">
                 </div>
                 <div class="field required">
                     <label for="password">Password:</label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="password" id="pswd" placeholder="Password">
                 </div>
                 <div class="field required">
                     <label for="email">Email:</label>
-                    <input type="email" name="email" id="email">
+                    <input type="email" name="email" id="mail" placeholder="Email">
                 </div>
                 <div class="three ui buttons">
-                    <button class="grey ui button" type="submit">Submit</button>
+                    <button class="grey ui button" type="submit" id="but" disabled>Register</button>
                     <button class="grey ui button" type="reset">Reset</button>
                     <a class="grey ui button" href="login.php">Log In</a>
                 </div>

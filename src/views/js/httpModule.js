@@ -19,6 +19,7 @@ function ajaxMessages(){
             reject( JSON.parse(ajax.responseText));
         }
         ajax.onload = function(){
+            // console.log(ajax.responseText);
             resolve(JSON.parse(ajax.responseText));
         }
 

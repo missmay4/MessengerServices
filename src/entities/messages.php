@@ -1,6 +1,7 @@
 <?php 
     class Messages implements JsonSerializable{
         private $ID;
+        private $IDsender;
         private $sender;
         private $receiver;
         private $title;
@@ -21,6 +22,7 @@
         public function jsonSerialize(){
             return array(
                 'ID' => $this->getID(),
+                'IDSender' => $this->getIDsender(),
                 'sender'=>$this->getSender(),
                 'receiver'=>$this->getReceiver(),
                 'title' => $this->getTitle(),
@@ -32,6 +34,10 @@
 
         public function getID(){
             return $this->ID;
+        }
+
+        public function getIDsender(){
+            return $this->IDsender;
         }
 
         public function getSender(){
@@ -55,7 +61,11 @@
         }
 
         public function setID( $ID ){
-            return $this->ID;
+            $this->ID = $ID;
+        }
+
+        public function setIDSender($idSender){
+            $this->IDsender = $idSender;
         }
 
         public function setSender( $sender ){

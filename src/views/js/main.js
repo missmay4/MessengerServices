@@ -46,7 +46,7 @@ function renderTable(datas, container) {
             else if( key == 'PhotoProfile'){
                 let msm = row;
                 let img = document.createElement('img');
-                img.src = "img/profile_photo/" +msm['ID'] + ".png";
+                img.src = "img/profile_photo/" + msm['IDSender'] + ".png";
                 img.style.width = "40px";
                 img.style.height = "40px";
                 th.appendChild(img);
@@ -96,7 +96,7 @@ function renderUsers(users, container) {
 }
 
 window.onload = function () {
-    this.ajaxMessages().then(messeges => {console.log(messeges); this.renderTable(messeges, 'jsTableMessage') });
+    this.ajaxMessages().then(messeges => { this.renderTable(messeges, 'jsTableMessage') });
     this.ajaxUsers().then(user => { renderUsers(user, "jsSendUsersSelect") });
     document.getElementById('jsSendMessageButton').onclick = function(){
         let msm = {

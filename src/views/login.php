@@ -28,9 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             var regexUsr = /\w+/;
             var regexPass = /\w+\d+/;
             if (regexUsr.test(user) && regexPass.test(pass)){
-                return true;
-            } else {
                 return false;
+            } else {
+                return true;
             }
         }
 

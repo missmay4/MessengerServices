@@ -5,7 +5,7 @@ require_once '../entities/users.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['username']) &&  isset($_POST['email'])) {
-        recoveryController::sendRecoveryMail($_POST['email']);
+        recoveryController::sendRecoveryMail($_POST['email'], 'Password recovery', 'This is a test');
     }
 }
 ?>

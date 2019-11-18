@@ -7,14 +7,12 @@ require_once '../utils/bbdd.php';
 
         public static function changeUserState( $user , $recoveryString ){
             $conn = BBDD::getConnetion();
-            $query ="UPDATE Users SET recovery= :status WHERE username = $user";
+            $qry ="UPDATE Users SET recovery = :status WHERE username = $user";
 
-            $query = $conn->query($query);
-            $query->bindParam(':status',$recoveryString);
+            $query = $conn->prepare($qry);
+            $query->bindParam(":status", $recoveryString);
 
             return $query->execute();
-
-            return false;
         }
 
         public static function modifyUsers( $user ){
@@ -47,18 +45,16 @@ require_once '../utils/bbdd.php';
             }
         }
 
-        public static function modifyPassword($user){
-            $query = "UPDATE Users WHERE username = :username SET password = :password";
-            $username = $user->getUserName() ? $user->getUserName() : $_POST['user']->getUserName();
-            $password = $user->getPassword() ? $user->getPassword() : $_POST['password']->getPassword();
+        public static function modifyPassword( $idrec , $password ){
+            $query = "UPDATE Users SET password = :password , recovery = '' WHERE recovery = :idrecovery ";
 
             try {
                 $conn = BBDD::getConnetion();
                 $query = $conn->prepare($query);
-                $query->bindParam(":username", $username);
+                $query->bindParam(":idrecovery", $idrec);
                 $query->bindParam(":password", $password);
 
-                $query->execute();
+                return $query->execute();
 
             } catch (PDOException $e) {
                 echo $e;

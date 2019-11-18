@@ -10,11 +10,9 @@
             header('Location: profile.php');
         }
 
-        public static function modifyPassword($user){
-            UserModel::modifyPassword($user);
-            $user = UserModel::getUsername($_POST['user']->getName());
-            SessionService::updateSession($user);
-            header('Location: profile.php');
+        public static function modifyPassword($id , $pass){
+            UserModel::modifyPassword($id , $pass);
+            header('Location: login.php');
         }
 
     }

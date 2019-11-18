@@ -1,5 +1,6 @@
 <?php
 require_once '../controller/recoveryController.php';
+require_once '../controller/userController.php';
 require_once '../entities/users.php';
 
 
@@ -8,6 +9,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         userController::modifyPassword[''];
     }
 }
+if($_SERVER['REQUEST_METHOD'] == 'GET'){
+    if(!$_GET['changeid']){
+        header('Location: login.php');
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,18 +37,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="ui grid">
     <div class="centered eight wide column">
         <h1>Change your password</h1>
-        <form class="ui form" action="" method="post">
+        <form class="ui form" action="<?php $_SERVER['REQUEST_METHOD'] ?>" method="post">
             <div class="field required">
                 <label for="username">User:</label>
                 <input type="text" name="username" placeholder="Username">
             </div>
             <div class="field required">
                 <label for="username">New password:</label>
-                <input type="text" name="newpassword" placeholder="Username">
+                <input type="password" name="newpassword" placeholder="Password">
             </div>
             <div class="field required">
                 <label for="password">Repeat password :</label>
-                <input type="email" name="newpassword2" placeholder="Email">
+                <input type="password" name="newpassword2" placeholder="Repate Password">
             </div>
             <hr>
             <div class="two ui buttons">

@@ -4,17 +4,21 @@ require "../vendor/autoload.php";
 require_once '../model/userModel.php';
 
 class recoveryController{
+
     public static function checkUserEmail($username, $email){
-        $uniqID = uniqid();
-        UserModel::changeUserState( $username , $uniqID );
-        $res = UserModel::getUsernameEmail($username, $email , $uniqID);
+        $res = UserModel::getUsernameEmail($username, $email);
         if (!$res) {
             header('Location: forgotpassword.php');
             return 0;
         }
     }
 
-    public static function sendRecoveryMail($user , $address , $uniqID){
+    public static function sendRecoveryMail($user , $address ){
+
+        
+        $uniqID = uniqid();
+        //UserModel::changeUserState( $user , $uniqID );
+
         $mail = new PHPMailer();
         $mail->IsSMTP();
         $mail->SMTPAuth = true;
@@ -26,7 +30,7 @@ class recoveryController{
         $mail->SetFrom('phpserverphp@gmail.com', 'NoReply' );
         $mail->Subject = 'Password recovery';
         $mail->MsgHTML("
-            <h1>Hello my friend .$user.</h1>
+            <h1>Hello my friend $user</h1>
             
             <h2>To recovery your password follow this steps :</h2>
 
@@ -36,7 +40,7 @@ class recoveryController{
                 <li>3.- And follow enjoying our app</li>
             </ul>
 
-            <button><a href='http://localhost/changepassword.php?changeid='".$uniqID."></a></button>
+            <a href='http://localhost/MessengerServices/src/views/changepassword.php?changeid=$uniqID'>Recover!</a>
 
         ");
         // $mail->AddAttachment('');

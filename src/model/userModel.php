@@ -5,6 +5,18 @@ require_once '../utils/bbdd.php';
 
     class UserModel{
 
+        public static function changeUserState( $user , $recoveryString ){
+            $conn = BBDD::getConnetion();
+            $query ="UPDATE Users SET recovery= :status WHERE username = $user";
+
+            $query = $conn->query($query);
+            $query->bindParam(':status',$recoveryString);
+
+            return $query->execute();
+
+            return false;
+        }
+
         public static function modifyUsers( $user ){
             $query  = "UPDATE Users SET username = :username , userPhoto = :userPhoto, email = :mail, age = :age, address = :address, hobbies = :hobbies WHERE Users.ID = :userID";
             $id = $user->getID();

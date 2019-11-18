@@ -35,6 +35,25 @@ require_once '../utils/bbdd.php';
             }
         }
 
+        public static function modifyPassword($user){
+            $query = "UPDATE Users WHERE username = :username SET password = :password";
+            $username = $user->getUserName() ? $user->getUserName() : $_POST['user']->getUserName();
+            $password = $user->getPassword() ? $user->getPassword() : $_POST['password']->getPassword();
+
+            try {
+                $conn = BBDD::getConnetion();
+                $query = $conn->prepare($query);
+                $query->bindParam(":username", $username);
+                $query->bindParam(":password", $password);
+
+                $query->execute();
+
+            } catch (PDOException $e) {
+                echo $e;
+            }
+
+        }
+
         public static function loginUser( $user , $password ){
             try {
                 $conn = BBDD::getConnetion();
@@ -65,6 +84,23 @@ require_once '../utils/bbdd.php';
                 return 0;
             }
         }
+
+        public static function getUsername($name){
+            try{
+                $conn = BBDD::getConnetion();
+                $query = $conn->query('SELECT username FROM Users WHERE username ='.$name);
+                $query->setFetchMode(PDO::FETCH_ASSOC);
+                $query->execute();
+
+                $result = $query->fetch();
+
+                return $result;
+            } catch (PDOException $e) {
+                $e->getMessage();
+                return 0;
+            }
+        }
+
         public static function getListUsers(){
             try {
                 $conn = BBDD::getConnetion();

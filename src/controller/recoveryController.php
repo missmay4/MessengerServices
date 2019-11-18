@@ -14,7 +14,7 @@ class recoveryController
         }
     }
 
-    public static function sendRecoveryMail($address , $subject , $content , $mask = 'NoReply'){
+    public static function sendRecoveryMail($address){
         $mail = new PHPMailer();
         $mail->IsSMTP();
         $mail->SMTPAuth = true;
@@ -23,9 +23,9 @@ class recoveryController
         $mail->Port = 587;
         $mail->Username = "phpserverphp@gmail.com"; // aqui poner el mail desde donde mandamos el recovery
         $mail->Password = "php123php"; // contraseña del mail del recovery
-        $mail->SetFrom('phpserverphp@gmail.com', $mask );
-        $mail->Subject = $subject;
-        $mail->MsgHTML($content);
+        $mail->SetFrom('phpserverphp@gmail.com', 'NoReply' );
+        $mail->Subject = 'Password recovery';
+        $mail->MsgHTML('This is a test');
         // $mail->AddAttachment('');
         $mail->AddAddress($address, '');
         return $mail->Send();

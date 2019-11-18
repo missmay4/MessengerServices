@@ -4,8 +4,8 @@ require_once '../entities/users.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['username']) &&  isset($_POST['email'])) {
-        recoveryController::sendRecoveryMail($_POST['email']);
+    if (isset($_POST['username']) &&  isset($_POST['newpassword']) && isset($_POST['newpassword2'])) {
+        userController::modifyPassword[''];
     }
 }
 ?>
@@ -22,20 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-<!-- <hr>
-<div class="ui grid">
-    <div class="sixteen wide column">
-        <div class="ui secondary pointing menu">
-            <a class="item">Home</a>
-            <a class="item">Profile</a>
-            <a class="item">Messages</a>
-            <div class="right menu">
-                <a class="ui item">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
-<hr> -->
 <div class="ui grey secondary pointing menu">
     <a class="active item">
         Home
@@ -43,18 +29,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 <div class="ui grid">
     <div class="centered eight wide column">
+        <h1>Change your password</h1>
         <form class="ui form" action="" method="post">
             <div class="field required">
-                <label for="username">User :</label>
+                <label for="username">User:</label>
                 <input type="text" name="username" placeholder="Username">
             </div>
             <div class="field required">
-                <label for="password">Email :</label>
-                <input type="email" name="email" placeholder="Email">
+                <label for="username">New password:</label>
+                <input type="text" name="newpassword" placeholder="Username">
+            </div>
+            <div class="field required">
+                <label for="password">Repeat password :</label>
+                <input type="email" name="newpassword2" placeholder="Email">
             </div>
             <hr>
             <div class="two ui buttons">
-                <button class="grey ui button" type="submit">Email me</button>
+                <button class="grey ui button" type="submit">Submit</button>
                 <button class="grey ui button" type="reset">Reset</button>
             </div>
 

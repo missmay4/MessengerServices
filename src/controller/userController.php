@@ -11,7 +11,7 @@
         }
 
         public static function modifyPassword($user){
-            UserModel::modifyPassword();
+            UserModel::modifyPassword($user);
             $user = UserModel::getUsername($_POST['user']->getName());
             SessionService::updateSession($user);
             header('Location: profile.php');

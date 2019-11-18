@@ -14,7 +14,7 @@ CREATE TABLE Users (
     age TINYINT,
     address VARCHAR(250),
     hobbies VARCHAR (250),
-    status VARCHAR (250)
+    recovery VARCHAR (250)
 );
 CREATE TABLE Groups (
     ID INT AUTO_INCREMENT PRIMARY KEY,

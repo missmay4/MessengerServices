@@ -1,13 +1,13 @@
 <?php 
-class Atachments{
+class Attachments{
 
     public $ID;
-    public $atachmentPath;
+    public $attachmentPath;
     public $updateTime;
 
-    public function __construct($ID , $atachmentPath, $updateTime) {
+    public function __construct($ID , $attachmentPath, $updateTime) {
         $this->ID = $ID;
-        $this->atachmentPath = $atachmentPath;
+        $this->attachmentPath = $attachmentPath;
         $this->updateTime = $updateTime;
     }
 
@@ -19,12 +19,12 @@ class Atachments{
         $this->ID = $ID;
     }
 
-    public function getatachmentPath(){
-        return $this->atachmentPath;
+    public function getattachmentPath(){
+        return $this->attachmentPath;
     }
 
-    public function setatachmentPath($atachmentPath){
-        $this->atachmentPath = $atachmentPath;
+    public function setattachmentPath($attachmentPath){
+        $this->attachmentPath = $attachmentPath;
     }
 
     public function getupdateTime(){

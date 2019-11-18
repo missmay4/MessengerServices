@@ -64,7 +64,9 @@ function renderTable(datas, container) {
         table.appendChild(tbody);
     }
 
-    document.getElementById(container).appendChild(table);
+    let contain = document.getElementById(container)
+    contain.innerHTML = ""
+    contain.appendChild(table);
 }
 
 function renderMessageDetails(msm) {
@@ -97,7 +99,8 @@ function renderUsers(users, container) {
 
 window.onload = function () {
     setInterval(function () {
-        this.ajaxMessages().then(messeges => { this.renderTable(messeges, 'jsTableMessage') });
+        console.log("luking for neus masages")
+        this.ajaxMessages().then(messeges => {this.renderTable(messeges, 'jsTableMessage') });
     }, 3000);
     this.ajaxUsers().then(user => { renderUsers(user, "jsSendUsersSelect") });
     document.getElementById('jsSendMessageButton').onclick = function(){

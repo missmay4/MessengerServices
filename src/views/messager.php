@@ -6,18 +6,6 @@ require_once './utils.php';
 
 SessionService::manageSession();
 
-/* if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $message = new Messages(
-        null,
-        $_SESSION['user']->getID(),
-        $_POST['destination'],
-        $_POST['title'],
-        $_POST['body'],
-        null,
-        null
-    );
-    MessagerController::sendMail($message);
-} */
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -2,6 +2,7 @@
     require_once '../utils/bbdd.php';
     require_once '../entities/messages.php';
     require_once '../entities/users.php';
+    require_once '../entities/attachment.php';
     class MessagesModel{
 
         public static function getMessages( $user ){
@@ -64,6 +65,10 @@
                 echo $e->getMessage();
                 return 0;
             }
+        }
+
+        public static function getAttachments($messages){
+
         }
 
     }

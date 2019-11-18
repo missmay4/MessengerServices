@@ -42,11 +42,7 @@ CREATE TABLE GroupsBelongs (
 CREATE TABLE Atachments( 
     ID INT AUTO_INCREMENT PRIMARY KEY,
     atachmentPath VARCHAR(20),
-    updateTime DATETIME,
-
-    CONSTRAINT FK_atachment FOREIGN KEY (ID)
-    REFERENCES AtachmentContainer(IDAtachment)
-
+    updateTime DATETIME
 );
 CREATE TABLE AtachmentContainer( 
     ID INT AUTO_INCREMENT PRIMARY KEY,

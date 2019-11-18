@@ -77,6 +77,9 @@ SessionService::manageSession();
                         <label for="body">Body :</label>
                         <textarea id="jsBodyMessage" name="body" id="body" cols="30" rows="10" disabled></textarea>
                     </div>
+                    <div class="field">
+                        <button id="jsAtachment">Download Attachments</button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -39,6 +39,26 @@ CREATE TABLE GroupsBelongs (
     CONSTRAINT FK_groupId FOREIGN KEY (groupId)
     REFERENCES Groups(ID)
 );
+CREATE TABLE Atachments( 
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    atachmentPath VARCHAR(20),
+    updateTime DATETIME,
+
+    CONSTRAINT FK_atachment FOREIGN KEY (ID)
+    REFERENCES AtachmentContainer(IDAtachment)
+
+);
+CREATE TABLE AtachmentContainer( 
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    IDAtachment INT NOT NULL ,
+    IDMessage INT NOT NULL ,
+
+    CONSTRAINT FK_atachment FOREIGN KEY (IDAtachment)
+    REFERENCES Messages(ID),
+    CONSTRAINT FK_uatachment FOREIGN KEY (IDMessage)
+    REFERENCES Atachments(ID)
+
+);
 
 CREATE USER IF NOT EXISTS 'MSM'@'localhost' IDENTIFIED BY 'ROOT';
 GRANT ALL ON `MessengerService`.* TO 'MSM'@'localhost' IDENTIFIED BY 'ROOT';

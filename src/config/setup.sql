@@ -13,7 +13,8 @@ CREATE TABLE Users (
     email  VARCHAR(30) NOT NULL,
     age TINYINT,
     address VARCHAR(250),
-    hobbies VARCHAR (250)
+    hobbies VARCHAR (250),
+    status VARCHAR (250)
 );
 CREATE TABLE Groups (
     ID INT AUTO_INCREMENT PRIMARY KEY,

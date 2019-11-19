@@ -10,8 +10,8 @@
             header('Location: profile.php');
         }
 
-        public static function modifyPassword($id , $pass){
-            UserModel::modifyPassword($id , $pass);
+        public static function modifyPassword($idrec , $pass){
+            UserModel::modifyPassword($idrec , $pass);
             header('Location: login.php');
         }
 

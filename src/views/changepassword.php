@@ -6,7 +6,8 @@ require_once '../entities/users.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['username']) &&  isset($_POST['newpassword']) && isset($_POST['newpassword2'])) {
-        userController::modifyPassword[''];
+       userController::modifyPassword($_GET['changeid'], $_POST['newpassword']);
+       header('Location : login.php');
     }
 }
 if($_SERVER['REQUEST_METHOD'] == 'GET'){

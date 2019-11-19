@@ -46,13 +46,14 @@ require_once '../utils/bbdd.php';
         }
 
         public static function modifyPassword( $idrec , $password ){
+            $hashpassword = password_hash($password ,PASSWORD_DEFAULT);
             $query = "UPDATE Users SET password = :password , recovery = '' WHERE recovery = :idrecovery ";
 
             try {
                 $conn = BBDD::getConnetion();
                 $query = $conn->prepare($query);
                 $query->bindParam(":idrecovery", $idrec);
-                $query->bindParam(":password", $password);
+                $query->bindParam(":password", $hashpassword);
 
                 return $query->execute();
 

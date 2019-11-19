@@ -45,26 +45,12 @@ SessionService::manageSession();
 </head>
 
 <body>
-    <!-- <hr>
-    <div class="ui grid">
-        <div class="sixteen wide column">
-            <div class="ui secondary pointing menu">
-                <div class="item">Welcome <?php echo strtoupper($_SESSION['user']->getUserName()); ?></div>
-                <a class="item">Home</a>
-                <a class="item" href="profile.php">Profile</a>
-                <a class="active item " href="messager.php">Messages</a>
-                <div class="right menu">
-                    <a href="login.php" class="ui item">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr> -->
     <div class="ui grey secondary pointing menu">
         <a class="grey item">Welcome <?php echo strtoupper($_SESSION['user']->getUserName()); ?></a>
         <!-- <a class="item">Home</a> -->
         <a class="active item" href="profile.php">Profile</a>
-        <a class="item " href="messager.php">E-mail account</a>
+        <a class="item" href="messager.php">E-mail account</a>
+        <a class="item" href="companyUsers.php">Company users</a>
         <div class="right menu">
             <a href="login.php" class="ui item">Logout</a>
         </div>
@@ -111,7 +97,6 @@ SessionService::manageSession();
                 </div>
                 <button class="grey ui fluid button" type="submit">Update profile</button>
             </form>
-            <!-- <hr> -->
         </div>
     </div>
 

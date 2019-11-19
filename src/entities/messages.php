@@ -3,6 +3,7 @@
         private $ID;
         private $IDsender;
         private $sender;
+        private $photoSender;
         private $receiver;
         private $title;
         private $body;
@@ -23,6 +24,7 @@
             return array(
                 'ID' => $this->getID(),
                 'IDSender' => $this->getIDsender(),
+                'photoSender' => $this->getPhotoSender(),
                 'sender'=>$this->getSender(),
                 'receiver'=>$this->getReceiver(),
                 'title' => $this->getTitle(),
@@ -32,6 +34,12 @@
             );
         }
 
+        public function getPhotoSender(){
+            return $this->photoSender;
+        }
+        public function setPhotoSender( $photoSender ){
+            $this->photoSender = $photoSender;
+        }
         public function getID(){
             return $this->ID;
         }

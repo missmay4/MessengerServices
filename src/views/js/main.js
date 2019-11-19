@@ -46,7 +46,7 @@ function renderTable(datas, container) {
             else if( key == 'PhotoProfile'){
                 let msm = row;
                 let img = document.createElement('img');
-                img.src = "img/profile_photo/" + msm['IDSender'] + ".png";
+                img.src = "img/profile_photo/" + msm['photoSender'];
                 img.style.width = "40px";
                 img.style.height = "40px";
                 th.appendChild(img);

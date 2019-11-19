@@ -14,8 +14,8 @@ class MessagerController{
             $sender =  UserModel::getUserID($msm->getSender());
             $msm->setSender($sender->getUserName());
             $msm->setIDSender($sender->getID());
+            $msm->setPhotoSender($sender->getUserPhoto());
             array_push($msmReady, $msm);
-
         }
         return $msmReady;
     }

@@ -15,4 +15,9 @@
             header('Location: login.php');
         }
 
+        public static function getUserList(){
+            $users = UserModel::getListUsers();
+            var_dump($users);
+        }
+
     }

@@ -50,10 +50,6 @@ SessionService::manageSession();
             <a href="login.php" class="ui item">Logout</a>
         </div>
     </div>
-
-
-
-
     <div class="ui top attached tabular menu">
         <a class="grey item active" data-tab="first">Inbox</a>
         <a class="grey item" data-tab="second">Send Messages</a>
@@ -61,7 +57,18 @@ SessionService::manageSession();
     <div class="ui bottom attached tab segment" data-tab="first">
         <div class="ui two column very relaxed grid">
             <div class="column">
-                <div class="centered" id="jsTableMessage"></div>
+                <table class="ui selectable table">
+                    <thead>
+                        <tr class="ui center aligned">
+                            <th>Seen</th>
+                            <th>Pic</th>
+                            <th>Sender</th>
+                            <th>Title</th>
+                            <th>Sending Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="jsTableMessage"></tbody>
+                </table>
             </div>
             <div class="column">
                 <form class="ui form">

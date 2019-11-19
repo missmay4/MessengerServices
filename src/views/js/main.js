@@ -1,30 +1,16 @@
 
 function renderTable(datas, container) {
     let keys = ['seen' , 'PhotoProfile' , 'sender', 'title', 'sendingTime'];
-    let table = document.createElement('table');
-    table.classList.add("ui");
-    table.classList.add("selectable");
-    table.classList.add("table");
-
-    let tr = document.createElement('tr');
-    tr.classList.add("ui");
-    tr.classList.add("center");
-    tr.classList.add("aligned");
-    for (const key of keys) {
-        let th = document.createElement('th');
-        th.innerHTML = key;
-        tr.appendChild(th);
-    }
-    let thead = document.createElement('thead');
-    thead.appendChild(tr);
-    table.appendChild(thead);
+    let contain = document.getElementById(container)
+    contain.innerHTML = ""
+    
     for (const row of datas) {
         let tr = document.createElement('tr');
-        tr.classList.add("ui");
-        tr.classList.add("center");
-        tr.classList.add("aligned");
         if (datas.length == 0) {
             let th = document.createElement('th');
+            th.classList.add("ui")
+            th.classList.add("center")
+            th.classList.add("aligned")
             th.innerHTML = "Not Messages";
             th.colSpan = 4;
             tr.appendChild(th);
@@ -32,6 +18,9 @@ function renderTable(datas, container) {
         }
         for (const key of keys) {
             let th = document.createElement('th');
+            th.classList.add("ui")
+            th.classList.add("center")
+            th.classList.add("aligned")
             if (key == 'seen') {
                 let checkBox = document.createElement('input');
                 checkBox.type = "checkbox";
@@ -57,16 +46,13 @@ function renderTable(datas, container) {
             tr.appendChild(th);
         }
         tr.onclick = function () {
+            let msm = row;
+            msm.seen = 1
+            ajaxModifyMessage(objectToGetQuery(msm));
             renderMessageDetails(row);
         };
-        let tbody = document.createElement('tbody');
-        tbody.appendChild(tr);
-        table.appendChild(tbody);
+        contain.appendChild(tr)
     }
-
-    let contain = document.getElementById(container)
-    contain.innerHTML = ""
-    contain.appendChild(table);
 }
 
 function renderMessageDetails(msm) {

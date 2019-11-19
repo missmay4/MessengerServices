@@ -84,8 +84,8 @@ function renderUsers(users, container) {
 }
 
 window.onload = function () {
+    this.ajaxMessages().then(messeges => {this.renderTable(messeges, 'jsTableMessage') });
     setInterval(function () {
-        console.log("luking for neus masages")
         this.ajaxMessages().then(messeges => {this.renderTable(messeges, 'jsTableMessage') });
     }, 3000);
     this.ajaxUsers().then(user => { renderUsers(user, "jsSendUsersSelect") });

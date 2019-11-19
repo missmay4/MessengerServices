@@ -15,9 +15,8 @@ class recoveryController{
 
     public static function sendRecoveryMail($user , $address ){
 
-        
         $uniqID = uniqid();
-        //UserModel::changeUserState( $user , $uniqID );
+        UserModel::changeUserState( $user , $uniqID );
 
         $mail = new PHPMailer();
         $mail->IsSMTP();

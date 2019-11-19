@@ -7,9 +7,10 @@ require_once '../utils/bbdd.php';
 
         public static function changeUserState( $user , $recoveryString ){
             $conn = BBDD::getConnetion();
-            $qry ="UPDATE Users SET recovery = :status WHERE username = $user";
+            $qry ="UPDATE Users SET recovery = :status WHERE username = :name";
 
             $query = $conn->prepare($qry);
+            $query->bindParam(":name", $user);
             $query->bindParam(":status", $recoveryString);
 
             return $query->execute();
@@ -54,9 +55,7 @@ require_once '../utils/bbdd.php';
                 $query = $conn->prepare($query);
                 $query->bindParam(":idrecovery", $idrec);
                 $query->bindParam(":password", $hashpassword);
-
                 return $query->execute();
-
             } catch (PDOException $e) {
                 echo $e;
             }

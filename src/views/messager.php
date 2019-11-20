@@ -44,10 +44,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         </div>
     </div>
     <div class="ui top attached tabular menu">
-        <a class="grey item active" data-tab="first">Inbox</a>
-        <a class="grey item" data-tab="second">Send Messages</a>
+        <a id="jsLinkTab1" class="grey item" data-tab="first">Inbox</a>
+        <a id="jsLinkTab2" class="grey item" data-tab="second">Send Messages</a>
     </div>
-    <div class="ui bottom attached tab segment active" data-tab="first">
+    <div id="jsTab1" class="ui bottom attached tab segment active" data-tab="first">
         <div class="ui two column very relaxed grid">
             <div class="column">
                 <table class="ui selectable table">
@@ -85,7 +85,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             </div>
         </div>
     </div>
-    <div class="ui bottom attached tab segment" data-tab="second">
+    <div id="jsTab2" class="ui bottom attached tab segment" data-tab="second">
         <form class="ui form">
             <div class="field">
                 <label for="destination">Select Destination</label>

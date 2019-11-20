@@ -6,6 +6,13 @@ require_once './utils.php';
 
 SessionService::manageSession();
 
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    if(isset($_FILES['fileToUpload'])){
+        $hasArchive = true ;
+        archiveController::attachArchive($_FILES['fileToUpload']);
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +47,7 @@ SessionService::manageSession();
         <a class="grey item active" data-tab="first">Inbox</a>
         <a class="grey item" data-tab="second">Send Messages</a>
     </div>
-    <div class="ui bottom attached tab segment" data-tab="first">
+    <div class="ui bottom attached tab segment active" data-tab="first">
         <div class="ui two column very relaxed grid">
             <div class="column">
                 <table class="ui selectable table">
@@ -72,7 +79,7 @@ SessionService::manageSession();
                     </div>
                     <div class="field">
                         <button id="jsAtachment" class="grey ui button">Download Attachments</button>
-                        <button id="jsAtachment" class="grey ui button">Response</button>
+                        <button id="jsResponseMessage" class="grey ui button">Response</button>
                     </div>
                 </form>
             </div>
@@ -81,16 +88,22 @@ SessionService::manageSession();
     <div class="ui bottom attached tab segment" data-tab="second">
         <form class="ui form">
             <div class="field">
-                <label for="destination">Select Destination :</label>
+                <label for="destination">Select Destination</label>
                 <span id="jsSendUsersSelect"></span>
             </div>
             <div class="field">
-                <label for="title">Title :</label>
+                <label for="title">Title</label>
                 <input id="jsSendTitleMessage" type="text" name="title" id="title">
             </div>
             <div class="field">
-                <label for="body">Body :</label>
+                <label for="body">Body</label>
                 <textarea id="jsSendBodyMessage" name="body" id="body" cols="30" rows="10"></textarea>
+            </div>
+            <div class="field">
+                <form class="ui form" method="POST" action="messager.php" enctype="multipart/form-data">
+                    <label for="title">Select attach file:</label>
+                    <input type="file" name="fileToUpload">
+                </form>
             </div>
             <div class="two ui buttons">
                 <button class="grey ui button" type="button" id="jsSendMessageButton">Send</button>

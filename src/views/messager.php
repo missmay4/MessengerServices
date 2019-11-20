@@ -10,6 +10,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if(isset($_FILES['fileToUpload'])){
         $hasArchive = true ;
         archiveController::attachArchive($_FILES['fileToUpload']);
+        archiveController::updateAttach($_FILES['fileToUpload']);
     }
 }
 

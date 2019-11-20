@@ -8,9 +8,9 @@ CREATE TABLE Users (
 	ID INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(20) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    lastvisit DATETIME,
+    lastVisit DATETIME,
     userPhoto TEXT DEFAULT "def_userphoto.png",
-    email  VARCHAR(30) NOT NULL,
+    email VARCHAR(30) NOT NULL,
     age TINYINT,
     address VARCHAR(250),
     hobbies VARCHAR (250),
@@ -18,7 +18,7 @@ CREATE TABLE Users (
 );
 CREATE TABLE Groups (
     ID INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(20) NOT NULL
+    groupName VARCHAR(20) NOT NULL
 );
 CREATE TABLE Messages (
     ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -33,16 +33,16 @@ CREATE TABLE Messages (
 );
 CREATE TABLE GroupsBelongs (
     ID INT AUTO_INCREMENT PRIMARY KEY,
-    userId INT,
-    groupId INT,
-    CONSTRAINT FK_userId FOREIGN KEY (userId)
+    userID INT,
+    groupID INT,
+    CONSTRAINT FK_userID FOREIGN KEY (userID)
     REFERENCES Users(ID),
-    CONSTRAINT FK_groupId FOREIGN KEY (groupId)
+    CONSTRAINT FK_groupID FOREIGN KEY (groupID)
     REFERENCES Groups(ID)
 );
-CREATE TABLE Atachments( 
+CREATE TABLE Attachments(
     ID INT AUTO_INCREMENT PRIMARY KEY,
-    atachmentPath VARCHAR(20),
+    attachmentPath VARCHAR(20),
     updateTime DATETIME ,
     IDMessage INT NOT NULL ,
 

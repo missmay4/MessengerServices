@@ -1,6 +1,26 @@
 <?php
 
 class archiveModel{
+
+    public static function updateAttachments($file){
+        $query = "UPDATE Attachments SET attachmentPath = :attachmentPath, updateTime = :updateTime";
+        $attachmentPath = $file->getattachmentPath();
+        $updateTime = $file->getupdateTime();
+
+        try {
+            $conn = BBDD::getConnetion();
+
+            $query = $conn->prepare($query);
+            $query->bindParam(':attachmentPath', $attachmentPath);
+            $query->bindParam(':updateTime', $updateTime);
+
+            $query->execute();
+        } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+
+
     public static function SaveArchive($file){
         if (isset($file) == null){
             return false;

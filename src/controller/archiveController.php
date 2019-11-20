@@ -11,6 +11,10 @@ class archiveController{
         return archiveModel::AttachArchive($archive);
     }
 
+    public static function updateAttach($archive){
+        return archiveModel::updateAttachments($archive);
+    }
+
 
 
 }

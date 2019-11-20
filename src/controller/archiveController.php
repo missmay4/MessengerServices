@@ -7,6 +7,10 @@ class archiveController{
         return archiveModel::SaveArchive($archive);
     }
 
+    public static function attachArchive($archive){
+        return archiveModel::AttachArchive($archive);
+    }
+
 
 
 }

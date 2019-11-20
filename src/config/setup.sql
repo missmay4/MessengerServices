@@ -43,18 +43,11 @@ CREATE TABLE GroupsBelongs (
 CREATE TABLE Atachments( 
     ID INT AUTO_INCREMENT PRIMARY KEY,
     atachmentPath VARCHAR(20),
-    updateTime DATETIME
-);
-CREATE TABLE AtachmentContainer( 
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    IDAtachment INT NOT NULL ,
+    updateTime DATETIME ,
     IDMessage INT NOT NULL ,
 
-    CONSTRAINT FK_atachment FOREIGN KEY (IDAtachment)
-    REFERENCES Messages(ID),
-    CONSTRAINT FK_uatachment FOREIGN KEY (IDMessage)
-    REFERENCES Atachments(ID)
-
+    CONSTRAINT FK_Messages FOREIGN KEY (IDMessage)
+    REFERENCES Messages(ID)
 );
 
 CREATE USER IF NOT EXISTS 'MSM'@'localhost' IDENTIFIED BY 'ROOT';

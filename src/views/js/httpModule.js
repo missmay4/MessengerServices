@@ -16,11 +16,9 @@ function ajaxMessages(){
     let ajax = new XMLHttpRequest();
     return new Promise((resolve , reject )=>{
         ajax.onerror = function(){
-            console.log(ajax.responseText)
             reject( JSON.parse(ajax.responseText));
         }
         ajax.onload = function(){
-            console.log(ajax.responseText);
             resolve(JSON.parse(ajax.responseText));
         }
 
@@ -35,7 +33,6 @@ function ajaxModifyMessage( message ){
             reject( JSON.parse(ajax.responseText));
         }
         ajax.onload = function(){
-            console.log(ajax.responseText);
             resolve(JSON.parse(ajax.responseText));
         }
         

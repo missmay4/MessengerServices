@@ -37,10 +37,10 @@ SessionService::manageSession();
         </div>
     </div>
     <div class="ui top attached tabular menu">
-        <a class="grey item active" data-tab="first">Inbox</a>
-        <a class="grey item" data-tab="second">Send Messages</a>
+        <a id="jsLinkTab1" class="grey item" data-tab="first">Inbox</a>
+        <a id="jsLinkTab2" class="grey item" data-tab="second">Send Messages</a>
     </div>
-    <div class="ui bottom attached tab segment active" data-tab="first">
+    <div id="jsTab1" class="ui bottom attached tab segment active" data-tab="first">
         <div class="ui two column very relaxed grid">
             <div class="column">
                 <table class="ui selectable table">
@@ -78,8 +78,13 @@ SessionService::manageSession();
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     <div class="ui bottom attached tab segment" data-tab="second">
         <form class="ui form" id="jsFormMessage" enctype="multipart/form-data">
+=======
+    <div id="jsTab2" class="ui bottom attached tab segment" data-tab="second">
+        <form class="ui form">
+>>>>>>> 5df1e4ac415707ad2f0077a66fffdf57241001e8
             <div class="field">
                 <label for="destination">Select Destination</label>
                 <span id="jsSendUsersSelect"></span>

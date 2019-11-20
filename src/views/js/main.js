@@ -50,9 +50,46 @@ function renderTable(datas, container) {
             msm.seen = 1
             ajaxModifyMessage(objectToGetQuery(msm));
             renderMessageDetails(row);
+
+            document.getElementById('jsResponseMessage').onclick = function( evt ){
+                evt.preventDefault();
+                loadTab2();
+                selectResponseUser(msm['IDSender'] , msm['title']);
+            }
         };
         contain.appendChild(tr)
     }
+}
+
+function selectResponseUser( idUserResponse , mailTitle ){
+
+    let select = document.getElementById('jsSendDestMess');
+    let options = select.children;
+    
+    for (const select of options ) {
+        if( select.value == idUserResponse ){
+            select.selected ="true";
+        }
+    }
+    
+    let title = document.getElementById('jsSendTitleMessage');
+    console.log(title)
+    title.value = "RE : " + mailTitle ;
+
+
+}
+
+function loadTab1(){
+    document.getElementById('jsLinkTab1').classList.add('active')
+    document.getElementById('jsLinkTab2').classList.remove('active')
+    document.getElementById('jsTab1').classList.add('active')
+    document.getElementById('jsTab2').classList.remove('active')
+}
+function loadTab2(){
+    document.getElementById('jsLinkTab1').classList.remove('active')
+    document.getElementById('jsLinkTab2').classList.add('active')
+    document.getElementById('jsTab1').classList.remove('active')
+    document.getElementById('jsTab2').classList.add('active')
 }
 
 function renderMessageDetails(msm) {
@@ -72,8 +109,8 @@ function renderUsers(users, container) {
     padre.innerHTML = "";
 
     let select = document.createElement('select');
+    select.id="jsSendDestMess"
     select.name = 'destination';
-    select.id ="jsSendDestMess"
     for (const usu of users) {
         let option = document.createElement('option');
         option.value = usu['ID'];

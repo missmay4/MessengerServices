@@ -1,9 +1,11 @@
 <?php
 
+require_once '../utils/bbdd.php';
+
 class archiveModel{
 
     public static function updateAttachments($file){
-        $query = "UPDATE Attachments SET attachmentPath = :attachmentPath, updateTime = :updateTime";
+        $query = "INSERT INTO Attachments (attachmentPath, updateTime) VALUES (attachmentPath = :attachmentPath, updateTime = :updateTime )";
         $attachmentPath = $file->getattachmentPath();
         $updateTime = $file->getupdateTime();
 
@@ -37,13 +39,13 @@ class archiveModel{
 
     public static function AttachArchive ($file){
         $target_dir = "../views/attachments/";
-        $file_name = $file['name'];
+        $file_name = $file->getattachmentPath();
         $uploadOk = 1;
 
         if ($uploadOk == 0) {
             echo "Sorry, your file was not uploaded.";
         } else {
-            if (move_uploaded_file($file['tmp_name'], $target_dir . $file_name)) {
+            if (move_uploaded_file($file_name , $target_dir . $file_name)) {
                 return true;
             } else {
                 return false;

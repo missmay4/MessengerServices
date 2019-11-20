@@ -90,7 +90,9 @@ window.onload = function () {
     }, 3000);
     this.ajaxUsers().then(user => { renderUsers(user, "jsSendUsersSelect") });
     document.getElementById('jsSendMessageButton').onclick = function(){
-        let msm = {
+        var form = document.getElementById('jsFormMessage');
+
+        /* let msm = {
             ID : null,
             sender : null ,
             receiver : jsSendDestMess.value,
@@ -98,8 +100,8 @@ window.onload = function () {
             body : jsSendBodyMessage.value,
             sendingTime :null ,
             seen : null,
-        }
-        ajaxSendMessage(msm);
+        } */
+        ajaxSendMessage(new FormData(form));
 
         jsSendTitleMessage.value ="";
         jsSendBodyMessage.value="";

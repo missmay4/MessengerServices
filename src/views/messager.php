@@ -1,18 +1,10 @@
 <?php
 require_once '../entities/users.php';
 require_once '../utils/sessionService.php';
-require_once '../controller/messagerController.php';
+require_once '../controller/archiveController.php';
 require_once './utils.php';
 
 SessionService::manageSession();
-
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    if(isset($_FILES['fileToUpload'])){
-        $hasArchive = true ;
-        archiveController::attachArchive($_FILES['fileToUpload']);
-        archiveController::updateAttach($_FILES['fileToUpload']);
-    }
-}
 
 ?>
 <!DOCTYPE html>
@@ -87,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         </div>
     </div>
     <div class="ui bottom attached tab segment" data-tab="second">
-        <form class="ui form">
+        <form class="ui form" id="jsFormMessage" enctype="multipart/form-data">
             <div class="field">
                 <label for="destination">Select Destination</label>
                 <span id="jsSendUsersSelect"></span>
@@ -101,13 +93,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 <textarea id="jsSendBodyMessage" name="body" id="body" cols="30" rows="10"></textarea>
             </div>
             <div class="field">
-                <form class="ui form" method="POST" action="messager.php" enctype="multipart/form-data">
-                    <label for="title">Select attach file:</label>
-                    <input type="file" name="fileToUpload">
-                </form>
+                <label for="title">Select attach file:</label>
+                <input type="file" name="fileToUpload">
             </div>
             <div class="two ui buttons">
-                <button class="grey ui button" type="button" id="jsSendMessageButton">Send</button>
+                <button class="grey ui button" id="jsSendMessageButton">Send</button>
                 <button class="grey ui button" type="reset">Reset</button>
             </div>
         </form>

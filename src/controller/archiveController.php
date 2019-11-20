@@ -1,5 +1,6 @@
 <?php
     require_once '../model/archiveModel.php';
+    require_once '../entities/attachment.php';
 
 class archiveController{
 
@@ -8,13 +9,10 @@ class archiveController{
     }
 
     public static function attachArchive($archive){
-        return archiveModel::AttachArchive($archive);
+        date_default_timezone_set('Europe/Madrid');
+        $file = new Attachments( null , $archive['name'] , date('Y-m-d G:m:s'));
+        archiveModel::AttachArchive($file);
+        archiveModel::updateAttachments($file);
     }
-
-    public static function updateAttach($archive){
-        return archiveModel::updateAttachments($archive);
-    }
-
-
 
 }

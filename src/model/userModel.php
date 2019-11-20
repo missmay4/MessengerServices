@@ -1,6 +1,6 @@
 <?php
 
-require_once '../utils/bbdd.php';
+    require_once '../utils/bbdd.php';
     require_once '../entities/users.php';
 
     class UserModel{

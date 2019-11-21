@@ -164,15 +164,23 @@ function addCard(users, container) {
 }
 
 window.onload = function () {
-    this.ajaxMessages().then(messeges => {this.renderTable(messeges, 'jsTableMessage') });
+    this.ajaxMessages().then(messeges => {
+        this.renderTable(messeges, 'jsTableMessage')
+    });
     setInterval(function () {
-        this.ajaxMessages().then(messeges => {this.renderTable(messeges, 'jsTableMessage') });
+        this.ajaxMessages().then(messeges => {
+            this.renderTable(messeges, 'jsTableMessage')
+        });
     }, 3000);
 
-    this.ajaxUsers().then(user => {addCard(user, "joinUsers")});
-    this.ajaxUsers().then(user => { renderUsers(user, "jsSendUsersSelect") });
+    this.ajaxUsers().then(user => {
+        addCard(user, "joinUsers")
+    });
+    this.ajaxUsers().then(user => {
+        renderUsers(user, "jsSendUsersSelect")
+    });
 
-    document.getElementById('jsSendMessageButton').onclick = function(){
+    document.getElementById('jsSendMessageButton').onclick = function () {
         var form = document.getElementById('jsFormMessage');
 
 
@@ -186,17 +194,18 @@ window.onload = function () {
             seen : null,
         } */
         ajaxSendMessage(new FormData(form));
-    document.getElementById('jsSendMessageButton').onclick = function( evt ){
+        document.getElementById('jsSendMessageButton').onclick = function (evt) {
 
-        let formdata = new FormData(document.forms.namedItem('formSendMessage')); 
-
-    
-        evt.preventDefault();
-        
-        ajaxSendMessage(formdata);
-        jsSendTitleMessage.value ="";
-        jsSendBodyMessage.value="";
+            let formdata = new FormData(document.forms.namedItem('formSendMessage'));
 
 
+            evt.preventDefault();
+
+            ajaxSendMessage(formdata);
+            jsSendTitleMessage.value = "";
+            jsSendBodyMessage.value = "";
+
+
+        }
     }
 }

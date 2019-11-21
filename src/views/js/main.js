@@ -171,6 +171,7 @@ window.onload = function () {
 
     this.ajaxUsers().then(user => {addCard(user, "joinUsers")});
     this.ajaxUsers().then(user => { renderUsers(user, "jsSendUsersSelect") });
+
     document.getElementById('jsSendMessageButton').onclick = function(){
         var form = document.getElementById('jsFormMessage');
 
@@ -185,9 +186,17 @@ window.onload = function () {
             seen : null,
         } */
         ajaxSendMessage(new FormData(form));
+    document.getElementById('jsSendMessageButton').onclick = function( evt ){
 
+        let formdata = new FormData(document.forms.namedItem('formSendMessage')); 
+
+    
+        evt.preventDefault();
+        
+        ajaxSendMessage(formdata);
         jsSendTitleMessage.value ="";
         jsSendBodyMessage.value="";
+
 
     }
 }

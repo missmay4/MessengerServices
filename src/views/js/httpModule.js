@@ -41,17 +41,18 @@ function ajaxModifyMessage( message ){
         ajax.send(message);
     })
 }
-function ajaxSendMessage( message ){
+function ajaxSendMessage( formData ){
     let ajax = new XMLHttpRequest();
     return new Promise((resolve , reject )=>{
         ajax.onerror = function(){
         }
         ajax.onload = function(){
+            console.log(ajax.responseText)
         }
 
-        ajax.open('POST' , '../ajax/sendMessage.php');
-        ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        ajax.send("?"+objectToGetQuery(message));
+        ajax.open('POST' , '../ajax/sendMessage.php' , true);
+        //ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        ajax.send(formData);
     })
 }
 function objectToGetQuery( object ){

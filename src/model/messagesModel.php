@@ -46,6 +46,7 @@
             }
         }
         public static function sendMessages($message){
+            $id = $message->getID();
             $sender = $message->getSender();
             $receiver = $message->getReceiver();
             $title = $message->getTitle();
@@ -54,7 +55,8 @@
             $curTime = date('Y-m-d G:m:s');
             try {
                 $conn = BBDD::getConnetion();
-                $query = $conn->prepare("INSERT INTO Messages (sender, receiver, title, body, sendingTime, seen) VALUES ( :sender , :receiver , :title , :body , :sendingTime , false )");
+                $query = $conn->prepare("INSERT INTO Messages ( id , sender, receiver, title, body, sendingTime, seen) VALUES ( :id , :sender , :receiver , :title , :body , :sendingTime , false )");
+                $query->bindParam(':id', $id);
                 $query->bindParam(':sender', $sender);
                 $query->bindParam(':receiver', $receiver);
                 $query->bindParam(':title', $title);

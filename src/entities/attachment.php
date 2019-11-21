@@ -4,11 +4,13 @@ class Attachments{
     public $ID;
     public $attachmentPath;
     public $updateTime;
+    public $messageID;
 
-    public function __construct($ID , $attachmentPath, $updateTime) {
+    public function __construct($ID , $attachmentPath, $updateTime , $messageID) {
         $this->ID = $ID;
         $this->attachmentPath = $attachmentPath;
         $this->updateTime = $updateTime;
+        $this->messageID = $messageID;
     }
 
     public function getID(){
@@ -17,6 +19,14 @@ class Attachments{
 
     public function setID($ID){
         $this->ID = $ID;
+    }
+
+    public function getMessageID(){
+        return $this->messageID;
+    }
+
+    public function setMessageID($messageID){
+        $this->messageID = $messageID;
     }
 
     public function getattachmentPath(){

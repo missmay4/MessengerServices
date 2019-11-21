@@ -22,8 +22,6 @@ userController::getUserList();
     <script src="./js/semantic.js"></script>
 
     <script src="./js/httpModule.js" type="application/javascript"></script>
-    <script src="./js/main.js" type="application/javascript"></script>
-    <script src="./js/profile.js" type="application/javascript"></script>
     <script src="./js/users.js" type="application/javascript"></script>
 
 </head>

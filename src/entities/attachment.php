@@ -1,20 +1,30 @@
 <?php 
 class Attachments{
 
-    public $ID;
-    public $attachmentPath;
-    public $updateTime;
-    public $messageID;
+    private $ID;
+    private $attachmentPath;
+    private $updateTime;
+    private $filename ;
+    private $messageID;
 
-    public function __construct($ID , $attachmentPath, $updateTime , $messageID) {
+    public function __construct($ID , $attachmentPath, $updateTime , $messageID , $name ) {
         $this->ID = $ID;
         $this->attachmentPath = $attachmentPath;
         $this->updateTime = $updateTime;
         $this->messageID = $messageID;
+        $this->filename = $name;
     }
 
     public function getID(){
         return $this->ID;
+    }
+
+    public function setName($name){
+        $this->filename = $name;
+    }
+
+    public function getName(){
+        return $this->filename;
     }
 
     public function setID($ID){

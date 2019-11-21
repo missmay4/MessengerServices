@@ -43,12 +43,13 @@ class archiveModel{
     public static function AttachArchive ($file){
         $target_dir = "../views/attachments/";
         $file_name = $file->getattachmentPath();
+        $curName = $file->getName();
         $uploadOk = 1;
 
         if ($uploadOk == 0) {
             return "Sorry, your file was not uploaded.";
         } else {
-            if (move_uploaded_file($file_name , $target_dir . $file_name)) {
+            if (move_uploaded_file($file_name , $target_dir . $curName )) {
                 return true;
             } else {
                 return false;

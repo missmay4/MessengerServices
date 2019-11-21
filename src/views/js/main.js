@@ -28,7 +28,7 @@ function renderTable(datas, container) {
                 checkBox.onclick = function () {
                     let msm = row;
                     (msm.seen == 1) ? msm.seen = 0 : msm.seen = 1;
-                    ajaxModifyMessage(objectToGetQuery(msm));
+                    ajaxModifyMessage(msm);
                 }
                 th.appendChild(checkBox);
             }
@@ -48,7 +48,7 @@ function renderTable(datas, container) {
         tr.onclick = function () {
             let msm = row;
             msm.seen = 1
-            ajaxModifyMessage(objectToGetQuery(msm));
+            ajaxModifyMessage(msm);
             renderMessageDetails(row);
 
             document.getElementById('jsResponseMessage').onclick = function (evt) {
@@ -64,6 +64,7 @@ function renderTable(datas, container) {
 function selectResponseUser(idUserResponse, mailTitle) {
 
     let select = document.getElementById('jsSendDestMess');
+
     let options = select.children;
 
     for (const select of options) {
@@ -129,7 +130,7 @@ function createCard(image, name) {
     img.className = 'image';
 
     img.src = image;
-    caja.appendChild(img);
+    card.appendChild(img);
 
     var content = document.createElement('div');
     bodyCaja.className = 'content';
@@ -174,14 +175,16 @@ window.onload = function () {
     }, 3000);
 
     this.ajaxUsers().then(user => {
-        addCard(user, "joinUsers")
+        //addCard(user, "joinUsers")
     });
     this.ajaxUsers().then(user => {
         renderUsers(user, "jsSendUsersSelect")
     });
 
-    document.getElementById('jsSendMessageButton').onclick = function () {
+    document.getElementById('jsSendMessageButton').onclick = function (evt) {
         var form = document.getElementById('jsFormMessage');
+        let formdata = new FormData();
+        evt.preventDefault();
 
 
         /* let msm = {
@@ -204,13 +207,6 @@ window.onload = function () {
 
         jsSendTitleMessage.value = "";
         jsSendBodyMessage.value = "";
-
-        evt.preventDefault();
-
-        ajaxSendMessage(formdata);
-        jsSendTitleMessage.value = "";
-        jsSendBodyMessage.value = "";
-
 
     }
 }

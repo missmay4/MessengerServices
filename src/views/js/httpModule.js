@@ -28,18 +28,20 @@ function ajaxMessages(){
     })
 }
 function ajaxModifyMessage( message ){
+    console.log(message)
     let ajax = new XMLHttpRequest();
     return new Promise((resolve , reject )=>{
         ajax.onerror = function(){
             reject( JSON.parse(ajax.responseText));
         }
         ajax.onload = function(){
+            console.log(ajax.responseText)
             resolve(JSON.parse(ajax.responseText));
         }
         
         ajax.open('POST' , '../ajax/modifyMessages.php');
         ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        ajax.send(message);
+        ajax.send(objectToGetQuery(message));
     })
 }
 function ajaxSendMessage( formData ){

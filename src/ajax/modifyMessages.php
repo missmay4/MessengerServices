@@ -14,7 +14,9 @@
             $_POST['seen']
         );
         
-        echo MessagerController::modifyMessage($msm);
+        MessagerController::modifyMessage($msm);
+        echo json_encode(array( 'code' => '200' , 'error' => "OK"));
+        return ;
     }
     else{
         echo json_encode(array( 'code' => '400' , 'error' => "Bad Request"));

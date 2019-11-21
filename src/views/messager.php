@@ -78,13 +78,8 @@ SessionService::manageSession();
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-    <div class="ui bottom attached tab segment" data-tab="second">
-        <form class="ui form" id="jsFormMessage" enctype="multipart/form-data">
-=======
     <div id="jsTab2" class="ui bottom attached tab segment" data-tab="second">
         <form class="ui form">
->>>>>>> 5df1e4ac415707ad2f0077a66fffdf57241001e8
             <div class="field">
                 <label for="destination">Select Destination</label>
                 <span id="jsSendUsersSelect"></span>

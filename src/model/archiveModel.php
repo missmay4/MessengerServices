@@ -1,6 +1,7 @@
 <?php
 
 require_once '../utils/bbdd.php';
+require_once '../entities/attachment.php';
 
 class archiveModel{
 
@@ -8,6 +9,7 @@ class archiveModel{
         $query = "INSERT INTO Attachments (attachmentPath, updateTime, IDMessage ) VALUES (:attachmentPath, :updateTime , :idmMessage)";
         $attachmentPath = $file->getattachmentPath();
         $updateTime = $file->getupdateTime();
+        $idMessage = $file->getMessageID();
 
         try {
             $conn = BBDD::getConnetion();

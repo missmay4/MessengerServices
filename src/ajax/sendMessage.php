@@ -5,10 +5,11 @@
 
     SessionService::manageSession();
     
-    $id = uniqid();
+    
 
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+       $id = uniqid();
 
        $msm = new Messages(
             $id,
@@ -20,12 +21,13 @@
             null
         );
         
-        echo MessagerController::sendMail($msm);
+        MessagerController::sendMail($msm);
 
         
         $file = new Attachments( null , $_FILES['fileToUpload']['name'] , date('Y-m-d G:m:s'), $id );
-         archiveController::attachArchive($file);
-        echo json_encode(array( 'code' => '300' , 'error' => "OK"));;
+        archiveController::attachArchive($file);
+        
+         echo json_encode(array( 'code' => '300' , 'error' => "OK"));;
     }
     else{
         echo json_encode(array( 'code' => '400' , 'error' => "Bad Request"));

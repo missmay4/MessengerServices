@@ -41,7 +41,7 @@ CREATE TABLE GroupsBelongs (
     REFERENCES Groups(ID)
 );
 CREATE TABLE Attachments(
-    ID INT PRIMARY KEY,
+    ID INT AUTO_INCREMENT PRIMARY KEY,
     attachmentPath VARCHAR(20),
     updateTime DATETIME ,
     IDMessage INT NOT NULL ,

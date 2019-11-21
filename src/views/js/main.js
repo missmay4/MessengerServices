@@ -164,6 +164,7 @@ function addCard(users, container) {
 }
 
 window.onload = function () {
+<<<<<<< HEAD
     this.ajaxMessages().then(messeges => { this.renderTable(messeges, 'jsTableMessage') });
     setInterval(function () {
         this.ajaxMessages().then(messeges => { console.log(messeges), this.renderTable(messeges, 'jsTableMessage') });
@@ -174,6 +175,27 @@ window.onload = function () {
     document.getElementById('jsSendMessageButton').onclick = function (evt) {
         evt.preventDefault();
         let formdata = new FormData();
+=======
+    this.ajaxMessages().then(messeges => {
+        this.renderTable(messeges, 'jsTableMessage')
+    });
+    setInterval(function () {
+        this.ajaxMessages().then(messeges => {
+            this.renderTable(messeges, 'jsTableMessage')
+        });
+    }, 3000);
+
+    this.ajaxUsers().then(user => {
+        addCard(user, "joinUsers")
+    });
+    this.ajaxUsers().then(user => {
+        renderUsers(user, "jsSendUsersSelect")
+    });
+
+    document.getElementById('jsSendMessageButton').onclick = function () {
+        var form = document.getElementById('jsFormMessage');
+
+>>>>>>> 295690ea6c465181588cede0ba29bc3391306aa8
 
         /* let msm = {
             ID: null,
@@ -184,6 +206,7 @@ window.onload = function () {
             sendingTime: null,
             seen: null,
         } */
+<<<<<<< HEAD
 
         formdata.append('destination', jsSendDestMess.value);
         formdata.append('title', jsSendTitleMessage.value);
@@ -195,7 +218,21 @@ window.onload = function () {
 
         jsSendTitleMessage.value = "";
         jsSendBodyMessage.value = "";
+=======
+        ajaxSendMessage(new FormData(form));
+        document.getElementById('jsSendMessageButton').onclick = function (evt) {
+
+            let formdata = new FormData(document.forms.namedItem('formSendMessage'));
+
+>>>>>>> 295690ea6c465181588cede0ba29bc3391306aa8
+
+            evt.preventDefault();
+
+            ajaxSendMessage(formdata);
+            jsSendTitleMessage.value = "";
+            jsSendBodyMessage.value = "";
 
 
+        }
     }
 }

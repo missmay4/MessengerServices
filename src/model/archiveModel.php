@@ -5,7 +5,7 @@ require_once '../utils/bbdd.php';
 class archiveModel{
 
     public static function updateAttachments($file){
-        $query = "INSERT INTO Attachments (attachmentPath, updateTime) VALUES (attachmentPath = :attachmentPath, updateTime = :updateTime )";
+        $query = "INSERT INTO Attachments (attachmentPath, updateTime, IDMessage ) VALUES (:attachmentPath, :updateTime , :idmMessage)";
         $attachmentPath = $file->getattachmentPath();
         $updateTime = $file->getupdateTime();
 
@@ -15,6 +15,7 @@ class archiveModel{
             $query = $conn->prepare($query);
             $query->bindParam(':attachmentPath', $attachmentPath);
             $query->bindParam(':updateTime', $updateTime);
+            $query->bindParam(':idmMessage', $idMessage);
 
             $query->execute();
         } catch (PDOException $e) {

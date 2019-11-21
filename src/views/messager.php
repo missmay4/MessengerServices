@@ -79,7 +79,7 @@ SessionService::manageSession();
         </div>
     </div>
     <div id="jsTab2" class="ui bottom attached tab segment" data-tab="second">
-        <form class="ui form">
+        <form class="ui form" name="formSendMessage" enctype="multipart/form-data">
             <div class="field">
                 <label for="destination">Select Destination</label>
                 <span id="jsSendUsersSelect"></span>
@@ -94,7 +94,7 @@ SessionService::manageSession();
             </div>
             <div class="field">
                 <label for="title">Select attach file:</label>
-                <input type="file" name="fileToUpload">
+                <input type="file" name="fileToUpload" id="jsFileInput">
             </div>
             <div class="two ui buttons">
                 <button class="grey ui button" id="jsSendMessageButton">Send</button>

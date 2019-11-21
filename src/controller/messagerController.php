@@ -4,7 +4,7 @@ require_once '../model/userModel.php';
 class MessagerController{
 
     public static function modifyMessage($message){
-        return MessagesModel::ModifyMessages($message);
+        MessagesModel::ModifyMessages($message);
     }
 
     public static function getMessages($user){

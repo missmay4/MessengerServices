@@ -10,9 +10,8 @@ class archiveController{
 
     public static function attachArchive($archive){
         date_default_timezone_set('Europe/Madrid');
-        $file = new Attachments( null , $archive['name'] , date('Y-m-d G:m:s'));
-        archiveModel::AttachArchive($file);
-        archiveModel::updateAttachments($file);
+        archiveModel::AttachArchive($archive);
+        archiveModel::updateAttachments($archive);
     }
 
 }

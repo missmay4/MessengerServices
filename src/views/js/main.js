@@ -126,22 +126,18 @@ window.onload = function () {
         this.ajaxMessages().then(messeges => {this.renderTable(messeges, 'jsTableMessage') });
     }, 3000);
     this.ajaxUsers().then(user => { renderUsers(user, "jsSendUsersSelect") });
-    document.getElementById('jsSendMessageButton').onclick = function(){
-        var form = document.getElementById('jsFormMessage');
+    document.getElementById('jsSendMessageButton').onclick = function( evt ){
 
-        /* let msm = {
-            ID : null,
-            sender : null ,
-            receiver : jsSendDestMess.value,
-            title : jsSendTitleMessage.value,
-            body : jsSendBodyMessage.value,
-            sendingTime :null ,
-            seen : null,
-        } */
-        ajaxSendMessage(new FormData(form));
+        let formdata = new FormData(document.forms.namedItem('formSendMessage')); 
+
+    
+        evt.preventDefault();
+        
+        ajaxSendMessage(formdata);
 
         jsSendTitleMessage.value ="";
         jsSendBodyMessage.value="";
+
 
     }
 }

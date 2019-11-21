@@ -26,6 +26,7 @@
         
         $file = new Attachments( null , $_FILES['fileToUpload']['name'] , date('Y-m-d G:m:s'), $id );
         archiveController::attachArchive($file);
+        archiveController::saveArchive($file);
         
          echo json_encode(array( 'code' => '300' , 'error' => "OK"));;
     }

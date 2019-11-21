@@ -17,7 +17,8 @@
 
         public static function getUserList(){
             $users = UserModel::getListUsers();
-            var_dump($users);
+            $jsonUsers = json_encode($users);
+            var_dump($jsonUsers);
         }
 
     }

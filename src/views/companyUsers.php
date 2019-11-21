@@ -24,6 +24,7 @@ userController::getUserList();
     <script src="./js/httpModule.js" type="application/javascript"></script>
     <script src="./js/main.js" type="application/javascript"></script>
     <script src="./js/profile.js" type="application/javascript"></script>
+    <script src="./js/users.js" type="application/javascript"></script>
 
 </head>
 
@@ -39,15 +40,8 @@ userController::getUserList();
     </div>
 </div>
 
-<div class="ui four column very relaxed grid centered">
-    <div class="ui card">
-        <a class="image" href="#">
-            <img src="img/profile_photo/<?php echo $_SESSION['user']->getUserPhoto(); ?>">
-        </a>
-        <div class="content">
-            <a class="header"><?php echo $_SESSION['user']->getUserName(); ?></a>
-        </div>
-    </div>
+<div class="ui four column very relaxed grid centered" id="joinUsers">
+
 </div>
 
 </body>

@@ -6,10 +6,10 @@ function displayModifyForm(){
     let x = document.getElementById("jsEditableData");
 
     if(x.style.visibility == "hidden"){
-        x.style.visibility = "visible"
+        x.style.visibility = "visible";
     }
     else{
-        x.style.visibility = "hidden"
+        x.style.visibility = "hidden";
     }
 
 }

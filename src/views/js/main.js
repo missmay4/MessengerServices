@@ -120,14 +120,60 @@ function renderUsers(users, container) {
     padre.appendChild(select);
 }
 
+function createCard(image, name) {
+    var card = document.createElement('div');
+    card.className = 'ui card';
+    document.body.appendChild(card);
+
+    var img = document.createElement('img');
+    img.className = 'image';
+
+    img.src = image;
+    caja.appendChild(img);
+
+    var content = document.createElement('div');
+    bodyCaja.className = 'content';
+
+    var user = document.createElement('a');
+    user.className = 'header';
+    user.innerHTML = name;
+
+    content.appendChild(user);
+    card.appendChild(content);
+    container.appendChild(card);
+
+    return card;
+
+}
+
+function addCard(users, container) {
+    var cont = document.getElementById(container);
+    var card;
+
+    for (let user of users) {
+
+        card = createCard(
+            user.username,
+            user.userPhoto
+        );
+    }
+
+
+    cont.appendChild(card);
+
+}
+
 window.onload = function () {
     this.ajaxMessages().then(messeges => {this.renderTable(messeges, 'jsTableMessage') });
     setInterval(function () {
         this.ajaxMessages().then(messeges => {this.renderTable(messeges, 'jsTableMessage') });
     }, 3000);
+
+    this.ajaxUsers().then(user => {addCard(user, "joinUsers")});
     this.ajaxUsers().then(user => { renderUsers(user, "jsSendUsersSelect") });
     document.getElementById('jsSendMessageButton').onclick = function(){
         var form = document.getElementById('jsFormMessage');
+
 
         /* let msm = {
             ID : null,

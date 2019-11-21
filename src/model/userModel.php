@@ -86,7 +86,7 @@
                 $query->setFetchMode( PDO::FETCH_ASSOC);
                 $query->execute();
                 $result =  $query->fetch();
-                return new Users($result["ID"],$result["username"],$result["password"],$result["lastvisit"],$result["userPhoto"],$result["email"], $result["age"], $result["address"], $result["hobbies"]);;
+                return new Users($result["ID"],$result["username"],$result["password"],$result["lastVisit"],$result["userPhoto"],$result["email"], $result["age"], $result["address"], $result["hobbies"]);;
             } catch (PDOException $e) {
                 $e->getMessage();
                 return 0;

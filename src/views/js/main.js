@@ -1,9 +1,9 @@
 
 function renderTable(datas, container) {
-    let keys = ['seen' , 'PhotoProfile' , 'sender', 'title', 'sendingTime'];
+    let keys = ['seen', 'PhotoProfile', 'sender', 'title', 'sendingTime'];
     let contain = document.getElementById(container)
     contain.innerHTML = ""
-    
+
     for (const row of datas) {
         let tr = document.createElement('tr');
         if (datas.length == 0) {
@@ -32,7 +32,7 @@ function renderTable(datas, container) {
                 }
                 th.appendChild(checkBox);
             }
-            else if( key == 'PhotoProfile'){
+            else if (key == 'PhotoProfile') {
                 let msm = row;
                 let img = document.createElement('img');
                 img.src = "img/profile_photo/" + msm['photoSender'];
@@ -51,41 +51,41 @@ function renderTable(datas, container) {
             ajaxModifyMessage(objectToGetQuery(msm));
             renderMessageDetails(row);
 
-            document.getElementById('jsResponseMessage').onclick = function( evt ){
+            document.getElementById('jsResponseMessage').onclick = function (evt) {
                 evt.preventDefault();
                 loadTab2();
-                selectResponseUser(msm['IDSender'] , msm['title']);
+                selectResponseUser(msm['IDSender'], msm['title']);
             }
         };
         contain.appendChild(tr)
     }
 }
 
-function selectResponseUser( idUserResponse , mailTitle ){
+function selectResponseUser(idUserResponse, mailTitle) {
 
     let select = document.getElementById('jsSendDestMess');
     let options = select.children;
-    
-    for (const select of options ) {
-        if( select.value == idUserResponse ){
-            select.selected ="true";
+
+    for (const select of options) {
+        if (select.value == idUserResponse) {
+            select.selected = "true";
         }
     }
-    
+
     let title = document.getElementById('jsSendTitleMessage');
     console.log(title)
-    title.value = "RE : " + mailTitle ;
+    title.value = "RE : " + mailTitle;
 
 
 }
 
-function loadTab1(){
+function loadTab1() {
     document.getElementById('jsLinkTab1').classList.add('active')
     document.getElementById('jsLinkTab2').classList.remove('active')
     document.getElementById('jsTab1').classList.add('active')
     document.getElementById('jsTab2').classList.remove('active')
 }
-function loadTab2(){
+function loadTab2() {
     document.getElementById('jsLinkTab1').classList.remove('active')
     document.getElementById('jsLinkTab2').classList.add('active')
     document.getElementById('jsTab1').classList.remove('active')
@@ -109,7 +109,7 @@ function renderUsers(users, container) {
     padre.innerHTML = "";
 
     let select = document.createElement('select');
-    select.id="jsSendDestMess"
+    select.id = "jsSendDestMess"
     select.name = 'destination';
     for (const usu of users) {
         let option = document.createElement('option');
@@ -164,38 +164,37 @@ function addCard(users, container) {
 }
 
 window.onload = function () {
-    this.ajaxMessages().then(messeges => {this.renderTable(messeges, 'jsTableMessage') });
+    this.ajaxMessages().then(messeges => { this.renderTable(messeges, 'jsTableMessage') });
     setInterval(function () {
-        this.ajaxMessages().then(messeges => {this.renderTable(messeges, 'jsTableMessage') });
+        this.ajaxMessages().then(messeges => { console.log(messeges), this.renderTable(messeges, 'jsTableMessage') });
     }, 3000);
-
-    this.ajaxUsers().then(user => {addCard(user, "joinUsers")});
+    //this.ajaxUsers().then(user => {addCard(user, "joinUsers")});
     this.ajaxUsers().then(user => { renderUsers(user, "jsSendUsersSelect") });
 
-    document.getElementById('jsSendMessageButton').onclick = function(){
-        var form = document.getElementById('jsFormMessage');
-
+    document.getElementById('jsSendMessageButton').onclick = function (evt) {
+        evt.preventDefault();
+        let formdata = new FormData();
 
         /* let msm = {
-            ID : null,
-            sender : null ,
-            receiver : jsSendDestMess.value,
-            title : jsSendTitleMessage.value,
-            body : jsSendBodyMessage.value,
-            sendingTime :null ,
-            seen : null,
+            ID: null,
+            sender: null,
+            receiver: jsSendDestMess.value,
+            title: jsSendTitleMessage.value,
+            body: jsSendBodyMessage.value,
+            sendingTime: null,
+            seen: null,
         } */
-        ajaxSendMessage(new FormData(form));
-    document.getElementById('jsSendMessageButton').onclick = function( evt ){
 
-        let formdata = new FormData(document.forms.namedItem('formSendMessage')); 
+        formdata.append('destination', jsSendDestMess.value);
+        formdata.append('title', jsSendTitleMessage.value);
+        formdata.append('body', jsSendBodyMessage.value);
+        formdata.append('file' , document.getElementById('jsFileInput').files[0]);
 
-    
-        evt.preventDefault();
-        
         ajaxSendMessage(formdata);
-        jsSendTitleMessage.value ="";
-        jsSendBodyMessage.value="";
+
+
+        jsSendTitleMessage.value = "";
+        jsSendBodyMessage.value = "";
 
 
     }

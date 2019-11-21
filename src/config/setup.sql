@@ -28,16 +28,16 @@ CREATE TABLE Messages (
     body VARCHAR(255), 
     sendingTime DATETIME,
     seen int DEFAULT 0, 
-    CONSTRAINT FOREIGN KEY (sender) REFERENCES Users(ID), 
-    CONSTRAINT FOREIGN KEY (receiver) REFERENCES Users(ID) 
+    CONSTRAINT FK_userID FOREIGN KEY (sender) REFERENCES Users(ID), 
+    CONSTRAINT FK_userID2 FOREIGN KEY (receiver) REFERENCES Users(ID) 
 );
 CREATE TABLE GroupsBelongs (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     userID INT,
     groupID INT,
-    CONSTRAINT FK_userID FOREIGN KEY (userID)
+    CONSTRAINT FK_userBelongID FOREIGN KEY (userID)
     REFERENCES Users(ID),
-    CONSTRAINT FK_groupID FOREIGN KEY (groupID)
+    CONSTRAINT FK_groupID2 FOREIGN KEY (groupID)
     REFERENCES Groups(ID)
 );
 CREATE TABLE Attachments(

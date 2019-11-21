@@ -19,6 +19,7 @@ function ajaxMessages(){
             reject( JSON.parse(ajax.responseText));
         }
         ajax.onload = function(){
+            console.log(ajax.responseText)
             resolve(JSON.parse(ajax.responseText));
         }
 
@@ -47,7 +48,7 @@ function ajaxSendMessage( formData ){
         ajax.onerror = function(){
         }
         ajax.onload = function(){
-            console.log(ajax.responseText)
+            console.log("R"+ ajax.responseText)
         }
 
         ajax.open('POST' , '../ajax/sendMessage.php' , true);

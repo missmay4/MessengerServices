@@ -14,7 +14,7 @@ class archiveController{
     }
 
     public static function saveArchive($archive){
-        archiveModel::AttachArchive($archive);
+        return archiveModel::AttachArchive($archive);
     }
 
 }

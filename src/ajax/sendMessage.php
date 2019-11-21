@@ -4,31 +4,23 @@
     require_once '../controller/archiveController.php';
 
     SessionService::manageSession();
-    
-    
-
-
+    $userid = $_SESSION['user']->getID();
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-       $id = uniqid();
-
        $msm = new Messages(
-            $id,
-            $_SESSION['user']->getID(),
+            null ,
+            $userid,
             $_POST['destination'],
             $_POST['title'],
             $_POST['body'],
             null,
             null
         );
-        
-        MessagerController::sendMail($msm);
-
-        
-        $file = new Attachments( null , $_FILES['fileToUpload']['name'] , date('Y-m-d G:m:s'), $id );
-        archiveController::attachArchive($file);
-        archiveController::saveArchive($file);
-        
-         echo json_encode(array( 'code' => '300' , 'error' => "OK"));;
+        $msmID = MessagerController::sendMail($msm);
+        if(isset($_FILES['file'])){
+            $file = new Attachments( null , $_FILES['file']['name'] , date('Y-m-d G:m:s'), $id );
+            archiveController::attachArchive($file);
+            archiveController::saveArchive($file);
+        }
     }
     else{
         echo json_encode(array( 'code' => '400' , 'error' => "Bad Request"));

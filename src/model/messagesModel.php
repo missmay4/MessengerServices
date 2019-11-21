@@ -46,7 +46,6 @@
             }
         }
         public static function sendMessages($message){
-            $id = $message->getID();
             $sender = $message->getSender();
             $receiver = $message->getReceiver();
             $title = $message->getTitle();
@@ -55,14 +54,14 @@
             $curTime = date('Y-m-d G:m:s');
             try {
                 $conn = BBDD::getConnetion();
-                $query = $conn->prepare("INSERT INTO Messages ( id , sender, receiver, title, body, sendingTime, seen) VALUES ( :id , :sender , :receiver , :title , :body , :sendingTime , false )");
-                $query->bindParam(':id', $id);
+                $query = $conn->prepare("INSERT INTO Messages ( sender, receiver, title, body, sendingTime, seen) VALUES ( :sender , :receiver , :title , :body , :sendingTime , false )");
                 $query->bindParam(':sender', $sender);
                 $query->bindParam(':receiver', $receiver);
                 $query->bindParam(':title', $title);
                 $query->bindParam(':body', $body);
                 $query->bindParam(':sendingTime', $curTime);
                 $query->execute();
+                return  $conn->lastInsertId();
             } catch (PDOException $e) {
                 echo $e->getMessage();
                 return 0;

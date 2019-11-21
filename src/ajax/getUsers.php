@@ -8,8 +8,8 @@
         $message = MessagerController::getUsers();
         echo json_encode($message);
 
-        $user = userController::getUserList();
-        echo json_encode($user);
+        /*$user = userController::getUserList();
+        echo json_encode($user);*/
     }
     else{
         echo json_encode(array( 'code' => '400' , 'error' => "Bad Request"));

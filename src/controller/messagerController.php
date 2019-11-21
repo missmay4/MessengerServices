@@ -25,7 +25,7 @@ class MessagerController{
     }
 
     public static function sendMail( $message ){
-        MessagesModel::sendMessages($message);
+        return MessagesModel::sendMessages($message);
     }
 
 }

@@ -6,6 +6,7 @@
     if($_SERVER['REQUEST_METHOD'] == 'GET'){
         $message = MessagerController::getMessages($_SESSION['user']);
         
+        
         echo json_encode($message);
     }
     else{

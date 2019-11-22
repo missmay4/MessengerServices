@@ -38,7 +38,8 @@ SessionService::manageSession();
     </div>
     <div class="ui top attached tabular menu">
         <a id="jsLinkTab1" class="grey item" data-tab="first">Inbox</a>
-        <a id="jsLinkTab2" class="grey item" data-tab="second">Send Messages</a>
+        <a id="jsLinkTab2" class="grey item" data-tab="second">Send Messages to single user</a>
+        <a id="jsLinkTab3" class="grey item" data-tab="third">Send Messages to various users</a>
     </div>
     <div id="jsTab1" class="ui bottom attached tab segment active" data-tab="first">
         <div class="ui two column very relaxed grid">
@@ -81,7 +82,7 @@ SessionService::manageSession();
     <div id="jsTab2" class="ui bottom attached tab segment" data-tab="second">
         <form class="ui form" name="formSendMessage" enctype="multipart/form-data">
             <div class="field">
-                <label for="destination">Select Destination</label>
+                <label for="destination">Select user</label>
                 <span id="jsSendUsersSelect"></span>
             </div>
             <div class="field">
@@ -102,6 +103,31 @@ SessionService::manageSession();
             </div>
         </form>
     </div>
+    <div id="jsTab3" class="ui bottom attached tab segment" data-tab="third">
+        <form class="ui form" name="formSendMessage" enctype="multipart/form-data">
+            <div class="field">
+                <label for="destination">Select users</label>
+                <!-- <span id="jsSendUsersSelect"></span> -->
+            </div>
+            <div class="field">
+                <label for="title">Title</label>
+                <input id="jsSendTitleMessage" type="text" name="title" id="title">
+            </div>
+            <div class="field">
+                <label for="body">Body</label>
+                <textarea id="jsSendBodyMessage" name="body" id="body" cols="30" rows="10"></textarea>
+            </div>
+            <div class="field">
+                <label for="title">Select attach file:</label>
+                <input type="file" name="fileToUpload" id="jsFileInput">
+            </div>
+            <div class="two ui buttons">
+                <button class="grey ui button" id="jsSendMessageButton">Send</button>
+                <button class="grey ui button" type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+
     <script type="application/javascript">
         $('.menu .item').tab();
     </script>

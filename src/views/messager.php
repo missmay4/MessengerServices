@@ -103,11 +103,11 @@ SessionService::manageSession();
             </div>
         </form>
     </div>
-    <div id="jsTab3" class="ui bottom attached tab segment" data-tab="third">
+    <!-- <div id="jsTab3" class="ui bottom attached tab segment" data-tab="third">
         <form class="ui form" name="formSendMessage" enctype="multipart/form-data">
             <div class="field">
                 <label for="destination">Select users</label>
-                <!-- <span id="jsSendUsersSelect"></span> -->
+                <span id="jsSendUsersSelect"></span>:q
             </div>
             <div class="field">
                 <label for="title">Title</label>
@@ -126,7 +126,7 @@ SessionService::manageSession();
                 <button class="grey ui button" type="reset">Reset</button>
             </div>
         </form>
-    </div>
+    </div> -->
 
     <script type="application/javascript">
         $('.menu .item').tab();

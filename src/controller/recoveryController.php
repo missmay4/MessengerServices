@@ -29,19 +29,23 @@ class recoveryController{
         $mail->SetFrom('phpserverphp@gmail.com', 'NoReply' );
         $mail->Subject = 'Password recovery';
         $mail->MsgHTML("
-            <h1>Hello my friend $user</h1>
+            <container>
             
-            <h2>To recovery your password follow this steps :</h2>
-
-            <ul>
-                <li>1.- Follow the link below</li>
-                <li>2.- Fill your form with your next password</li>
-                <li>3.- And follow enjoying our app</li>
-            </ul>
-
-            <a href='http://localhost/MessengerServices/src/views/changepassword.php?changeid=$uniqID'>Recover!</a>
-
-        ");
+              <row class=\"header\">
+                <columns>
+                  <h4 class=\"text-center\">Hello, $user</h4>
+                </columns>
+              </row>
+              <row>
+                <columns>
+                  <h1 class=\"text-center\">Forgot Your Password?</h1>
+                  <p class=\"text-center\">It happens. Click the link below to reset your password.</p>
+                  <a href='http://localhost/MessengerServices/src/views/changepassword.php?changeid=$uniqID'>Reset password</a>
+                  <hr/>
+                  <p><small>You're getting this email because you've signed up for email updates.</small></p>
+                </columns>
+              </row>
+            </container>");
         // $mail->AddAttachment('');
         $mail->AddAddress($address, '');
         return $mail->Send();

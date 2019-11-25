@@ -1,7 +1,9 @@
 <?php
     require_once '../model/archiveModel.php';
     require_once '../entities/attachment.php';
-
+/**
+ * Class to manage archive (Controller)
+ */
 class archiveController{
 
     public static function modifyArchive($archive){

@@ -5,8 +5,6 @@ require_once '../controller/userController.php';
 require_once '../utils/sessionService.php';
 SessionService::manageSession();
 
-userController::getUserList();
-
 ?>
 
 <!DOCTYPE html>

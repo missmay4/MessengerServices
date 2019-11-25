@@ -2,17 +2,24 @@
 use PHPMailer\PHPMailer\PHPMailer;
 require "../vendor/autoload.php";
 require_once '../model/userModel.php';
-
+/**
+ * Class to manage the recovery password
+ */
 class recoveryController{
 
+/*
     public static function checkUserEmail($username, $email){
         $res = UserModel::getUsernameEmail($username, $email);
         if (!$res) {
             header('Location: forgotpassword.php');
             return 0;
         }
-    }
+    } */
 
+    /**
+     * Params a object User and email address 
+     * and send a gmail with 'How restar your password'
+     */
     public static function sendRecoveryMail($user , $address ){
 
         $uniqID = uniqid();

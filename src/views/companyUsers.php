@@ -36,7 +36,8 @@ SessionService::manageSession();
     </div>
 </div>
 
-<div class="ui four column very relaxed grid centered" id="joinUsers">
+<div class="ui four column very relaxed grid centered">
+    <div class="ui cards" id="joinUsers"></div>
 
 </div>
 

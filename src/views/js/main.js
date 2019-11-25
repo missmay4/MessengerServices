@@ -132,33 +132,37 @@ function renderUsers(users, container) {
     padre.appendChild(select);
 }
 
-function createCard(image, name) {
-    var card = document.createElement('div');
-    card.className = 'ui card';
-    document.body.appendChild(card);
+function renderCards(users, container) {
 
-    var img = document.createElement('img');
-    img.className = 'image';
+    let father = document.getElementById(container);
+    father.innerHTML = "";
 
-    img.src = image;
-    card.appendChild(img);
+    for (const usu of users) {
+        var card = document.createElement('div');
+        card.className = 'card';
+        if (users.length > 0){
+            var content = document.createElement('div');
+            content.className = 'content';
+            card.appendChild(content);
 
-    var content = document.createElement('div');
-    bodyCaja.className = 'content';
+            var img = document.createElement('img');
+            img.className = 'right floated mini ui image';
+            img.src = "img/profile_photo/" + usu['userPhoto'];
 
-    var user = document.createElement('a');
-    user.className = 'header';
-    user.innerHTML = name;
+            var header = document.createElement('div');
+            header.className = 'header';
+            header.innerHTML = usu['username'];
 
-    content.appendChild(user);
-    card.appendChild(content);
-    container.appendChild(card);
+            content.appendChild(img);
+            content.appendChild(header);
 
-    return card;
+        }
 
+        father.appendChild(card);
+    }
 }
 
-function addCard(users, container) {
+/* function addCard(users, container) {
     var cont = document.getElementById(container);
     var card;
 
@@ -173,7 +177,7 @@ function addCard(users, container) {
 
     cont.appendChild(card);
 
-}
+} */
 
 window.onload = function () {
     this.ajaxMessages().then(messeges => {

@@ -122,7 +122,7 @@ function renderUsers(users, container) {
     let select = document.createElement('select');
     select.id = "jsSendDestMess";
     select.name = 'destination';
-    //select.multiple = true;
+    select.multiple = true;
     for (const usu of users) {
         let option = document.createElement('option');
         option.value = usu['ID'];

@@ -1,4 +1,6 @@
-
+/**
+ * Print a table with Messages in a container
+ */
 function renderTable(datas, container) {
     let keys = ['seen', 'PhotoProfile', 'sender', 'title', 'sendingTime'];
     let contain = document.getElementById(container)
@@ -45,12 +47,20 @@ function renderTable(datas, container) {
             }
             tr.appendChild(th);
         }
+        /**
+         * On click on tr change the message to 
+         * seen update in database 
+         * render message details 
+         */
         tr.onclick = function () {
             let msm = row;
             msm.seen = 1
             ajaxModifyMessage(msm);
             renderMessageDetails(row);
-
+            /**
+             * On click make response 
+             * to a mesage
+             */
             document.getElementById('jsResponseMessage').onclick = function (evt) {
                 evt.preventDefault();
                 loadTab2();
@@ -60,7 +70,9 @@ function renderTable(datas, container) {
         contain.appendChild(tr)
     }
 }
-
+/**
+ * Manage a response to a message
+ */
 function selectResponseUser(idUserResponse, mailTitle) {
 
     let select = document.getElementById('jsSendDestMess');
@@ -80,19 +92,28 @@ function selectResponseUser(idUserResponse, mailTitle) {
 
 }
 
+/**
+ * Change to tab 1
+ */
 function loadTab1() {
     document.getElementById('jsLinkTab1').classList.add('active')
     document.getElementById('jsLinkTab2').classList.remove('active')
     document.getElementById('jsTab1').classList.add('active')
     document.getElementById('jsTab2').classList.remove('active')
 }
+/**
+ * Change  to tab 2
+ */
 function loadTab2() {
     document.getElementById('jsLinkTab1').classList.remove('active')
     document.getElementById('jsLinkTab2').classList.add('active')
     document.getElementById('jsTab1').classList.remove('active')
     document.getElementById('jsTab2').classList.add('active')
 }
-
+/**
+ * Render a Message details
+ * @param { Message } msm 
+ */
 function renderMessageDetails(msm) {
     console.log(msm);
     let sender = document.getElementById('jsSenderMessage');
@@ -114,7 +135,10 @@ function renderMessageDetails(msm) {
 
 
 }
-
+/**
+ * Render select with all users of the application
+ * to send messages 
+ */
 function renderUsers(users, container) {
     let padre = document.getElementById(container);
     padre.innerHTML = "";
@@ -131,7 +155,9 @@ function renderUsers(users, container) {
     }
     padre.appendChild(select);
 }
-
+/**
+ * Render a Card with a user
+ */
 function renderCards(users, container) {
 
     let father = document.getElementById(container);
@@ -179,10 +205,19 @@ function renderCards(users, container) {
 
 } */
 
+/**
+ * Main
+ */
 window.onload = function () {
+    /**
+     * Ajax to get Messages
+     */
     this.ajaxMessages().then(messeges => {
         this.renderTable(messeges, 'jsTableMessage')
     });
+    /**
+     * Print messages tables each 3000 ms
+     */
     setInterval(function () {
         this.ajaxMessages().then(messeges => {
             this.renderTable(messeges, 'jsTableMessage')
@@ -195,7 +230,9 @@ window.onload = function () {
     this.ajaxUsers().then(user => {
         renderUsers(user, "jsSendUsersSelect")
     });
-
+    /**
+     * Send a mail by ajax 
+     */
     document.getElementById('jsSendMessageButton').onclick = function (evt) {
         var form = document.getElementById('jsFormMessage');
         let formdata = new FormData();
@@ -205,7 +242,6 @@ window.onload = function () {
 
         for (const dest of users) {
             if (dest.selected) {
-                console.log(dest.value)
                 formdata.append('destination', dest.value);
                 formdata.append('title', jsSendTitleMessage.value);
                 formdata.append('body', jsSendBodyMessage.value);

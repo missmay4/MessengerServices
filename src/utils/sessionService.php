@@ -31,6 +31,9 @@
                 return 0;
             }
         }
+        /**
+         * Close the session
+         */
         public static function exterminateSession(){
             if(isset($_SESSION['user'])){
                 session_destroy();

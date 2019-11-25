@@ -5,7 +5,7 @@ function checkData(){
 
     var regexUsr = /\w+/;
     var regexPass = /\w+\d+/;
-    var regexMail = /[^@]+@[^\\.]+\..+/;
+    var regexMail = /.+\@.+\..+/;
 
     console.log(regexMail.test(mail));
 

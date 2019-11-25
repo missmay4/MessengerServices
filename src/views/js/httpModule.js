@@ -20,9 +20,9 @@ function ajaxAttachment(id){
             console.log("Error");
         }
         ajax.onload = function(){
-            console.log(location.hostname+"/src/views/attachments/"+ajax.responseText)
+            console.log(ajax.responseText)
             let a = document.createElement('a');
-            a.href = location.hostname+"/src/views/attachments/"+ajax.responseText;
+            a.href = 'http://'+location.hostname+"/MessengerServices/src/views/attachments/"+ajax.responseText;
             a.download = ajax.responseText;
             a.click();
         }

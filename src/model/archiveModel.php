@@ -10,7 +10,6 @@ class archiveModel{
         $attachmentPath = $file->getattachmentPath();
         $updateTime = $file->getupdateTime();
         $idMessage = $file->getMessageID();
-
         try {
             $conn = BBDD::getConnetion();
 
@@ -42,8 +41,8 @@ class archiveModel{
 
     public static function AttachArchive ($file){
         $target_dir = "../views/attachments/";
-        $file_name = $file->getattachmentPath();
-        $curName = $file->getName();
+        $curName = $file->getattachmentPath();
+        $file_name = $file->getName();
         $uploadOk = 1;
 
         if ($uploadOk == 0) {

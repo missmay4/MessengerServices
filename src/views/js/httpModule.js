@@ -1,3 +1,13 @@
+
+/**********
+ * This file store all ajax peticion 
+ * was used promise to suplied asinc
+ * peticion
+ **********/
+
+ /**
+  * Get Users
+  */
 function ajaxUsers(){
     let ajax = new XMLHttpRequest();
     return new Promise((resolve , reject )=>{
@@ -12,7 +22,10 @@ function ajaxUsers(){
         ajax.send();
     })
 }
-
+/**
+ * Get Attachment 
+ * id of a message
+ */
 function ajaxAttachment(id){
     let ajax = new XMLHttpRequest();
     return new Promise((resolve , reject)=>{
@@ -31,7 +44,9 @@ function ajaxAttachment(id){
         ajax.send();
     });
 }
-
+/**
+ * Get Messages of current user
+ */
 function ajaxMessages(){
     let ajax = new XMLHttpRequest();
     return new Promise((resolve , reject )=>{
@@ -47,6 +62,9 @@ function ajaxMessages(){
         ajax.send();
     })
 }
+/**
+ * Modify Message  
+ */
 function ajaxModifyMessage( message ){
     console.log(message)
     let ajax = new XMLHttpRequest();
@@ -64,6 +82,9 @@ function ajaxModifyMessage( message ){
         ajax.send(objectToGetQuery(message));
     })
 }
+/**
+ * Send a message  
+ */
 function ajaxSendMessage( formData ){
     let ajax = new XMLHttpRequest();
     return new Promise((resolve , reject )=>{
@@ -78,6 +99,9 @@ function ajaxSendMessage( formData ){
         ajax.send(formData);
     })
 }
+/**
+ * Parse a object js to query string 
+ */
 function objectToGetQuery( object ){
     let queryString = "";
 

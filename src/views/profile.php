@@ -37,7 +37,6 @@ SessionService::manageSession();
     <link rel="stylesheet" href="./css/semantic.css">
     <script src="./js/jquery.js"></script>
     <script src="./js/semantic.js"></script>
-    
     <script src="./js/httpModule.js" type="application/javascript"></script>
     <script src="./js/main.js" type="application/javascript"></script>
     <script src="./js/profile.js" type="application/javascript"></script>
@@ -45,20 +44,20 @@ SessionService::manageSession();
 </head>
 
 <body>
-    <div class="ui grey secondary pointing menu">
-        <a class="grey item">Welcome <?php echo strtoupper($_SESSION['user']->getUserName()); ?></a>
-        <!-- <a class="item">Home</a> -->
+    <div class="ui centered blue secondary pointing menu">
+        <a class="item">Messenger Services</a>
+        <a class="blue item">Welcome <?php echo strtoupper($_SESSION['user']->getUserName()); ?></a>
         <a class="active item" href="profile.php">Profile</a>
         <a class="item" href="messager.php">E-mail account</a>
         <a class="item" href="companyUsers.php">Company users</a>
         <div class="right menu">
-            <a href="login.php" class="ui item">Logout</a>
+            <a href="login.php" class="ui blue basic label">Log out</a>
         </div>
     </div>
 
     <div class="ui four column very relaxed grid centered">
         <div class="column">
-            <div class="ui grey card">
+            <div class="ui card">
                 <div class="ui fluid image">
                     <img src="img/profile_photo/<?php echo $_SESSION['user']->getUserPhoto(); ?>">
                 </div>
@@ -66,11 +65,11 @@ SessionService::manageSession();
                     <a class="header"><?php echo $_SESSION['user']->getUserName(); ?></a>
                     <div class="meta">
                         <div><?php echo $_SESSION['user']->getEmail(); ?></div>
-                        <div><b>Last time visit: </b><?php echo $_SESSION['user']->getLastVisit(); ?></div>
-                        <div>Age : <?php echo $_SESSION['user']->getAge(); ?></div>
-                        <div>Home Address : <?php echo $_SESSION['user']->getAddress(); ?></div>
-                        <div>Hobbies : <?php echo $_SESSION['user']->getHobbies(); ?></div>
-                        <button id="jsModifyButton" class="grey ui fluid button">MODIFY</button>
+                        <div><b>Last time visit </b><?php echo $_SESSION['user']->getLastVisit(); ?></div>
+                        <div><b>Age </b><?php echo $_SESSION['user']->getAge(); ?></div>
+                        <div><b>Home Address </b><?php echo $_SESSION['user']->getAddress(); ?></div>
+                        <div><b>Hobbies </b><?php echo $_SESSION['user']->getHobbies(); ?></div>
+                        <button id="jsModifyButton" class="blue ui fluid button">MODIFY</button>
                     </div>
                 </div>
             </div>
@@ -85,17 +84,17 @@ SessionService::manageSession();
                 </div>
                 <div class="field">
                     <label>Age</label>
-                    <input type="number" name="age" placeholder="18" min="18" max="100">
+                    <input type="number" name="age" placeholder="Introduce your age" min="18" max="100">
                 </div>
                 <div class="field">
                     <label>Address</label>
-                    <input type="text" name="address" placeholder="Spain" >
+                    <input type="text" name="address" placeholder="Introduce your country/city" >
                 </div>
                 <div class="field">
                     <label>Hobbies</label>
-                    <textarea rows="4" cols="50" name="Hobbies" placeholder="Soccer"></textarea>
+                    <textarea rows="4" cols="50" name="Hobbies" placeholder="Introduce your hobbies"></textarea>
                 </div>
-                <button class="grey ui fluid button" type="submit">Update profile</button>
+                <button class="blue ui fluid button" type="submit">Update profile</button>
             </form>
         </div>
     </div>

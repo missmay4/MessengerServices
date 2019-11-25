@@ -1,4 +1,9 @@
-<?php
+<?php   
+
+    /**
+     * Manage http requests to modify a message
+     */
+
     require_once '../utils/sessionService.php';
     require_once '../controller/messagerController.php';
 

@@ -1,4 +1,5 @@
 <?php
+/**Manage http requests to get an array with the messages of a user, who is logged */
     require_once '../utils/sessionService.php';
     require_once '../controller/messagerController.php';
 

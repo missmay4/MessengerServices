@@ -104,8 +104,8 @@ function renderMessageDetails(msm) {
     let body = document.getElementById('jsBodyMessage');
     body.innerHTML = msm['body'];
 
-    document.getElementById('jsAtachment').onclick = function( evt ){
-        console.log("Downloading" , msm['ID'])
+    document.getElementById('jsAtachment').onclick = function (evt) {
+        console.log("Downloading", msm['ID'])
         ajaxAttachment(msm['ID']);
 
         evt.preventDefault();
@@ -197,24 +197,20 @@ window.onload = function () {
         let formdata = new FormData();
         evt.preventDefault();
 
+        let users = jsSendDestMess.options;
 
-        /* let msm = {
-            ID: null,
-            sender: null,
-            receiver: jsSendDestMess.value,
-            title: jsSendTitleMessage.value,
-            body: jsSendBodyMessage.value,
-            sendingTime: null,
-            seen: null,
-        } */
+        for (const dest of users) {
+            if (dest.selected) {
+                console.log(dest.value)
+                formdata.append('destination', dest.value);
+                formdata.append('title', jsSendTitleMessage.value);
+                formdata.append('body', jsSendBodyMessage.value);
+                formdata.append('file', document.getElementById('jsFileInput').files[0]);
 
-        formdata.append('destination', jsSendDestMess.value);
-        formdata.append('title', jsSendTitleMessage.value);
-        formdata.append('body', jsSendBodyMessage.value);
-        formdata.append('file', document.getElementById('jsFileInput').files[0]);
-
-        ajaxSendMessage(formdata);
-
+                ajaxSendMessage(formdata);
+                formdata = new FormData();
+            }
+        }
 
         jsSendTitleMessage.value = "";
         jsSendBodyMessage.value = "";

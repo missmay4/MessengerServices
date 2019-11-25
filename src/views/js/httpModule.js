@@ -12,6 +12,26 @@ function ajaxUsers(){
         ajax.send();
     })
 }
+
+function ajaxAttachment(id){
+    let ajax = new XMLHttpRequest();
+    return new Promise((resolve , reject)=>{
+        ajax.onerror = function(){
+            console.log("Error");
+        }
+        ajax.onload = function(){
+            console.log(location.hostname+"/src/views/attachments/"+ajax.responseText)
+            let a = document.createElement('a');
+            a.href = location.hostname+"/src/views/attachments/"+ajax.responseText;
+            a.download = ajax.responseText;
+            a.click();
+        }
+
+        ajax.open('GET' , '../ajax/getAttachments.php?msmid='+id);
+        ajax.send();
+    });
+}
+
 function ajaxMessages(){
     let ajax = new XMLHttpRequest();
     return new Promise((resolve , reject )=>{

@@ -17,7 +17,7 @@
         );
         $msmID = MessagerController::sendMail($msm);
         if(isset($_FILES['file'])){
-            $file = new Attachments( null , $_FILES['file']['tmp_name'] , date('Y-m-d G:m:s'), $msmID , $_FILES['file']['name'] );
+            $file = new Attachments( null , $_FILES['file']['name'] , date('Y-m-d G:m:s'), $msmID ,  $_FILES['file']['tmp_name']);
             archiveController::attachArchive($file);
             archiveController::saveArchive($file);
         }

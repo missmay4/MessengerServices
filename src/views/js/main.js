@@ -103,6 +103,16 @@ function renderMessageDetails(msm) {
 
     let body = document.getElementById('jsBodyMessage');
     body.innerHTML = msm['body'];
+
+    document.getElementById('jsAtachment').onclick = function( evt ){
+        console.log("Downloading" , msm['ID'])
+        ajaxAttachment(msm['ID']);
+
+        evt.preventDefault();
+    }
+
+
+
 }
 
 function renderUsers(users, container) {

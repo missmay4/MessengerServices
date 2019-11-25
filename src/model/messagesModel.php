@@ -1,5 +1,8 @@
-<?php 
-    require_once '../utils/bbdd.php';
+<?php
+
+use PHPMailer\PHPMailer\Exception;
+
+require_once '../utils/bbdd.php';
     require_once '../entities/messages.php';
     require_once '../entities/users.php';
     require_once '../entities/attachment.php';
@@ -68,8 +71,24 @@
             }
         }
 
-        public static function getAttachments($messages){
+        public static function getAttachments( $msmid ){
+            try {
+                $conn = BBDD::getConnetion();
 
+                $query = $conn->prepare('SELECT * FROM Attachments WHERE IDMessage = :id');
+                
+                $query->bindParam(':id',$msmid);
+    
+                $query->execute();
+    
+                $atach = $query->fetch(PDO::FETCH_ASSOC);
+
+                return $atach;
+            }catch (PDOException $e) {
+                echo $e->getMessage();
+                return 0;
+            }
+            
         }
 
     }

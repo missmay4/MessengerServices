@@ -4,9 +4,7 @@ require_once '../controller/archiveController.php';
 require_once '../controller/userController.php';
 require_once '../utils/sessionService.php';
 SessionService::manageSession();
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,9 +33,9 @@ SessionService::manageSession();
         <a href="login.php" class="ui blue basic label">Log out</a>
     </div>
 </div>
-
+<br>
 <div class="ui four column very relaxed grid centered">
-    <div class="ui cards" id="joinUsers"></div>
+    <div class="ui three cards" id="joinUsers"></div>
 
 </div>
 

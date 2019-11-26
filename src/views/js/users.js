@@ -1,37 +1,42 @@
-
-function crearContenido(image, name) {
+/**
+ * Render a Card with a user
+ */
+function renderCard(users) {
+    console.log(users)
     var card = document.createElement('div');
-    card.className = 'ui card';
-    document.body.appendChild(card);
-
-    var img = document.createElement('img');
-    img.className = 'image';
-
-    img.src = image;
-    caja.appendChild(img);
-
+    card.className = 'blue card';
     var content = document.createElement('div');
-    bodyCaja.className = 'content';
-
-    var user = document.createElement('a');
-    user.className = 'header';
-    user.innerHTML = name;
-
-    content.appendChild(user);
+    content.className = 'content';
     card.appendChild(content);
 
-    return card;
+    var meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.appendChild(card);
+    meta.innerHTML = users['email']
 
+    var img = document.createElement('img');
+    img.className = 'right floated mini ui image';
+    img.src = "img/profile_photo/" + users['userPhoto'];
+
+    var header = document.createElement('div');
+    header.className = 'header';
+    header.innerHTML = users['username'];
+
+    
+    content.appendChild(img);
+    content.appendChild(header);
+    content.appendChild(meta);
+
+    return card;
 }
 
-function crearContenedores(card) {
 
-    for (let cont of card) {
-
-        crearContenido(
-            cont.username,
-            cont.userPhoto
-        );
-    }
-
+window.onload = () => {
+    ajaxUsers().then(users => {
+        for (const key in users) {
+            joinUsers.appendChild(
+                renderCard(users[key])
+            )
+        }
+    })
 }

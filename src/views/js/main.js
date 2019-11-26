@@ -155,38 +155,6 @@ function renderUsers(users, container) {
     }
     padre.appendChild(select);
 }
-/**
- * Render a Card with a user
- */
-function renderCards(users, container) {
-
-    let father = document.getElementById(container);
-    father.innerHTML = "";
-
-    for (const usu of users) {
-        var card = document.createElement('div');
-        card.className = 'card';
-        if (users.length > 0){
-            var content = document.createElement('div');
-            content.className = 'content';
-            card.appendChild(content);
-
-            var img = document.createElement('img');
-            img.className = 'right floated mini ui image';
-            img.src = "img/profile_photo/" + usu['userPhoto'];
-
-            var header = document.createElement('div');
-            header.className = 'header';
-            header.innerHTML = usu['username'];
-
-            content.appendChild(img);
-            content.appendChild(header);
-
-        }
-
-        father.appendChild(card);
-    }
-}
 
 /* function addCard(users, container) {
     var cont = document.getElementById(container);
@@ -223,10 +191,6 @@ window.onload = function () {
             this.renderTable(messeges, 'jsTableMessage')
         });
     }, 3000);
-
-    this.ajaxUsers().then(user => {
-        //addCard(user, "joinUsers")
-    });
     this.ajaxUsers().then(user => {
         renderUsers(user, "jsSendUsersSelect")
     });

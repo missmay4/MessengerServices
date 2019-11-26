@@ -62,6 +62,30 @@
 
         }
 
+        public static function updateLastVisit( $id ) {
+           // $timeZone = new DateTimeZone('Europe/Madrid');
+
+            //$datetime = new DateTime();
+            //$datetime->setTimezone($timeZone);
+            //$datetime->format('Y\-m\-d\ h:i:s');
+            date_default_timezone_set('Europe/Madrid');
+            $datetime = date('Y-m-d G:m:s');
+            $qu = 'UPDATE Users SET lasVisit = :lastVisit WHERE ID = :id ';
+            try{
+                $conn = BBDD::getConnetion();
+                $query = $conn->prepare($qu);
+                $query->bindParam(':id', $id);
+                $query->bindParam(':lastVisit', $datetime);
+                return $query->execute();
+
+            } catch (PDOException $e) {
+                echo $e;
+            }
+
+
+
+        }
+
         public static function loginUser( $user , $password ){
             try {
                 $conn = BBDD::getConnetion();
@@ -73,6 +97,7 @@
                 if(!$result || !password_verify($password , $result["password"])){
                     return false;
                 }
+                UserModel::updateLastVisit($result['ID']);
                 return new Users($result["ID"],$result["username"],$result["password"],$result["lastvisit"],$result["userPhoto"],$result["email"], $result["age"], $result["address"], $result["hobbies"]);
             } catch (PDOException $e) {
                 echo $e;

@@ -16,10 +16,6 @@ CREATE TABLE Users (
     hobbies VARCHAR (250),
     recovery VARCHAR (250)
 );
-CREATE TABLE Groups (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    groupName VARCHAR(20) NOT NULL
-);
 CREATE TABLE Messages (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     sender INT, 
@@ -30,15 +26,6 @@ CREATE TABLE Messages (
     seen int DEFAULT 0, 
     CONSTRAINT FK_userID FOREIGN KEY (sender) REFERENCES Users(ID), 
     CONSTRAINT FK_userID2 FOREIGN KEY (receiver) REFERENCES Users(ID) 
-);
-CREATE TABLE GroupsBelongs (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    userID INT,
-    groupID INT,
-    CONSTRAINT FK_userBelongID FOREIGN KEY (userID)
-    REFERENCES Users(ID),
-    CONSTRAINT FK_groupID2 FOREIGN KEY (groupID)
-    REFERENCES Groups(ID)
 );
 CREATE TABLE Attachments(
     ID INT AUTO_INCREMENT PRIMARY KEY,

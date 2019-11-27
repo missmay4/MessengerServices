@@ -2,7 +2,7 @@ function checkData(){
     var user = document.getElementById('usr').value;
     var pass = document.getElementById('pswd').value;
 
-    var regexUsr = /\w+/;
+    var regexUsr = /\w+/; // Nombre sin espacios
     var regexPass = /\w+\d+/;
     if (regexUsr.test(user) && regexPass.test(pass)){
         return false;

@@ -24,8 +24,8 @@ SessionService::manageSession();
 
 <body>
 <div class="ui centered blue secondary pointing menu">
-    <a class="item">Messenger Services</a>
-    <a class="blue item">Welcome <?php echo strtoupper($_SESSION['user']->getUserName()); ?></a>
+    <p class="item" style="color: #0d71bb; font-weight: bold">Messenger Services</p>
+    <p class="blue item">Welcome <?php echo strtoupper($_SESSION['user']->getUserName()); ?></p>
     <a class="item" href="profile.php">Profile</a>
     <a class="item" href="messager.php">E-mail account</a>
     <a class="active item" href="companyUsers.php">Company users</a>

@@ -12,7 +12,7 @@ function renderCard(users) {
     var meta = document.createElement('div');
     meta.className = 'meta';
     meta.appendChild(card);
-    meta.innerHTML = users['email']
+    meta.innerHTML = users['email'];
 
     var img = document.createElement('img');
     img.className = 'right floated mini ui image';

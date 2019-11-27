@@ -4,7 +4,11 @@ function checkData(){
     var mail = document.getElementById('mail').value;
 
     var regexUsr = /\w+/;
-    var regexPass = /\w+\d+/;
+    var regexPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+    // The password should contain at leas one digit -> (?=.*\d)
+    // The password should contain at least one lower case -> (?=.*[a-z])
+    // The password should contain at least one upper case -> (?=.*[A-Z])
+    // The password should contain at least 8 from the mentioned characters -> [a-zA-Z0-9]{8,}
     var regexMail = /.+\@.+\..+/;
 
     console.log(regexMail.test(mail));

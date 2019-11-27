@@ -4,7 +4,9 @@ require_once '../utils/bbdd.php';
 require_once '../entities/attachment.php';
 
 class archiveModel{
-
+    /**
+     * Update a File object in database
+     */
     public static function updateAttachments($file){
         $query = "INSERT INTO Attachments (attachmentPath, updateTime, IDMessage ) VALUES (:attachmentPath, :updateTime , :idmMessage)";
         $attachmentPath = $file->getattachmentPath();
@@ -24,7 +26,9 @@ class archiveModel{
         }
     }
 
-
+    /**
+     * Upload a profile imagen to server 
+     */
     public static function SaveArchive($file){
         if (isset($file) == null){
             return false;
@@ -38,7 +42,9 @@ class archiveModel{
             return false;
         }
     }
-
+    /** 
+     *  Upload a atachment to server 
+     */
     public static function AttachArchive ($file){
         $target_dir = "../views/attachments/";
         $curName = $file->getattachmentPath();

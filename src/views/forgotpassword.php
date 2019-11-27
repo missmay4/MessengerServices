@@ -40,9 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label for="password">Email</label>
                 <input type="email" name="email" placeholder="Email">
             </div>
-            <div class="two ui buttons">
+            <div class="three ui buttons">
                 <button class="blue ui button" type="submit">Email me</button>
                 <button class="blue ui button" type="reset">Reset</button>
+                <a class="blue ui button" href="login.php">Log In</a>
             </div>
 
         </form>

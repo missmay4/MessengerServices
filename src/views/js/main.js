@@ -4,20 +4,20 @@
 function renderTable(datas, container) {
     let keys = ['seen', 'PhotoProfile', 'sender', 'title', 'sendingTime'];
     let contain = document.getElementById(container)
-    contain.innerHTML = ""
-
+    contain.innerHTML = "";
+    console.log(datas)
+    if (datas.length == 0) {
+        let th = document.createElement('th');
+        th.classList.add("ui")
+        th.classList.add("center")
+        th.classList.add("aligned")
+        th.innerHTML = "Not Messages";
+        th.colSpan = 5;
+        contain.appendChild(th);
+        return
+    }
     for (const row of datas) {
         let tr = document.createElement('tr');
-        if (datas.length == 0) {
-            let th = document.createElement('th');
-            th.classList.add("ui")
-            th.classList.add("center")
-            th.classList.add("aligned")
-            th.innerHTML = "Not Messages";
-            th.colSpan = 4;
-            tr.appendChild(th);
-            break
-        }
         for (const key of keys) {
             let th = document.createElement('th');
             th.classList.add("ui")
@@ -212,6 +212,7 @@ window.onload = function () {
                 formdata.append('file', document.getElementById('jsFileInput').files[0]);
 
                 ajaxSendMessage(formdata);
+
                 formdata = new FormData();
             }
         }

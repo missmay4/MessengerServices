@@ -22,7 +22,13 @@ SessionService::manageSession();
     <script src="./js/httpModule.js" type="application/javascript"></script>
     <script src="./js/main.js" type="application/javascript"></script>
 
-
+    <style>
+        table {
+            overflow-x: scroll;
+            height: 10em;
+            /* se dibujan barras según se necesite */
+        }
+    </style>
 </head>
 
 <body>
@@ -41,9 +47,11 @@ SessionService::manageSession();
         <a id="jsLinkTab2" class="blue item" data-tab="second">Send Messages</a>
         <!-- <a id="jsLinkTab3" class="blue item" data-tab="third">Send Messages to various users</a> -->
     </div>
+
     <div id="jsTab1" class="ui bottom attached tab segment active" data-tab="first">
         <div class="ui two column very relaxed grid">
             <div class="column">
+                <div style="height:400px;overflow-x: scroll;">
                 <table class="ui blue selectable table">
                     <thead>
                         <tr class="ui center aligned">
@@ -57,6 +65,8 @@ SessionService::manageSession();
                     <tbody id="jsTableMessage"></tbody>
                 </table>
             </div>
+            </div>
+
             <div class="column">
                 <form class="ui form">
                     <div class="field">
@@ -99,6 +109,7 @@ SessionService::manageSession();
             </div>
             <div class="two ui buttons">
                 <button class="blue ui button" id="jsSendMessageButton">Send</button>
+
                 <button class="blue ui button" type="reset">Reset</button>
             </div>
         </form>

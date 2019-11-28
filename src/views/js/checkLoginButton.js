@@ -4,6 +4,19 @@ function checkData(){
 
     var regexUsr = /\w+/; // Nombre sin espacios
     var regexPass = /\w+\d+/;
+    if(regexUsr.test(user)){
+        document.getElementById("nameJS").style.display ="none";
+    }
+    else{
+        document.getElementById("nameJS").style.display ="block";
+    }
+    if(regexPass.test(pass)){
+        document.getElementById("paswJS").style.display ="none";
+    }
+    else{
+        document.getElementById("paswJS").style.display ="block";
+    }
+
     if (regexUsr.test(user) && regexPass.test(pass)){
         return false;
     } else {
@@ -16,10 +29,10 @@ function setUpFormulario(){
     var user = document.getElementById('usr');
     var pass = document.getElementById('pswd');
 
-    user.onkeypress = function () {
+    user.oninput = function () {
         toggleSubmit(checkData());
     }
-    pass.onkeypress = function () {
+    pass.oninput = function () {
         toggleSubmit(checkData());
     }
 

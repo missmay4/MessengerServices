@@ -36,10 +36,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="field required">
                     <label for="username">User</label>
                     <input type="text" id="usr" name="username" placeholder="Username">
+                    <div id="nameJS" class="ui pointing red basic label">
+                        Please enter a value !
+                    </div>
                 </div>
                 <div class="field required">
                     <label for="password">Password</label>
                     <input type="password" id="pswd" name="password" placeholder="Password">
+                    <div id="paswJS" class="ui pointing red basic label">
+                        Please enter a valid password !
+                    </div>
                 </div>
                 <div class="field">
                     <a href="forgotpassword.php">Forgot password?</a>
@@ -52,4 +58,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 </body>
+
 </html>

@@ -11,7 +11,23 @@ function checkData(){
     // The password should contain at least 8 from the mentioned characters -> [a-zA-Z0-9]{8,}
     var regexMail = /.+\@.+\..+/;
 
-    console.log(regexMail.test(mail));
+    if(regexUsr.test(user)){
+        document.getElementById("nameJS").style.display ="none";
+    }else{
+        document.getElementById("nameJS").style.display ="block";
+    }
+
+    if(regexPass.test(pass)){
+        document.getElementById("passJS").style.display ="none";
+    }else{
+        document.getElementById("passJS").style.display ="block";
+    }
+    
+    if(regexMail.test(mail)){
+        document.getElementById("emailJS").style.display ="none";
+    }else{
+        document.getElementById("emailJS").style.display ="block";
+    }
 
     if (regexUsr.test(user) && regexPass.test(pass) && regexMail.test(mail)){
         return false;
@@ -27,21 +43,20 @@ function setUpFormulario(){
     var pass = document.getElementById('pswd');
     var mail = document.getElementById('mail');
 
-    user.onkeypress = function () {
+    user.oninput = function () {
         toggleSubmit(checkData());
     }
-    pass.onkeypress = function () {
+    pass.oninput = function () {
         toggleSubmit(checkData());
     }
 
-    mail.onkeypress = function () {
+    mail.oninput = function () {
         toggleSubmit(checkData());
     }
 
 }
 
 function toggleSubmit(state){
-    //console.log(state);
     var boton = document.getElementById('but');
     boton.disabled = state;
 }

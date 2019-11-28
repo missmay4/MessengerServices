@@ -41,14 +41,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="field required">
                     <label for="username">User</label>
                     <input type="text" name="username" id="usr" placeholder="Username">
+                    <div id="nameJS" class="ui pointing red basic label">
+                        Please enter a valid username!
+                    </div>
                 </div>
                 <div class="field required">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="pswd" placeholder="Password">
+                    <div id="passJS" class="ui pointing red basic label">
+                        Please enter a valid password!
+                    </div>
                 </div>
                 <div class="field required">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="mail" placeholder="Email">
+                    <div id="emailJS" class="ui pointing red basic label">
+                        Please enter a valid email!
+                    </div>
                 </div>
                 <div class="three ui buttons">
                     <button class="blue ui button" type="submit" id="but" disabled>Register</button>

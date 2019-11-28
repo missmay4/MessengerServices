@@ -4,6 +4,9 @@
     require_once '../entities/users.php';
 
     class UserModel{
+        /**
+         * Change the state from an user if this user ask for a password recovery
+         */
 
         public static function changeUserState( $user , $recoveryString ){
             $conn = BBDD::getConnetion();
@@ -15,6 +18,10 @@
 
             return $query->execute();
         }
+
+        /**
+         * Modify the data of the user in database
+         */
 
         public static function modifyUsers( $user ){
             $query  = "UPDATE Users SET username = :username , userPhoto = :userPhoto, email = :mail, age = :age, address = :address, hobbies = :hobbies WHERE Users.ID = :userID";
@@ -46,6 +53,10 @@
             }
         }
 
+        /**
+         * Modify the password of the user in database
+         */
+
         public static function modifyPassword( $idrec , $password ){
             $hashpassword = password_hash($password ,PASSWORD_DEFAULT);
             $query = "UPDATE Users SET password = :password , recovery = '' WHERE recovery = :idrecovery ";
@@ -62,12 +73,11 @@
 
         }
 
-        public static function updateLastVisit( $id ) {
-           // $timeZone = new DateTimeZone('Europe/Madrid');
+        /**
+         * Update the lastt visit time in database
+         */
 
-            //$datetime = new DateTime();
-            //$datetime->setTimezone($timeZone);
-            //$datetime->format('Y\-m\-d\ h:i:s');
+        public static function updateLastVisit( $id ) {
             date_default_timezone_set('Europe/Madrid');
             $datetime = date('Y-m-d G:m:s');
             $qu = 'UPDATE Users SET lasVisit = :lastVisit WHERE ID = :id ';
@@ -85,6 +95,10 @@
 
 
         }
+
+        /**
+         * Get user login in our app
+         */
 
         public static function loginUser( $user , $password ){
             try {
@@ -104,6 +118,11 @@
                 die();
             }
         }
+
+        /**
+         * Recover a user ID
+         */
+
         public static function getUserID($ID){
             try {
                 $conn = BBDD::getConnetion();
@@ -118,21 +137,9 @@
             }
         }
 
-        public static function getUsername($name){
-            try{
-                $conn = BBDD::getConnetion();
-                $query = $conn->query('SELECT username FROM Users WHERE username ='.$name);
-                $query->setFetchMode(PDO::FETCH_ASSOC);
-                $query->execute();
-
-                $result = $query->fetch();
-
-                return $result;
-            } catch (PDOException $e) {
-                $e->getMessage();
-                return 0;
-            }
-        }
+        /**
+         * Get all the users from our APP
+         */
 
         public static function getListUsers(){
             try {
@@ -146,6 +153,11 @@
                 return 0;
             }
         }
+
+        /**
+         * Insert an user into database
+         */
+
         public static function insertUser( $usuario ){
 
             $user = $usuario->getUserName();
@@ -169,6 +181,23 @@
             }
         }
 
+        /*
+        public static function getUsername($name){
+            try{
+                $conn = BBDD::getConnetion();
+                $query = $conn->query('SELECT username FROM Users WHERE username ='.$name);
+                $query->setFetchMode(PDO::FETCH_ASSOC);
+                $query->execute();
+
+                $result = $query->fetch();
+
+                return $result;
+            } catch (PDOException $e) {
+                $e->getMessage();
+                return 0;
+            }
+        }
+
         public static function getUsernameEmail($username, $email){
             try {
                 $conn = BBDD::getConnetion();
@@ -184,5 +213,5 @@
                 echo $e;
                 die();
             }
-        }
+        } */
     }

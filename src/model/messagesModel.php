@@ -1,12 +1,14 @@
 <?php
 
-use PHPMailer\PHPMailer\Exception;
-
 require_once '../utils/bbdd.php';
     require_once '../entities/messages.php';
     require_once '../entities/users.php';
     require_once '../entities/attachment.php';
     class MessagesModel{
+
+        /**
+         * Get all messages from a User order by sendintTime
+         */
 
         public static function getMessages( $user ){
             try {
@@ -34,6 +36,11 @@ require_once '../utils/bbdd.php';
                 return 0;
             }
         }
+
+        /**
+         * Send a message to a user by ID
+         */
+
         public static function ModifyMessages($message){
             $seen = $message->getSeen();
             $ID = $message->getID();
@@ -48,6 +55,11 @@ require_once '../utils/bbdd.php';
                 return 0;
             }
         }
+
+        /**
+         * Update a File object in database
+         */
+
         public static function sendMessages($message){
             $sender = $message->getSender();
             $receiver = $message->getReceiver();
@@ -70,6 +82,9 @@ require_once '../utils/bbdd.php';
                 return 0;
             }
         }
+        /**
+         * Recover the attachments from a message
+         */
 
         public static function getAttachments( $msmid ){
             try {

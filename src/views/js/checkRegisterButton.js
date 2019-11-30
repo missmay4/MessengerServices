@@ -1,3 +1,7 @@
+/**
+ * Check the data into the register form
+ * @returns {boolean}
+ */
 function checkData(){
     var user = document.getElementById('usr').value;
     var pass = document.getElementById('pswd').value;
@@ -38,6 +42,9 @@ function checkData(){
 
 }
 
+/**
+ * When the user type check if the data is correct
+ */
 function setUpFormulario(){
     var user = document.getElementById('usr');
     var pass = document.getElementById('pswd');
@@ -56,6 +63,10 @@ function setUpFormulario(){
 
 }
 
+/**
+ * Manages the state disabled/enabled of the button register
+ * @param state
+ */
 function toggleSubmit(state){
     var boton = document.getElementById('but');
     boton.disabled = state;

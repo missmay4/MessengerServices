@@ -144,7 +144,7 @@
         public static function getListUsers(){
             try {
                 $conn = BBDD::getConnetion();
-                $query = $conn->query('SELECT ID , username, userPhoto, email, lastVisit FROM Users');
+                $query = $conn->query('SELECT ID , username, userPhoto, email, lastVisit, age, address, hobbies FROM Users');
                 $query->setFetchMode( PDO::FETCH_ASSOC);
                 $query->execute();
                 return $query->fetchAll();

@@ -1,16 +1,57 @@
-<?php 
-    class Messages implements JsonSerializable{
-        private $ID;
-        private $IDsender;
-        private $sender;
-        private $photoSender;
-        private $receiver;
-        private $title;
-        private $body;
-        private $sendingTime;
-        private $seen;
+<?php
 
-        public function __construct($ID , $sender , $receiver , $title , $body , $sendingTime ,$seen) {
+/**
+ * Class Messages
+ */
+class Messages implements JsonSerializable{
+    /**
+     * @var $ID
+     */
+    private $ID;
+    /**
+     * @var $IDSender
+     */
+    private $IDsender;
+    /**
+     * @var $sender
+     */
+    private $sender;
+    /**
+     * @var $photoSender
+     */
+    private $photoSender;
+    /**
+     * @var $receiver
+     */
+    private $receiver;
+    /**
+     * @var $title
+     */
+    private $title;
+    /**
+     * @var $body
+     */
+    private $body;
+    /**
+     * @var $sendingTime
+     */
+    private $sendingTime;
+    /**
+     * @var $seen
+     */
+    private $seen;
+
+    /**
+     * Messages constructor.
+     * @param $ID
+     * @param $sender
+     * @param $receiver
+     * @param $title
+     * @param $body
+     * @param $sendingTime
+     * @param $seen
+     */
+    public function __construct($ID , $sender , $receiver , $title , $body , $sendingTime , $seen) {
             $this->ID = $ID;
             $this->sender = $sender;
             $this->receiver = $receiver;
@@ -20,7 +61,11 @@
             $this->seen = $seen;
         }
 
-        public function jsonSerialize(){
+    /**
+     * Convert into JSON the params on messages
+     * @return array
+     */
+    public function jsonSerialize(){
             return array(
                 'ID' => $this->getID(),
                 'IDSender' => $this->getIDsender(),
@@ -34,73 +79,150 @@
             );
         }
 
-        public function getPhotoSender(){
-            return $this->photoSender;
-        }
-        public function setPhotoSender( $photoSender ){
-            $this->photoSender = $photoSender;
-        }
-        public function getID(){
+    /**
+     * Getters and setters
+     */
+
+    /**
+     * Get the message ID
+     * @return $this->ID
+     */
+    public function getID(){
             return $this->ID;
         }
 
-        public function getIDsender(){
+    /**
+     * Set the ID of the sender
+     * @return $this->IDsender
+     */
+    public function getIDsender(){
             return $this->IDsender;
         }
 
-        public function getSender(){
+    /**
+     * Get the photo of the sender
+     * @return $this->photoSender
+     */
+    public function getPhotoSender(){
+        return $this->photoSender;
+    }
+
+    /**
+     * Get the name of the sender
+     * @return $this->sender
+     */
+    public function getSender(){
             return $this->sender;
         }
 
-        public function getReceiver(){
+    /**
+     * Get the name of the receiver
+     * @return $this->receiver
+     */
+    public function getReceiver(){
             return $this->receiver;
         }
 
-        public function getTitle(){
+    /**
+     * Get the title of the message
+     * @return $this->title
+     */
+    public function getTitle(){
             return $this->title;
         }
 
-        public function getBody(){
+    /**
+     * Get the body of the message
+     * @return $this->body
+     */
+    public function getBody(){
             return $this->body;
         }
 
-        public function getSendingTime(){
+    /**
+     * Get the sending time of the message
+     * @return $this->sendingTime
+     */
+    public function getSendingTime(){
             return $this->sendingTime;
         }
 
-        public function setID( $ID ){
+    /** Get if the message as been seen
+     * @return $this->seen
+     */
+    public function getSeen(){
+        return $this->seen;
+    }
+
+    /**
+     * Set the message ID
+     * @param $ID
+     */
+    public function setID($ID ){
             $this->ID = $ID;
         }
 
-        public function setIDSender($idSender){
+    /**
+     * Set the ID of the sender
+     * @param $idSender
+     */
+    public function setIDSender($idSender){
             $this->IDsender = $idSender;
         }
 
-        public function setSender( $sender ){
+    /**
+     * Set the photo of the sender
+     * @param $photoSender
+     */
+    public function setPhotoSender($photoSender ){
+        $this->photoSender = $photoSender;
+    }
+
+    /**
+     * Set the name of the sender
+     * @param $sender
+     */
+    public function setSender($sender ){
             $this->sender = $sender;
         }
 
-        public function setReceiver($receiver){
+    /**
+     * Set the name of the receiver
+     * @param $receiver
+     */
+    public function setReceiver($receiver){
             $this->receiver = $receiver;
         }
 
-        public function setTitle($title){
+    /**
+     * Set the title of the message
+     * @param $title
+     */
+    public function setTitle($title){
             $this->title = $title;
         }
 
-        public function setBody( $body ){
+    /**
+     * Set the body of the message
+     * @param $body
+     */
+    public function setBody($body ){
             $this->body = $body;
         }
 
-        public function setSendingTime( $time ){
+    /**
+     * Set the sending time of the message
+     * @param $time
+     */
+    public function setSendingTime($time ){
             $this->sendingTime = $time;
         }
-        
-        public function getSeen(){
-            return $this->seen;
-        }
-        
-        public function setSeen($seen){
+
+    /**
+     * Set the state of the message (seen/not seen)
+     * @param $seen
+     */
+    public function setSeen($seen){
             $this->seen = $seen;
         }
     }

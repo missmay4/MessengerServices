@@ -2,6 +2,7 @@
     require_once '../utils/sessionService.php';
     require_once '../controller/messagerController.php';
     require_once '../controller/archiveController.php';
+
     /**
      * Manage http requests to send a message
      */

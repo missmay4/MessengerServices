@@ -1,9 +1,17 @@
+/**
+ * Check the data into the login form
+ * @returns {boolean}
+ */
 function checkData(){
     var user = document.getElementById('usr').value;
     var pass = document.getElementById('pswd').value;
 
     var regexUsr = /\w+/; // Nombre sin espacios
-    var regexPass = /\w+\d+/;
+    var regexPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+    // The password should contain at leas one digit -> (?=.*\d)
+    // The password should contain at least one lower case -> (?=.*[a-z])
+    // The password should contain at least one upper case -> (?=.*[A-Z])
+    // The password should contain at least 8 from the mentioned characters -> [a-zA-Z0-9]{8,}
     if(regexUsr.test(user)){
         document.getElementById("nameJS").style.display ="none";
     }
@@ -24,8 +32,10 @@ function checkData(){
     }
 }
 
+/**
+ * When the user type check if the data is correct
+ */
 function setUpFormulario(){
-    console.log('set');
     var user = document.getElementById('usr');
     var pass = document.getElementById('pswd');
 
@@ -38,8 +48,11 @@ function setUpFormulario(){
 
 }
 
+/**
+ * Manages the state disabled/enabled of the button login
+ * @param state
+ */
 function toggleSubmit(state){
-    console.log(state);
     var boton = document.getElementById('but');
     boton.disabled = state;
 }

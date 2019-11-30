@@ -1,7 +1,9 @@
 <?php
+
     /**
      * Manage http requests to get an array with users
      */
+
     require_once '../utils/sessionService.php';
     require_once '../controller/messagerController.php';
     require_once '../controller/userController.php';

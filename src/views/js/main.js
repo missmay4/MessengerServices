@@ -3,7 +3,7 @@
  */
 function renderTable(datas, container) {
     let keys = ['seen', 'PhotoProfile', 'sender', 'title', 'sendingTime'];
-    let contain = document.getElementById(container)
+    let contain = document.getElementById(container);
     contain.innerHTML = "";
     console.log(datas)
     if (datas.length == 0) {
@@ -54,7 +54,7 @@ function renderTable(datas, container) {
          */
         tr.onclick = function () {
             let msm = row;
-            msm.seen = 1
+            msm.seen = 1;
             ajaxModifyMessage(msm);
             renderMessageDetails(row);
             /**
@@ -67,7 +67,7 @@ function renderTable(datas, container) {
                 selectResponseUser(msm['IDSender'], msm['title']);
             }
         };
-        contain.appendChild(tr)
+        contain.appendChild(tr);
     }
 }
 /**
@@ -86,7 +86,7 @@ function selectResponseUser(idUserResponse, mailTitle) {
     }
 
     let title = document.getElementById('jsSendTitleMessage');
-    console.log(title)
+    console.log(title);
     title.value = "RE : " + mailTitle;
 
 
@@ -96,19 +96,19 @@ function selectResponseUser(idUserResponse, mailTitle) {
  * Change to tab 1
  */
 function loadTab1() {
-    document.getElementById('jsLinkTab1').classList.add('active')
-    document.getElementById('jsLinkTab2').classList.remove('active')
-    document.getElementById('jsTab1').classList.add('active')
-    document.getElementById('jsTab2').classList.remove('active')
+    document.getElementById('jsLinkTab1').classList.add('active');
+    document.getElementById('jsLinkTab2').classList.remove('active');
+    document.getElementById('jsTab1').classList.add('active');
+    document.getElementById('jsTab2').classList.remove('active');
 }
 /**
  * Change  to tab 2
  */
 function loadTab2() {
-    document.getElementById('jsLinkTab1').classList.remove('active')
-    document.getElementById('jsLinkTab2').classList.add('active')
-    document.getElementById('jsTab1').classList.remove('active')
-    document.getElementById('jsTab2').classList.add('active')
+    document.getElementById('jsLinkTab1').classList.remove('active');
+    document.getElementById('jsLinkTab2').classList.add('active');
+    document.getElementById('jsTab1').classList.remove('active');
+    document.getElementById('jsTab2').classList.add('active');
 }
 /**
  * Render a Message details
@@ -155,23 +155,6 @@ function renderUsers(users, container) {
     }
     padre.appendChild(select);
 }
-
-/* function addCard(users, container) {
-    var cont = document.getElementById(container);
-    var card;
-
-    for (let user of users) {
-
-        card = createCard(
-            user.username,
-            user.userPhoto
-        );
-    }
-
-
-    cont.appendChild(card);
-
-} */
 
 /**
  * Main

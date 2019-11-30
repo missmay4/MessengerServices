@@ -17,17 +17,17 @@ function renderCard(users) {
     var hob = document.createElement('p');
     hob.className = 'ui blue message';
     hob.appendChild(card);
-    hob.innerHTML = 'Hobbies: ' + users['hobbies'];
+    hob.innerHTML = '<b>Hobbies:</b> ' + users['hobbies'];
 
     var age = document.createElement('p');
     age.className = 'ui blue message';
     age.appendChild(card);
-    age.innerHTML = 'Age: ' + users['age'];
+    age.innerHTML = '<b>Age:</b> ' + users['age'];
 
     var add = document.createElement('p');
     add.className = 'ui teal message';
     add.appendChild(card);
-    add.innerHTML = 'Address: ' + users['address'];
+    add.innerHTML = '<b>Address:</b> ' + users['address'];
 
 
 

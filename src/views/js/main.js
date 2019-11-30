@@ -131,7 +131,7 @@ function renderMessageDetails(msm) {
             ms.innerHTML ="No Attachments !!";
             setTimeout(() => {
                 ms.style.display = "none";
-            }, 3000);
+            }, 1500);
         })
         evt.preventDefault();
     }

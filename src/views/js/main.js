@@ -124,16 +124,9 @@ function renderMessageDetails(msm) {
 
     document.getElementById('jsAtachment').onclick = function (evt) {
         ajaxAttachment(msm['ID'])
-        .then(()=>{
-            let ms = document.getElementById('attachJS');
-            ms.style.display = "block";
-            setTimeout(() => {
-                ms.style.display = "none";
-                ms.innerHTML ="Downloading !!";
-            }, 3000);
-        })
         .catch(()=>{
             let ms = document.getElementById('attachJS');
+            ms.innerHTML ="";
             ms.style.display = "block";
             ms.innerHTML ="No Attachments !!";
             setTimeout(() => {

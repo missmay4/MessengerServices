@@ -83,7 +83,7 @@ SessionService::manageSession();
                     </div>
                     <div class="field">
                         <div id="attachJS" class="ui right pointing red basic label" style="display:none;">
-                            No Attachments !!
+                            
                         </div>
                         <button id="jsAtachment" class="blue ui button">Download Attachments</button>
                         <button id="jsResponseMessage" class="blue ui button">Response</button>

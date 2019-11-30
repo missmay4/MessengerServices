@@ -10,22 +10,42 @@ function renderCard(users) {
     card.appendChild(content);
 
     var meta = document.createElement('div');
-    meta.className = 'meta';
+    meta.className = 'ui info message';
     meta.appendChild(card);
     meta.innerHTML = users['email'];
 
+    var hob = document.createElement('p');
+    hob.className = 'ui blue message';
+    hob.appendChild(card);
+    hob.innerHTML = 'Hobbies: ' + users['hobbies'];
+
+    var age = document.createElement('p');
+    age.className = 'ui blue message';
+    age.appendChild(card);
+    age.innerHTML = 'Age: ' + users['age'];
+
+    var add = document.createElement('p');
+    add.className = 'ui teal message';
+    add.appendChild(card);
+    add.innerHTML = 'Address: ' + users['address'];
+
+
+
     var img = document.createElement('img');
-    img.className = 'right floated mini ui image';
+    //img.className = 'right floated mini ui image';
+    img.className = 'ui small circular image';
     img.src = "img/profile_photo/" + users['userPhoto'];
 
     var header = document.createElement('div');
-    header.className = 'header';
+    header.className = 'ui header';
     header.innerHTML = users['username'];
 
-    
     content.appendChild(img);
     content.appendChild(header);
     content.appendChild(meta);
+    content.appendChild(age);
+    content.appendChild(add);
+    content.appendChild(hob);
 
     return card;
 }

@@ -20,7 +20,7 @@ CREATE TABLE Messages (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     sender INT, 
     receiver INT, 
-    title VARCHAR(20), 
+    title VARCHAR(50),
     body VARCHAR(255), 
     sendingTime DATETIME,
     seen int DEFAULT 0, 

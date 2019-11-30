@@ -52,19 +52,19 @@ SessionService::manageSession();
         <div class="ui two column very relaxed grid">
             <div class="column">
                 <div style="height:400px;overflow-x: scroll;">
-                <table class="ui blue selectable table">
-                    <thead>
-                        <tr class="ui center aligned">
-                            <th>Seen</th>
-                            <th>Avatar</th>
-                            <th>Sender</th>
-                            <th>Title</th>
-                            <th>Sending Time</th>
-                        </tr>
-                    </thead>
-                    <tbody id="jsTableMessage"></tbody>
-                </table>
-            </div>
+                    <table class="ui blue selectable table">
+                        <thead>
+                            <tr class="ui center aligned">
+                                <th>Seen</th>
+                                <th>Avatar</th>
+                                <th>Sender</th>
+                                <th>Title</th>
+                                <th>Sending Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="jsTableMessage"></tbody>
+                    </table>
+                </div>
             </div>
 
             <div class="column">
@@ -82,6 +82,9 @@ SessionService::manageSession();
                         <textarea id="jsBodyMessage" name="body" id="body" cols="30" rows="10" disabled></textarea>
                     </div>
                     <div class="field">
+                        <div id="attachJS" class="ui right pointing red basic label" style="display:none;">
+                            No Attachments !!
+                        </div>
                         <button id="jsAtachment" class="blue ui button">Download Attachments</button>
                         <button id="jsResponseMessage" class="blue ui button">Response</button>
                     </div>

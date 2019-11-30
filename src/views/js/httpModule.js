@@ -33,11 +33,16 @@ function ajaxAttachment(id){
             console.log("Error");
         }
         ajax.onload = function(){
-            console.log(ajax.responseText)
-            let a = document.createElement('a');
-            a.href = 'http://'+location.hostname+"/MessengerServices/src/views/attachments/"+ajax.responseText;
-            a.download = ajax.responseText;
-            a.click();
+            if(!ajax.responseText){
+                reject();
+            }
+            else{
+                let a = document.createElement('a');
+                a.href = 'http://'+location.hostname+"/MessengerServices/src/views/attachments/"+ajax.responseText;
+                a.download = ajax.responseText;
+                a.click();
+                resolve();
+            }
         }
 
         ajax.open('GET' , '../ajax/getAttachments.php?msmid='+id);
@@ -54,7 +59,6 @@ function ajaxMessages(){
             reject( JSON.parse(ajax.responseText));
         }
         ajax.onload = function(){
-            console.log(ajax.responseText)
             resolve(JSON.parse(ajax.responseText));
         }
 
@@ -66,14 +70,12 @@ function ajaxMessages(){
  * Modify Message  
  */
 function ajaxModifyMessage( message ){
-    console.log(message)
     let ajax = new XMLHttpRequest();
     return new Promise((resolve , reject )=>{
         ajax.onerror = function(){
             reject( JSON.parse(ajax.responseText));
         }
         ajax.onload = function(){
-            console.log(ajax.responseText)
             resolve(JSON.parse(ajax.responseText));
         }
         
@@ -91,7 +93,6 @@ function ajaxSendMessage( formData ){
         ajax.onerror = function(){
         }
         ajax.onload = function(){
-            console.log("R"+ ajax.responseText)
         }
 
         ajax.open('POST' , '../ajax/sendMessage.php' , true);

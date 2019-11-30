@@ -5,7 +5,6 @@ function renderTable(datas, container) {
     let keys = ['seen', 'PhotoProfile', 'sender', 'title', 'sendingTime'];
     let contain = document.getElementById(container);
     contain.innerHTML = "";
-    console.log(datas)
     if (datas.length == 0) {
         let th = document.createElement('th');
         th.classList.add("ui")
@@ -86,7 +85,6 @@ function selectResponseUser(idUserResponse, mailTitle) {
     }
 
     let title = document.getElementById('jsSendTitleMessage');
-    console.log(title);
     title.value = "RE : " + mailTitle;
 
 
@@ -115,7 +113,6 @@ function loadTab2() {
  * @param { Message } msm 
  */
 function renderMessageDetails(msm) {
-    console.log(msm);
     let sender = document.getElementById('jsSenderMessage');
     sender.value = msm['sender'];
 
@@ -126,9 +123,23 @@ function renderMessageDetails(msm) {
     body.innerHTML = msm['body'];
 
     document.getElementById('jsAtachment').onclick = function (evt) {
-        console.log("Downloading", msm['ID'])
-        ajaxAttachment(msm['ID']);
-
+        ajaxAttachment(msm['ID'])
+        .then(()=>{
+            let ms = document.getElementById('attachJS');
+            ms.style.display = "block";
+            setTimeout(() => {
+                ms.style.display = "none";
+                ms.innerHTML ="Downloading !!";
+            }, 3000);
+        })
+        .catch(()=>{
+            let ms = document.getElementById('attachJS');
+            ms.style.display = "block";
+            ms.innerHTML ="No Attachments !!";
+            setTimeout(() => {
+                ms.style.display = "none";
+            }, 3000);
+        })
         evt.preventDefault();
     }
 

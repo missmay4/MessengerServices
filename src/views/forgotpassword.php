@@ -19,6 +19,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>MessagerService</title>
     <link rel="stylesheet" href="./css/semantic.css">
     <script src="./js/semantic.js"></script>
+    <script>
+    
+    window.onload = function(){
+        let msm = document.getElementById('mailJS');
+        document.getElementById('btnSend').onclick = function(){
+            msm.style.display = "block";
+            setTimeout(() => {
+                msm.style.display = "none";
+            }, 1500);
+        }
+    }
+    
+    </script>
+
 </head>
 
 <body>
@@ -41,7 +55,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="email" name="email" placeholder="Email">
             </div>
             <div class="three ui buttons">
-                <button class="blue ui button" type="submit">Email me</button>
+                <div id="mailJS" class="ui right pointing red basic label" style="display:none;">
+                    Mail Sended !!            
+                </div>
+                <button id="btnSend" class="blue ui button" type="submit">Email me</button>
                 <button class="blue ui button" type="reset">Reset</button>
                 <a class="blue ui button" href="login.php">Log In</a>
             </div>

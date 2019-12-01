@@ -29,11 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 </head>
 
 <body>
-    <div class="ui grey secondary pointing menu">
-        <a class="active item">
-            Home
-        </a>
-    </div>
+<div class="ui centered blue secondary pointing menu">
+    <a class="active item">
+        Messenger Services
+    </a>
+</div>
     <div class="ui grid">
         <div class="centered eight wide column">
             <h1>Change your password</h1>
@@ -52,9 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 </div>
                 <hr>
                 <div class="two ui buttons">
-                    <button class="grey ui button" type="submit">Submit</button>
+                    <button class="blue ui button" type="submit">Submit</button>
                     
-                    <button class="grey ui button" type="reset">Reset</button>
+                    <button class="blue ui button" type="reset">Reset</button>
                 </div>
             </form>
         </div>

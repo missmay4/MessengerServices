@@ -1,17 +1,10 @@
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-INSERT INTO `users` (`ID`, `username`, `password`, `lastVisit`, `userPhoto`, `email`, `age`, `address`, `hobbies`, `recovery`) VALUES
+INSERT INTO `Users` (`ID`, `username`, `password`, `lastVisit`, `userPhoto`, `email`, `age`, `address`, `hobbies`, `recovery`) VALUES
 (1, 'Mayte', '$2y$10$lJym5Zbk0M4St9wWcsSdC.vYaPeOHzHGrJg2QFmKv/apNw98Kthfy', '2019-11-30 09:11:52', '1.png', 'mcalmunoz@gmail.com', 28, 'Madrid', 'Listen to music', NULL),
 (2, 'Gero', '$2y$10$j.I3aQy7dlA3IvRireGiRuWP.znScWWNrpovY8/M/RplIETumyD4q', '2019-11-30 09:11:53', '2.png', 'geroal.xander@gmail.com', 21, 'Madrid', 'Programming', NULL),
 (3, 'Test', '$2y$10$Tj3wPrQxGkq1N.v5iyTNj.xb2TFILuDrG6zwTNTAjY7DNugX0xHqy', '2019-11-30 09:11:46', 'def_userphoto.png', 'test@test.com', NULL, NULL, NULL, NULL);
 
-
-INSERT INTO `messages` (`ID`, `sender`, `receiver`, `title`, `body`, `sendingTime`, `seen`) VALUES
+INSERT INTO `Messages` (`ID`, `sender`, `receiver`, `title`, `body`, `sendingTime`, `seen`) VALUES
 (1, 2, 1, 'Hello!', 'Hi Mayte, \nI\'m trying this new message app that the company release today.\n\nI hope it would be useful for all.\n\nSee you!', '2019-11-30 21:11:13', 1),
 (2, 1, 2, 'RE : Hello!', 'Hello Gero!\n\nI find this app so much useful, I think I would use it forever!\n\nSee you at the office', '2019-11-30 21:11:23', 1),
 (3, 1, 2, 'Trying to attach files', 'Hi!\n\nI saw that we can include files attached to the mails, so I\'m trying to see if is working. I attached a photo of my dog.\n\nI hope you can answer me if you can download the file.\n\nThanks!', '2019-11-30 21:11:19', 1),
@@ -23,8 +16,7 @@ INSERT INTO `messages` (`ID`, `sender`, `receiver`, `title`, `body`, `sendingTim
 (9, 2, 2, 'Attach file to multiple users', 'Sendind a file to multiple users', '2019-11-30 21:11:21', 0),
 (10, 2, 3, 'Attach file to multiple users', 'Sendind a file to multiple users', '2019-11-30 21:11:21', 0);
 
-
-INSERT INTO `attachments` (`ID`, `attachmentPath`, `updateTime`, `IDMessage`) VALUES
+INSERT INTO `Attachments` (`ID`, `attachmentPath`, `updateTime`, `IDMessage`) VALUES
 (1, 'mydog.jpg', '2019-11-30 21:11:19', 3),
 (2, 'mycat.jpg', '2019-11-30 21:11:52', 4),
 (3, 'test.txt', '2019-11-30 21:11:21', 8),

@@ -14,7 +14,7 @@ require_once '../utils/bbdd.php';
             try {
                 $userID = $user->getID();
                 $conn = BBDD::getConnetion();
-                $query = $conn->prepare("SELECT * FROM Messages WHERE receiver = :userID ORDER BY sendingTime ASC");
+                $query = $conn->prepare("SELECT * FROM Messages WHERE receiver = :userID ORDER BY sendingTime DESC");
                 $query->bindParam(':userID' , $userID );
 
                 $query->execute();

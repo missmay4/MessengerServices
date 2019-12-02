@@ -78,14 +78,11 @@
          */
 
         public static function updateLastVisit( $id ) {
-            date_default_timezone_set('Europe/Madrid');
-            $datetime = date('Y-m-d G:m:s');
-            $qu = 'UPDATE Users SET lasVisit = :lastVisit WHERE ID = :id ';
+            $qu = 'UPDATE Users SET lastVisit = CURTIME() WHERE ID = :id';
             try{
                 $conn = BBDD::getConnetion();
                 $query = $conn->prepare($qu);
                 $query->bindParam(':id', $id);
-                $query->bindParam(':lastVisit', $datetime);
                 return $query->execute();
 
             } catch (PDOException $e) {

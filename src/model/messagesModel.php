@@ -65,16 +65,13 @@ require_once '../utils/bbdd.php';
             $receiver = $message->getReceiver();
             $title = $message->getTitle();
             $body = $message->getBody();
-            date_default_timezone_set("Europe/Madrid");
-            $curTime = date('Y-m-d G:m:s');
             try {
                 $conn = BBDD::getConnetion();
-                $query = $conn->prepare("INSERT INTO Messages ( sender, receiver, title, body, sendingTime, seen) VALUES ( :sender , :receiver , :title , :body , :sendingTime , false )");
+                $query = $conn->prepare("INSERT INTO Messages ( sender, receiver, title, body, sendingTime, seen) VALUES ( :sender , :receiver , :title , :body , CURTIME() , false )");
                 $query->bindParam(':sender', $sender);
                 $query->bindParam(':receiver', $receiver);
                 $query->bindParam(':title', $title);
                 $query->bindParam(':body', $body);
-                $query->bindParam(':sendingTime', $curTime);
                 $query->execute();
                 return  $conn->lastInsertId();
             } catch (PDOException $e) {

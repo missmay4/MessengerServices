@@ -2,8 +2,8 @@
 class BBDD{
 
     private static $servername = "localhost"; //Server Name
-    private static $username = "root"; // Database User
-    private static $password = "root"; //Password
+    private static $username = "MSM"; // Database User
+    private static $password = "ROOT"; //Password
     private static $squema = "MessengerService"; //Database Name
     /**
      * Return a Connection Object

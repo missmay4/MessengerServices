@@ -24,8 +24,6 @@ SessionService::manageSession();
         );
         userController::modifyUsers($user);
     }
-
-    var_dump($_SESSION['user']);
 ?>
 
 <!DOCTYPE html>
